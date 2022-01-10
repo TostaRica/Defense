@@ -38,13 +38,13 @@ public class Torret : MonoBehaviour
         {
             if (aimType != AimType.Donut) gameObject.transform.LookAt(Target.transform.position + Target.transform.forward * Offset);
             CheckColdDowns();
-            CheckTarget();
         }
         else
         {
             FindNewEnemy();
         }
 
+        CleanEnemyList();
 
         //For Debug
         if (Input.GetKeyDown("w")) UpgradeTower();
@@ -81,13 +81,6 @@ public class Torret : MonoBehaviour
                 Target = enemy.gameObject;
             }
         }
-
-
-        foreach (Enemy enemy in EnemisToDelete)
-        {
-            EnemiesInside.Remove(enemy);
-        }
-        EnemisToDelete = new List<Enemy>();
     }
 
     void Shoot()
@@ -108,13 +101,13 @@ public class Torret : MonoBehaviour
         b.GetComponent<Bullet>().Damage = Damage;
     }
 
-    void CheckTarget()
+   void CleanEnemyList()
     {
-        if (Target == null)
+        foreach (Enemy enemy in EnemisToDelete)
         {
-            EnemiesInside.Remove(Target.gameObject.GetComponent<Enemy>());
-            FindNewEnemy();
+            EnemiesInside.Remove(enemy);
         }
+        EnemisToDelete = new List<Enemy>();
     }
 
     private void OnTriggerExit(Collider other)
