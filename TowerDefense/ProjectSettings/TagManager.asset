@@ -8,6 +8,8 @@ TagManager:
   - MudArea
   - Enemy
   - PoisonArea
+  - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX

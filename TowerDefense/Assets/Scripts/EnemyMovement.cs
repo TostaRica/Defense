@@ -10,7 +10,7 @@ public class EnemyMovement : MonoBehaviour
     public GameObject mudArea;
     public GameObject poisonArea;
     public GameObject tombModel;
-    public float castleDistanceRemaining { get { return enemyAgent.remainingDistance; } }
+    public float castleDistanceRemaining { get { return GetPathRemainingDistance(enemyAgent); } }
     public float doorDamage { get { return attackDamage; } }
     public bool isZombie { get { return enemyStates.Contains(Globals.EnemyState.Zombie); } }
     public bool hasZombieUpgrade { get { return enemyUpgrades.Contains(Globals.EnemyUpgrade.Zombie); } }
@@ -164,16 +164,10 @@ public class EnemyMovement : MonoBehaviour
         {
             poisonArea.SetActive(true);
         }
+        if (!enemyStates.Contains(Globals.EnemyState.Poison) && !enemyUpgrades.Contains(Globals.EnemyUpgrade.MudArmor) && !enemyUpgrades.Contains(Globals.EnemyUpgrade.Zombie)) Kill();
     }
     private void OnTriggerEnter(Collider other)
     {
-        //TODO: esto lo llamara el projectil
-        if (other.CompareTag("Projectile")) 
-        {
-            TakeDamage(9.0f);
-            other.gameObject.SetActive(false);
-            AddState(Globals.EnemyState.Poison);
-        }
         if (other.CompareTag("MudArea"))
         {
             ReliableOnTriggerExit.NotifyTriggerEnter(other, gameObject, OnTriggerExit);
@@ -207,5 +201,20 @@ public class EnemyMovement : MonoBehaviour
                 enemyAgent.speed = speed;
             }
         }
+    }
+    public float GetPathRemainingDistance(NavMeshAgent navMeshAgent)
+    {
+        if (navMeshAgent.pathPending ||
+            navMeshAgent.pathStatus == NavMeshPathStatus.PathInvalid ||
+            navMeshAgent.path.corners.Length == 0)
+            return -1f;
+
+        float distance = 0.0f;
+        for (int i = 0; i < navMeshAgent.path.corners.Length - 1; ++i)
+        {
+            distance += Vector3.Distance(navMeshAgent.path.corners[i], navMeshAgent.path.corners[i + 1]);
+        }
+
+        return distance;
     }
 }
