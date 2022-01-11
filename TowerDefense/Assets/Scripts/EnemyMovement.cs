@@ -170,8 +170,9 @@ public class EnemyMovement : MonoBehaviour
         //TODO: esto lo llamara el projectil
         if (other.CompareTag("Projectile")) 
         {
-            TakeDamage(100.0f);
+            TakeDamage(9.0f);
             other.gameObject.SetActive(false);
+            AddState(Globals.EnemyState.Poison);
         }
         if (other.CompareTag("MudArea"))
         {

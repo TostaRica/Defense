@@ -18,9 +18,9 @@ public static class Globals
     };
 
     //Dots
-    public static float poisonDamage = 1.0f;
+    public static float poisonDamage = 5.0f;
     public static int poisonDotsNumber = 5;
-    public static float burnDamage = 1.0f;
+    public static float burnDamage = 5.0f;
     public static int burnDotsNumber = 5;
     //Enemy upgrades
     public static float mudArmor = 0.25f; // +%
