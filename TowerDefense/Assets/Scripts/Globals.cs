@@ -42,5 +42,7 @@ public static class Globals
     public static float mudAndDeadTime = 2.0f;
     public static float mudSlowSpeed = 0.25f;
     //Waves
-    public static Stack<GameObject> enemies = new Stack<GameObject>();
+    public static List<GameObject> enemies = new List<GameObject>(); 
+    //Door 
+    public static float doorDefaultHp = 100.0f;
 }

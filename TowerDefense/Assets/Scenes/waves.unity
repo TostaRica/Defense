@@ -408,6 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b99e80174a2eea4197c1d043c74cf50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parent: {fileID: 1561756455}
 --- !u!1 &196195040
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,6 +861,7 @@ GameObject:
   - component: {fileID: 955537155}
   - component: {fileID: 955537154}
   - component: {fileID: 955537153}
+  - component: {fileID: 955537156}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -944,6 +946,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 955537151}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &955537156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955537151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 845bb1969be5f0b49bfa4ca03deca1a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 0
 --- !u!1 &1219832431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1149,7 +1164,7 @@ GameObject:
   - component: {fileID: 1561756459}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1210,7 +1225,7 @@ MonoBehaviour:
   castleDoor: {fileID: 955537152}
   enemyModel: {fileID: 85186883}
   mudArea: {fileID: 155407332}
-  posionArea: {fileID: 771605539}
+  poisonArea: {fileID: 0}
   tombModel: {fileID: 196195040}
 --- !u!54 &1561756459
 Rigidbody:

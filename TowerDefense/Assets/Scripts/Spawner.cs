@@ -35,21 +35,24 @@ public class Spawner : MonoBehaviour
         switch (type) 
         {
             case Globals.EnemyType.Jumper:
-                enemy = jumperPrefab;
+                if (jumperPrefab) enemy = jumperPrefab;
                 break;
             case Globals.EnemyType.Standard:
-                enemy = standardPrefab;
+                if (standardPrefab) enemy = standardPrefab;
                 break;
             case Globals.EnemyType.Heavy:
-                enemy = heavyPrefab;
+                if (heavyPrefab) enemy = heavyPrefab;
                 break;
         }
-        
-        enemy.transform.position = transform.position;
-        GameObject enemyInstance = Instantiate(enemy, transform.position, Quaternion.identity);
-        Globals.enemies.Push(enemyInstance);
-        enemyScript = enemyInstance.GetComponent<EnemyMovement>();
-        enemyScript.Init(type,bomb,mudArmor,zombie);
-        enemyInstance.SetActive(true);
+
+        if (enemy) {
+            enemy.transform.position = transform.position;
+            GameObject enemyInstance = Instantiate(enemy, transform.position, Quaternion.identity);
+            Globals.enemies.Add(enemyInstance);
+            enemyScript = enemyInstance.GetComponent<EnemyMovement>();
+            enemyScript.Init(type, bomb, mudArmor, zombie);
+            enemyInstance.SetActive(true);
+        }
+
     }
 }

@@ -8,14 +8,18 @@ public class EnemyMovement : MonoBehaviour
     public Transform castleDoor;
     public GameObject enemyModel;
     public GameObject mudArea;
-    public GameObject posionArea;
+    public GameObject poisonArea;
     public GameObject tombModel;
+    public float castleDistanceRemaining { get { return enemyAgent.remainingDistance; } }
+    public float doorDamage { get { return attackDamage; } }
+    public bool isZombie { get { return enemyStates.Contains(Globals.EnemyState.Zombie); } }
+    public bool hasZombieUpgrade { get { return enemyUpgrades.Contains(Globals.EnemyUpgrade.Zombie); } }
 
     //stats
     private float hp = 10.0f;
     private float zombieHp = 10.0f;
     private float speed = 1.0f;
-    private float doorDamage = 1.0f;
+    private float attackDamage = 1.0f;
     private bool jumpSkill = false;
     private bool dead = false;
     private List<Globals.EnemyUpgrade> enemyUpgrades = new List<Globals.EnemyUpgrade>();
@@ -25,8 +29,8 @@ public class EnemyMovement : MonoBehaviour
     private int burnDots = 0;
     private float dotTimer = 0.0f;
     private float deadTimer = 0.0f;
-    private float castleDistanceRemaining { get { return enemyAgent.remainingDistance; } }
-    // Start is called before the first frame update
+    private bool destroyed = false;
+
     void Start()
     {
         if (enemyUpgrades.Contains(Globals.EnemyUpgrade.MudArmor))
@@ -43,33 +47,6 @@ public class EnemyMovement : MonoBehaviour
         enemyAgent.angularSpeed = 9999;
         enemyAgent.autoBraking = false;
     }
-    public void Init(Globals.EnemyType type = Globals.EnemyType.Standard, bool bombs = false, bool mudArmor = false, bool zombie = false) 
-    {
-        if (bombs) enemyUpgrades.Add(Globals.EnemyUpgrade.Bomb);
-        if (mudArmor) enemyUpgrades.Add(Globals.EnemyUpgrade.MudArmor);
-        if (zombie) enemyUpgrades.Add(Globals.EnemyUpgrade.Zombie);
-
-        switch (type) {
-            case Globals.EnemyType.Jumper:
-                hp = Globals.jumperDefaultHp;
-                speed = Globals.jumperDefaultSpeed;
-                doorDamage = Globals.jumperDefaultDoorDamage;
-                jumpSkill = true;
-                break;
-            case Globals.EnemyType.Standard:
-                hp = Globals.standardDefaultHp;
-                speed = Globals.standardDefaultSpeed;
-                doorDamage = Globals.standardDefaultDoorDamage;
-                break;
-            case Globals.EnemyType.Heavy:
-                hp = Globals.heavyDefaultHp;
-                speed = Globals.heavyDefaultSpeed;
-                doorDamage = Globals.standardDefaultDoorDamage;
-                break;
-        }
-        enemyAgent.speed = speed;
-    }
-    // Update is called once per frame
     void Update()
     {
         if (!dead)
@@ -89,6 +66,33 @@ public class EnemyMovement : MonoBehaviour
 
         }
     }
+    public void Init(Globals.EnemyType type = Globals.EnemyType.Standard, bool bombs = false, bool mudArmor = false, bool zombie = false)
+    {
+        if (bombs) enemyUpgrades.Add(Globals.EnemyUpgrade.Bomb);
+        if (mudArmor) enemyUpgrades.Add(Globals.EnemyUpgrade.MudArmor);
+        if (zombie) enemyUpgrades.Add(Globals.EnemyUpgrade.Zombie);
+
+        switch (type)
+        {
+            case Globals.EnemyType.Jumper:
+                hp = Globals.jumperDefaultHp;
+                speed = Globals.jumperDefaultSpeed;
+                attackDamage = Globals.jumperDefaultDoorDamage;
+                jumpSkill = true;
+                break;
+            case Globals.EnemyType.Standard:
+                hp = Globals.standardDefaultHp;
+                speed = Globals.standardDefaultSpeed;
+                attackDamage = Globals.standardDefaultDoorDamage;
+                break;
+            case Globals.EnemyType.Heavy:
+                hp = Globals.heavyDefaultHp;
+                speed = Globals.heavyDefaultSpeed;
+                attackDamage = Globals.standardDefaultDoorDamage;
+                break;
+        }
+        enemyAgent.speed = speed;
+    }
     public void TakeDamage(float damage)
     {
         hp -= damage;
@@ -103,7 +107,12 @@ public class EnemyMovement : MonoBehaviour
         if (state == Globals.EnemyState.Poison) poisonDots = Globals.poisonDotsNumber;
         if (state == Globals.EnemyState.Burn) burnDots = Globals.burnDotsNumber;
     }
-    public void DotDamage()
+    public void Kill() {
+        //Todo: kill animation
+        Globals.enemies.Remove(gameObject);
+        Destroy(gameObject);
+    }
+    private void DotDamage()
     {
         if (enemyStates.Count > 0 && dotTimer <= 0.0f)
         {
@@ -124,7 +133,7 @@ public class EnemyMovement : MonoBehaviour
             dotTimer -= Time.deltaTime;
         }
     }
-    public void Resurrect()
+    private void Resurrect()
     {
         if (dead && !enemyStates.Contains(Globals.EnemyState.Zombie) && enemyUpgrades.Contains(Globals.EnemyUpgrade.Zombie)) {
             enemyStates.Add(Globals.EnemyState.Zombie);
@@ -140,26 +149,28 @@ public class EnemyMovement : MonoBehaviour
     private void Die() 
     {
         if (!dead) dead = true;
-        enemyAgent.enabled = false;
-        enemyModel.SetActive(false);
-        if (enemyUpgrades.Contains(Globals.EnemyUpgrade.Zombie)) 
+        if (enemyAgent) enemyAgent.enabled = false;
+        if (enemyModel) enemyModel.SetActive(false);
+        if (tombModel && enemyUpgrades.Contains(Globals.EnemyUpgrade.Zombie)) 
         {
             tombModel.SetActive(true);
             deadTimer = Globals.mudAndDeadTime;
         }
-        if (enemyUpgrades.Contains(Globals.EnemyUpgrade.MudArmor))
+        if (mudArea && enemyUpgrades.Contains(Globals.EnemyUpgrade.MudArmor))
         {
             mudArea.SetActive(true);
         }
+        if (poisonArea && enemyStates.Contains(Globals.EnemyState.Poison))
+        {
+            poisonArea.SetActive(true);
+        }
     }
-    //TODO: esto lo llamara el projectil
     private void OnTriggerEnter(Collider other)
     {
+        //TODO: esto lo llamara el projectil
         if (other.CompareTag("Projectile")) 
         {
-            Debug.Log("pre damage hp: " + hp);
             TakeDamage(100.0f);
-            Debug.Log("post damage hp: " + hp);
             other.gameObject.SetActive(false);
         }
         if (other.CompareTag("MudArea"))
@@ -169,6 +180,18 @@ public class EnemyMovement : MonoBehaviour
             {
                 enemyAgent.speed = speed * Globals.mudSlowSpeed;
                 enemyStates.Add(Globals.EnemyState.Slow);
+            }
+        }
+        if (other.CompareTag("PoisonArea"))
+        {
+            ReliableOnTriggerExit.NotifyTriggerEnter(other, gameObject, OnTriggerExit);
+            if (!enemyStates.Contains(Globals.EnemyState.Poison))
+            {
+                enemyStates.Add(Globals.EnemyState.Poison);
+            }
+            if (poisonDots < Globals.poisonDotsNumber) 
+            {
+                poisonDots = Globals.poisonDotsNumber;
             }
         }
     }
