@@ -31,7 +31,7 @@ public static class Globals
     public static float jumperDefaultHp = 10.0f;
     public static float jumperDefaultDoorDamage = 1.0f;
     //Enemy standard
-    public static float standardDefaultSpeed = 5.0f;
+    public static float standardDefaultSpeed = 30.0f;
     public static float standardDefaultHp = 10.0f;
     public static float standardDefaultDoorDamage = 1.0f;
     //Enemy heavy
