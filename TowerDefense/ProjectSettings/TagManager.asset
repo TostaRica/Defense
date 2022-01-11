@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Projectile
+  - MudArea
+  - Enemy
+  - PoisonArea
+  - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX
