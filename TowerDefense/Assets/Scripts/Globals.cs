@@ -41,6 +41,7 @@ public static class Globals
     //Areas
     public static float mudAndDeadTime = 2.0f;
     public static float mudSlowSpeed = 0.25f;
+    public static float poisonTime = 0.5f;
     //Waves
     public static List<GameObject> enemies = new List<GameObject>(); 
     //Door 
