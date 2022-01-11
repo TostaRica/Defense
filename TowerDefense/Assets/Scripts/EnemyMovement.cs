@@ -66,12 +66,12 @@ public class EnemyMovement : MonoBehaviour
 
         }
     }
-    public void Init(Globals.EnemyType type = Globals.EnemyType.Standard, bool bombs = false, bool mudArmor = false, bool zombie = false)
+    public void Init(Globals.EnemyType type = Globals.EnemyType.Standard, bool bombs = false, bool mudArmor = false, bool zombie = false, Transform doorPosition = null)
     {
         if (bombs) enemyUpgrades.Add(Globals.EnemyUpgrade.Bomb);
         if (mudArmor) enemyUpgrades.Add(Globals.EnemyUpgrade.MudArmor);
         if (zombie) enemyUpgrades.Add(Globals.EnemyUpgrade.Zombie);
-
+        if (doorPosition) castleDoor = doorPosition;
         switch (type)
         {
             case Globals.EnemyType.Jumper:

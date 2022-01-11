@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour
     public GameObject jumperPrefab;
     public GameObject standardPrefab;
     public GameObject heavyPrefab;
+    public Transform door; 
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +51,7 @@ public class Spawner : MonoBehaviour
             GameObject enemyInstance = Instantiate(enemy, transform.position, Quaternion.identity);
             Globals.enemies.Add(enemyInstance);
             enemyScript = enemyInstance.GetComponent<EnemyMovement>();
-            enemyScript.Init(type, bomb, mudArmor, zombie);
+            enemyScript.Init(type, bomb, mudArmor, zombie, door);
             enemyInstance.SetActive(true);
         }
 
