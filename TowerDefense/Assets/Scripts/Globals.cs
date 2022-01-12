@@ -49,10 +49,12 @@ public static class Globals
     public static float mudSlowSpeed = 0.25f;
     public static float poisonTime = 0.5f;
     //Waves
-    public static List<GameObject> enemies = new List<GameObject>(); 
+    public static Queue<Wave> waves = new Queue<Wave>();
+    public static Wave currentWave = null;
+    public static Queue<GameObject> currentWaveWaitingEnemies = new Queue<GameObject>();
+    public static List<GameObject> currentWaveEnemies = new List<GameObject>();
     //Door 
     public static float doorDefaultHp = 100.0f;
-
     public static void updateMoney(float amount) {
         money += amount;
     }

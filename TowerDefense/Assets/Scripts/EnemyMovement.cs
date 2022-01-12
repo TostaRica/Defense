@@ -14,7 +14,7 @@ public class EnemyMovement : MonoBehaviour
     public float doorDamage { get { return attackDamage; } }
     public bool isZombie { get { return enemyStates.Contains(Globals.EnemyState.Zombie); } }
     public bool hasZombieUpgrade { get { return enemyUpgrades.Contains(Globals.EnemyUpgrade.Zombie); } }
-
+    public float spawnWaitTime { get { return spawnTime; } }
     //stats
     private float hp = 10.0f;
     private float zombieHp = 10.0f;
@@ -32,6 +32,7 @@ public class EnemyMovement : MonoBehaviour
     private int burnDots = 0;
     private float dotTimer = 0.0f;
     private float deadTimer = 0.0f;
+    private float spawnTime = 0.0f;
     void Start()
     {
         if (enemyUpgrades.Contains(Globals.EnemyUpgrade.MudArmor))
@@ -68,7 +69,7 @@ public class EnemyMovement : MonoBehaviour
 
         }
     }
-    public void Init(Globals.EnemyType type = Globals.EnemyType.Standard, bool bombs = false, bool mudArmor = false, bool zombie = false, Transform doorPosition = null)
+    public void Init(Globals.EnemyType type = Globals.EnemyType.Standard, bool bombs = false, bool mudArmor = false, bool zombie = false, Transform doorPosition = null, float waitTime = 0.0f)
     {
         if (bombs) enemyUpgrades.Add(Globals.EnemyUpgrade.Bomb);
         if (mudArmor) enemyUpgrades.Add(Globals.EnemyUpgrade.MudArmor);
@@ -94,6 +95,7 @@ public class EnemyMovement : MonoBehaviour
                 break;
         }
         enemyAgent.speed = speed;
+        spawnTime = waitTime;
     }
     public void TakeDamage(float damage)
     {
@@ -111,7 +113,7 @@ public class EnemyMovement : MonoBehaviour
     }
     public void Kill() {
         //Todo: kill animation
-        Globals.enemies.Remove(gameObject);
+        Globals.currentWaveEnemies.Remove(gameObject);
         Destroy(gameObject);
     }
     private void DotDamage()
