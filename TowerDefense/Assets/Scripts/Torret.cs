@@ -18,7 +18,7 @@ public class Torret : MonoBehaviour
     public GameObject BulletSingle;
     public GameObject BulletArea;
     public GameObject BulletDonut;
-
+    public GameObject Punta;
     public List<EnemyMovement> EnemiesInside = new List<EnemyMovement>();
     private List<EnemyMovement> EnemisToDelete = new List<EnemyMovement>();
     public float SpeedAttack;
@@ -49,6 +49,7 @@ public class Torret : MonoBehaviour
                 if (Target.GetComponent<EnemyMovement>().enemyAgent.velocity.magnitude == 0 || 
                     Target.GetComponent<EnemyMovement>().enemyAgent.velocity.magnitude > BulletSpeed && Mathf.Sin(targetMoveAngle) / BulletSpeed > Mathf.Cos(targetMoveAngle) / Target.GetComponent<EnemyMovement>().enemyAgent.velocity.magnitude)
                 {
+                    Debug.Log("No le doy bro");
                     FindNewEnemy();
                     ShootFail = true;
                 }
@@ -112,13 +113,13 @@ public class Torret : MonoBehaviour
         switch (aimType)
         {
             case AimType.Area:
-                b = Instantiate(BulletArea, transform.position, transform.rotation);
+                b = Instantiate(BulletArea, Punta.transform.position, Punta.transform.rotation);
                 break;
             case AimType.Donut:
-                b = Instantiate(BulletDonut, transform.position, transform.rotation);
+                b = Instantiate(BulletDonut, Punta.transform.position, Punta.transform.rotation);
                 break;
             default:
-                b = Instantiate(BulletSingle, transform.position, transform.rotation);
+                b = Instantiate(BulletSingle, Punta.transform.position, Punta.transform.rotation);
                 break;
         }
         b.GetComponent<Bullet>().Damage = Damage;
@@ -143,6 +144,7 @@ public class Torret : MonoBehaviour
 
     public void RemoveEnemy(GameObject e)
     {
+        if (Target == e) Target = null;
         EnemiesInside.Remove(e.GetComponent<EnemyMovement>());
     }
     //Methods for Buttons & UI
