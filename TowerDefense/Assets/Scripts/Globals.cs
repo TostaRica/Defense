@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public static class Globals
 {
     public enum EnemyState
@@ -55,8 +55,10 @@ public static class Globals
     public static List<GameObject> currentWaveEnemies = new List<GameObject>();
     //Door 
     public static float doorDefaultHp = 100.0f;
+    public static Text goldLabel;
     public static void updateMoney(float amount) {
         money += amount;
+        goldLabel.text = money.ToString();
     }
     public static float getMoney()
     {

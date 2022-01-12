@@ -208,7 +208,6 @@ public class EnemyMovement : MonoBehaviour
     }
     private void Dash() 
     {
-        Debug.Log("Dash");
         enemyAgent.speed = 200;
         enemyStates.Add(Globals.EnemyState.Dashing);
         dashTimer = Globals.jumperDefaultDashTime;

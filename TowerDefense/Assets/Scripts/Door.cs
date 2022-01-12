@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class Door : MonoBehaviour
 {
     public Text castleHpLabel;
+    public Text goldLabel;
     public float hp = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
         hp = Globals.doorDefaultHp;
+        Globals.goldLabel = goldLabel;
     }
 
     // Update is called once per frame

@@ -17,8 +17,9 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Add wait time between waves
+        //TODO: Add wait time between waves
         if (Globals.currentWaveWaitingEnemies.Count <= 0 && Globals.currentWaveEnemies.Count <= 0) {
+            if (Globals.waves.Count > 0) Globals.updateMoney(300);
             StartNextWave();
         }
     }
