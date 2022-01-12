@@ -77,7 +77,6 @@ public class Torret : MonoBehaviour
             if (enemy == null) EnemisToDelete.Add(enemy);
             else if (menor > enemy.castleDistanceRemaining)
             {
-                Debug.Log("castle distance: " + enemy.castleDistanceRemaining);
                 menor = enemy.castleDistanceRemaining;
                 Target = enemy.gameObject;
             }
