@@ -24,8 +24,36 @@ public class Spawner : MonoBehaviour
         Spawn(Globals.EnemyType.Standard, false, false, false);
         yield return new WaitForSeconds(0.5f);
         //Spawn(Globals.EnemyType.Standard, false, true, false);
-        yield return new WaitForSeconds(1.5f);
         Spawn(Globals.EnemyType.Standard, false, false, false);
+        yield return new WaitForSeconds(0.5f);
+        //Spawn(Globals.EnemyType.Standard, false, true, false);
+        Spawn(Globals.EnemyType.Standard, false, false, false);
+        yield return new WaitForSeconds(0.5f);
+        //Spawn(Globals.EnemyType.Standard, false, true, false);
+        Spawn(Globals.EnemyType.Standard, false, false, false);
+        yield return new WaitForSeconds(0.5f);
+        //Spawn(Globals.EnemyType.Standard, false, true, false);
+        Spawn(Globals.EnemyType.Standard, false, false, false);
+        yield return new WaitForSeconds(0.5f);
+        //Spawn(Globals.EnemyType.Standard, false, true, false);
+        Spawn(Globals.EnemyType.Standard, false, false, false);
+        yield return new WaitForSeconds(0.5f);
+        //Spawn(Globals.EnemyType.Standard, false, true, false);
+        Spawn(Globals.EnemyType.Standard, false, false, false);
+        yield return new WaitForSeconds(0.5f);
+        //Spawn(Globals.EnemyType.Standard, false, true, false);
+        Spawn(Globals.EnemyType.Standard, false, false, false);
+        yield return new WaitForSeconds(0.5f);
+        //Spawn(Globals.EnemyType.Standard, false, true, false);
+        Spawn(Globals.EnemyType.Standard, false, false, false);
+        yield return new WaitForSeconds(0.5f);
+        //Spawn(Globals.EnemyType.Standard, false, true, false);
+        Spawn(Globals.EnemyType.Standard, false, false, false);
+        yield return new WaitForSeconds(0.5f);
+        //Spawn(Globals.EnemyType.Standard, false, true, false);
+
+
+
 
     }
     private void Spawn(Globals.EnemyType type = Globals.EnemyType.Standard, bool bomb = false, bool mudArmor = false, bool zombie = false) 
