@@ -16,7 +16,10 @@ public static class Globals
     {
         Jumper, Standard, Heavy
     };
-
+    //Money
+    private static float money = 0.0f;
+    //Pause
+    public static bool isGamePaused = false;
     //Dots
     public static float poisonDamage = 5.0f;
     public static int poisonDotsNumber = 5;
@@ -49,4 +52,12 @@ public static class Globals
     public static List<GameObject> enemies = new List<GameObject>(); 
     //Door 
     public static float doorDefaultHp = 100.0f;
+
+    public static void updateMoney(float amount) {
+        money += amount;
+    }
+    public static float getMoney()
+    {
+        return money;
+    }
 }
