@@ -58,7 +58,7 @@ public static class Globals
     public static Text goldLabel;
     public static void updateMoney(float amount) {
         money += amount;
-        goldLabel.text = money.ToString();
+        if(goldLabel) goldLabel.text = money.ToString();
     }
     public static float getMoney()
     {
