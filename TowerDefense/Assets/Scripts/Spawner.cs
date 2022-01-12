@@ -22,9 +22,7 @@ public class Spawner : MonoBehaviour
     }
     IEnumerator Wave1() 
     {
-        Spawn(Globals.EnemyType.Standard, false, false, false);
-        yield return new WaitForSeconds(0.5f);
-        //Spawn(Globals.EnemyType.Standard, false, true, false);
+        Spawn(Globals.EnemyType.Jumper, false, false, false);
         yield return new WaitForSeconds(1.5f);
         Spawn(Globals.EnemyType.Standard, false, false, false);
 

@@ -6,7 +6,7 @@ public static class Globals
 {
     public enum EnemyState
     {
-        Poison, Burn, Slow, Zombie
+        Poison, Burn, Slow, Zombie, Dashing
     };
     public enum EnemyUpgrade
     {
@@ -27,15 +27,18 @@ public static class Globals
     public static float dotTime = 1.0f; // Seconds
     public static float zombieHpFactor = 0.6f; // %
     //Enemy jumper
-    public static float jumperDefaultSpeed = 5.0f;
+    public static float jumperDefaultSpeed = 20.0f;
     public static float jumperDefaultHp = 10.0f;
     public static float jumperDefaultDoorDamage = 1.0f;
+    public static float jumperDefaultDashSpeed = 300.0f;
+    public static float jumperDefaultDashTime = 0.5f;
+    public static float jumperDashCooldown = 5.0f;
     //Enemy standard
-    public static float standardDefaultSpeed = 30.0f;
+    public static float standardDefaultSpeed = 20.0f;
     public static float standardDefaultHp = 10.0f;
     public static float standardDefaultDoorDamage = 1.0f;
     //Enemy heavy
-    public static float heavyDefaultSpeed = 5.0f;
+    public static float heavyDefaultSpeed = 20.0f;
     public static float heavyDefaultHp = 10.0f;
     public static float heavyDefaultDoorDamage = 1.0f;
     //Areas
