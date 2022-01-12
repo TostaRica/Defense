@@ -7,19 +7,36 @@ public class Spawner : MonoBehaviour
     public GameObject jumperPrefab;
     public GameObject standardPrefab;
     public GameObject heavyPrefab;
-    public Transform door; 
-    // Start is called before the first frame update
+    public Transform door;
+    bool waveInProgress = false;
+    bool waitingWave = false;
     void Start()
     {
        InitWaves();
     }
-
-    // Update is called once per frame
     void Update()
     {
-        //TODO: Add wait time between waves
-        if (Globals.currentWaveWaitingEnemies.Count <= 0 && Globals.currentWaveEnemies.Count <= 0) {
-            if (Globals.waves.Count > 0) Globals.updateMoney(300);
+        if (!waveInProgress)
+        {
+            if (!waitingWave && Globals.waves.Count > 0)
+            {
+                StartCoroutine(WaitNextWave());
+            }
+        }
+        else
+        {
+            waveInProgress = !(Globals.currentWaveWaitingEnemies.Count <= 0 && Globals.currentWaveEnemies.Count <= 0);
+        }
+    }
+    IEnumerator WaitNextWave()
+    {
+        if (Globals.waves.Count > 0)
+        {
+            Wave wave = Globals.waves.Peek();
+            waitingWave = true;
+            Globals.updateMoney(300);
+            yield return new WaitForSeconds(wave.waitTime);
+            waitingWave = false;
             StartNextWave();
         }
     }
@@ -27,23 +44,22 @@ public class Spawner : MonoBehaviour
         if(Globals.waves.Count > 0) {
             WaveInstantiate(Globals.waves.Dequeue());
             StartCoroutine(ActivateEnemies());
+            waveInProgress = true;
         }
     }
     private void InitWaves() {
         Globals.waves = new Queue<Wave>();
-        Wave wave1 = new Wave();
+        Wave wave1 = new Wave(10.0f);
         wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false);
         wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false);
         wave1.AddEnemy(Globals.EnemyType.Jumper, false, false, false, 3.0f);
         wave1.AddEnemy(Globals.EnemyType.Jumper, false, false, false, 3.0f);
         Globals.waves.Enqueue(wave1);
-        Wave wave2 = new Wave();
+        Wave wave2 = new Wave(15.0f);
         wave2.AddEnemy(Globals.EnemyType.Jumper, false, false, false);
         wave2.AddEnemy(Globals.EnemyType.Jumper, false, false, false, 3.0f);
         wave2.AddEnemy(Globals.EnemyType.Standard, false, false, false);
         wave2.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.1f);
-
-        
         Globals.waves.Enqueue(wave2);
     }
     IEnumerator ActivateEnemies()

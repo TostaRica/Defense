@@ -19,6 +19,9 @@ public class Wave
             waitTime = _waitTime;
         }
     }
+    public Wave(float wait = 0.0f) {
+        waitTime = wait;
+    }
     public float waitTime = 0.0f;
     private int enemiesCount = 0;
     public int enemiesNumber { get { return enemiesCount; } }
