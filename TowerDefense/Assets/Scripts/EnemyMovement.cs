@@ -14,23 +14,25 @@ public class EnemyMovement : MonoBehaviour
     public float doorDamage { get { return attackDamage; } }
     public bool isZombie { get { return enemyStates.Contains(Globals.EnemyState.Zombie); } }
     public bool hasZombieUpgrade { get { return enemyUpgrades.Contains(Globals.EnemyUpgrade.Zombie); } }
-
+    public float spawnWaitTime { get { return spawnTime; } }
     //stats
     private float hp = 10.0f;
     private float zombieHp = 10.0f;
     private float speed = 1.0f;
     private float attackDamage = 1.0f;
-    private bool jumpSkill = false;
+    private bool dashSkill = false;
     private bool dead = false;
+    private float dashTimer = 0.0f;
+    private float dashCooldoown = Globals.jumperDashCooldown;
     private List<Globals.EnemyUpgrade> enemyUpgrades = new List<Globals.EnemyUpgrade>();
     private List<Globals.EnemyState> enemyStates = new List<Globals.EnemyState>();
+
     //internal
     private int poisonDots = 0;
     private int burnDots = 0;
     private float dotTimer = 0.0f;
     private float deadTimer = 0.0f;
-    private bool destroyed = false;
-
+    private float spawnTime = 0.0f;
     void Start()
     {
         if (enemyUpgrades.Contains(Globals.EnemyUpgrade.MudArmor))
@@ -49,11 +51,12 @@ public class EnemyMovement : MonoBehaviour
     }
     void Update()
     {
+
         if (!dead)
         {
             DotDamage();
             if (hp <= 0.0f) Die();
-
+            DashChecker();
         }
         else {
             if (deadTimer <= 0.0f)
@@ -66,19 +69,19 @@ public class EnemyMovement : MonoBehaviour
 
         }
     }
-    public void Init(Globals.EnemyType type = Globals.EnemyType.Standard, bool bombs = false, bool mudArmor = false, bool zombie = false)
+    public void Init(Globals.EnemyType type = Globals.EnemyType.Standard, bool bombs = false, bool mudArmor = false, bool zombie = false, Transform doorPosition = null, float waitTime = 0.0f)
     {
         if (bombs) enemyUpgrades.Add(Globals.EnemyUpgrade.Bomb);
         if (mudArmor) enemyUpgrades.Add(Globals.EnemyUpgrade.MudArmor);
         if (zombie) enemyUpgrades.Add(Globals.EnemyUpgrade.Zombie);
-
+        if (doorPosition) castleDoor = doorPosition;
         switch (type)
         {
             case Globals.EnemyType.Jumper:
                 hp = Globals.jumperDefaultHp;
                 speed = Globals.jumperDefaultSpeed;
                 attackDamage = Globals.jumperDefaultDoorDamage;
-                jumpSkill = true;
+                dashSkill = true;
                 break;
             case Globals.EnemyType.Standard:
                 hp = Globals.standardDefaultHp;
@@ -92,10 +95,11 @@ public class EnemyMovement : MonoBehaviour
                 break;
         }
         enemyAgent.speed = speed;
+        spawnTime = waitTime;
     }
     public void TakeDamage(float damage)
     {
-        hp -= damage;
+        if(!enemyStates.Contains(Globals.EnemyState.Dashing)) hp -= damage;
         if (hp <= 0.0f) Die();
     }
     public void AddState(Globals.EnemyState state)
@@ -109,7 +113,7 @@ public class EnemyMovement : MonoBehaviour
     }
     public void Kill() {
         //Todo: kill animation
-        Globals.enemies.Remove(gameObject);
+        Globals.currentWaveEnemies.Remove(gameObject);
         Destroy(gameObject);
     }
     private void DotDamage()
@@ -119,12 +123,12 @@ public class EnemyMovement : MonoBehaviour
             if (enemyStates.Contains(Globals.EnemyState.Poison))
             {
                 poisonDots--;
-                hp -= Globals.poisonDamage;
+                TakeDamage(Globals.poisonDamage);
             }
             if (enemyStates.Contains(Globals.EnemyState.Burn))
             {
                 burnDots--;
-                hp -= Globals.burnDamage;
+                TakeDamage(Globals.burnDamage);
             }
             dotTimer = Globals.dotTime;
         }
@@ -199,6 +203,43 @@ public class EnemyMovement : MonoBehaviour
             if (!enemyStates.Contains(Globals.EnemyState.Slow))
             {
                 enemyAgent.speed = speed;
+            }
+        }
+    }
+    private void Dash() 
+    {
+        enemyAgent.speed = 200;
+        enemyStates.Add(Globals.EnemyState.Dashing);
+        dashTimer = Globals.jumperDefaultDashTime;
+    }
+    private void StopDash()
+    {
+        enemyAgent.speed = speed;
+        enemyStates.Remove(Globals.EnemyState.Dashing);
+        dashTimer = 0.0f;
+        dashCooldoown = Globals.jumperDashCooldown;
+    }
+    private void DashChecker() {
+        if (dashSkill)
+        {
+            if (enemyStates.Contains(Globals.EnemyState.Dashing))
+            {
+                if (dashTimer <= 0.0f)
+                {
+                    StopDash();
+                }
+                else dashTimer -= Time.deltaTime;
+            }
+            else
+            {
+                if (dashCooldoown <= 0.0f)
+                {
+                    Dash();
+                }
+                else
+                {
+                    dashCooldoown -= Time.deltaTime;
+                }
             }
         }
     }
