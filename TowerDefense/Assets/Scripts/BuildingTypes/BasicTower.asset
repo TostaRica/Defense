@@ -15,5 +15,6 @@ MonoBehaviour:
   nameString: Basic Tower
   prefab: {fileID: 5936140261332931544, guid: 483dabee8b4c48b45b28bf85076b9734, type: 3}
   visual: {fileID: 2156310127111733175, guid: e60868733dc84644da6188cc4027ee1e, type: 3}
+  visualError: {fileID: 2156310127111733175, guid: fcedac05cc4008e429da38cebcbe52f8, type: 3}
   width: 1
   height: 1
