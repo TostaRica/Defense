@@ -9,16 +9,22 @@ public class Torret : MonoBehaviour
     enum AimType { Area, Single, Donut}
 
     Type type = Type.Neutral;
-    AimType aimType = AimType.Single;
+    AimType aimType = AimType.Area;
 
+    public ParticleSystem ShootSingleEffect;
+    public ParticleSystem ShootAreaEffect;
 
     private GameObject Target;
     public GameObject Canon;
-
     public GameObject BulletSingle;
     public GameObject BulletArea;
     public GameObject BulletDonut;
     public GameObject Punta;
+    public GameObject Base;
+    public BaseTorret RangeZone;
+
+    public AudioSource ShootFX;
+
     public List<EnemyMovement> EnemiesInside = new List<EnemyMovement>();
     private List<EnemyMovement> EnemisToDelete = new List<EnemyMovement>();
     public float SpeedAttack;
@@ -27,7 +33,6 @@ public class Torret : MonoBehaviour
     public float Damage;
     public float BulletSpeed = 4.0f; 
     public float UpgradeNumber = 0;
-
     public bool ShootFail = false;
     // Start is called before the first frame update
     void Start()
@@ -58,7 +63,11 @@ public class Torret : MonoBehaviour
                 // return targetPosition + targetVelocity * displacement.magnitude / Mathf.Sin(Mathf.PI - targetMoveAngle - shootAngle) * Mathf.Sin(shootAngle) / targetVelocity.magnitude;
                 Vector3 aux = Target.transform.position + Target.GetComponent<EnemyMovement>().enemyAgent.velocity * displacement.magnitude / Mathf.Sin(Mathf.PI - targetMoveAngle - shootAngle) * Mathf.Sin(shootAngle) / Target.GetComponent<EnemyMovement>().enemyAgent.velocity.magnitude;
 
-                if(!ShootFail) gameObject.transform.LookAt(aux);
+                if (!ShootFail)
+                {
+                    gameObject.transform.LookAt(aux);
+                    Base.GetComponent<Base>().Orientation(transform);
+                }
             }
            if(!ShootFail) CheckColdDowns();
         }
@@ -113,15 +122,19 @@ public class Torret : MonoBehaviour
         switch (aimType)
         {
             case AimType.Area:
+                ShootAreaEffect.Play();
                 b = Instantiate(BulletArea, Punta.transform.position, Punta.transform.rotation);
                 break;
             case AimType.Donut:
                 b = Instantiate(BulletDonut, Punta.transform.position, Punta.transform.rotation);
                 break;
             default:
+                ShootSingleEffect.Play();
                 b = Instantiate(BulletSingle, Punta.transform.position, Punta.transform.rotation);
                 break;
         }
+
+        ShootFX.Play();
         b.GetComponent<Bullet>().Damage = Damage;
         b.GetComponent<Bullet>().Speed = BulletSpeed;
     }
@@ -151,6 +164,7 @@ public class Torret : MonoBehaviour
 
     public void UpgradeTower()
     {
+        RangeZone.UpgradeZone();
         UpgradeNumber++;
         SpeedAttack /= 2;
         Damage *= 2;
@@ -158,6 +172,7 @@ public class Torret : MonoBehaviour
 
     public void DownGradeTower()
     {
+        RangeZone.DowngradeZone();
         UpgradeNumber--;
         SpeedAttack *= 2;
         Damage /= 2;

@@ -17,6 +17,14 @@ public class BaseTorret : MonoBehaviour
         
     }
 
+    public void UpgradeZone() {
+        transform.localScale *= 2;
+    }
+
+    public void DowngradeZone()
+    {
+        transform.localScale /= 2;
+    }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Enemy")

@@ -49,9 +49,15 @@ public class Spawner : MonoBehaviour
     }
     private void InitWaves() {
         Globals.waves = new Queue<Wave>();
-        Wave wave1 = new Wave(10.0f);
-        wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false);
-        wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false);
+        Wave wave1 = new Wave(0.0f);
+        wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.5f);
+        wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.5f);
+        wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.5f);
+        wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.5f);
+        wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.5f);
+        wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.5f);
+        wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.5f);
+        wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.5f);
         wave1.AddEnemy(Globals.EnemyType.Jumper, false, false, false, 3.0f);
         wave1.AddEnemy(Globals.EnemyType.Jumper, false, false, false, 3.0f);
         Globals.waves.Enqueue(wave1);
