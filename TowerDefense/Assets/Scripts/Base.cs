@@ -16,13 +16,14 @@ public class Base : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Target == null) return;
-        Vector3 lookPos = Target.gameObject.transform.position - this.transform.position;
-        lookPos.y = 0;
-        Quaternion rotation = Quaternion.LookRotation(lookPos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 100);
+      
     }
 
+    public void Orientation(Transform lookPos)
+    {
+        Vector3 newRotation = new Vector3(0, lookPos.eulerAngles.y, 0);
+        transform.eulerAngles = newRotation;
+    }
     public void SetTarget(EnemyMovement e)
     {
         Target = e;

@@ -23,6 +23,7 @@ public class AreaExplosion : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
+            Debug.Log("DALEEE");
             other.gameObject.GetComponent<EnemyMovement>().TakeDamage(Damage);
         }
     }
