@@ -40,7 +40,7 @@ public class GridBuildingSystem : MonoBehaviour {
             this.grid = grid;
             this.x = x;
             this.y = y;
-            this.canBuild = isEmpty;
+            canBuild = isEmpty;
             placedObject = null;
         }
 
@@ -125,8 +125,18 @@ public class GridBuildingSystem : MonoBehaviour {
         }
     }
 
+    public bool IsBuildable() {
+        Vector3 mousePosition = Mouse3D.GetMouseWorldPosition();
+        grid.GetXZ(mousePosition, out int x, out int z);
+
+        GridObject gridObject = grid.GetGridObject(x, z);
+
+        return gridObject.CanBuild();
+    }
+
     private void DeselectObjectType() {
-        placedObjectTypeSO = null; RefreshSelectedObjectType();
+        placedObjectTypeSO = null;
+        RefreshSelectedObjectType();
     }
 
     private void RefreshSelectedObjectType() {
