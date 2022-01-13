@@ -8,13 +8,14 @@ public class Bullet : MonoBehaviour
     enum AimType { Area, Single, Donut }
 
     Type type = Type.Neutral;
-    AimType aimType = AimType.Single;
+    AimType aimType = AimType.Area;
 
     public float Speed;
     public float Live;
     public float Damage;
 
     public GameObject Area;
+    public GameObject HitEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,8 +36,9 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             other.gameObject.GetComponent<EnemyMovement>().TakeDamage(Damage);
-            Destroy(this.gameObject);
-            if(aimType == AimType.Area) Instantiate(Area, transform.position, transform.rotation);
+           if( aimType == AimType.Area) Instantiate(Area, transform.position, transform.rotation);
         }
+        Instantiate(HitEffect, transform.position, transform.rotation);
+        Destroy(this.gameObject);
     }
 }
