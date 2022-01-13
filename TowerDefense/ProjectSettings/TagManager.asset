@@ -10,6 +10,9 @@ TagManager:
   - PoisonArea
   - Enemy
   - Bullet
+  - BombArea
+  - BombTurretArea
+  - FireArea
   layers:
   - Default
   - TransparentFX

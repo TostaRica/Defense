@@ -20,14 +20,25 @@ public static class Globals
     private static float money = 0.0f;
     //Pause
     public static bool isGamePaused = false;
+    //Towers
+    public static float defaultSimpleTowerDamage = 1.0f;
+    public static float defaultSimpleTowerAttackSpeed = 1.0f;
+    public static float defaultBallistaTowerDamage = 1.0f;
+    public static float defaultBallistaTowerAttackSpeed = 1.0f;
+    public static float defaultBomberTowerDamage = 1.0f;
+    public static float defaultBomberAttackSpeed = 1.0f;
+    public static float defaultcauldronTowerDamage = 1.0f;
+    public static float defaultcauldronTowerAttackSpeed = 1.0f;
     //Dots
+    public static float dotTime = 1.0f; // Seconds
     public static float poisonDamage = 5.0f;
     public static int poisonDotsNumber = 5;
     public static float burnDamage = 5.0f;
     public static int burnDotsNumber = 5;
     //Enemy upgrades
+    public static float bombSpeedIncrement = 0.25f;
+    public static float bombDamage = 3.0f;
     public static float mudArmor = 0.25f; // +%
-    public static float dotTime = 1.0f; // Seconds
     public static float zombieHpFactor = 0.6f; // %
     //Enemy jumper
     public static float jumperDefaultSpeed = 20.0f;
