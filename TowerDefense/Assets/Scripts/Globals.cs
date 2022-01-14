@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 public static class Globals
 {
     public enum EnemyState
@@ -20,14 +21,25 @@ public static class Globals
     private static float money = 0.0f;
     //Pause
     public static bool isGamePaused = false;
+    //Towers
+    public static float defaultSimpleTowerDamage = 1.0f;
+    public static float defaultSimpleTowerAttackSpeed = 1.0f;
+    public static float defaultBallistaTowerDamage = 1.0f;
+    public static float defaultBallistaTowerAttackSpeed = 1.0f;
+    public static float defaultBomberTowerDamage = 1.0f;
+    public static float defaultBomberAttackSpeed = 1.0f;
+    public static float defaultcauldronTowerDamage = 1.0f;
+    public static float defaultcauldronTowerAttackSpeed = 1.0f;
     //Dots
+    public static float dotTime = 1.0f; // Seconds
     public static float poisonDamage = 5.0f;
     public static int poisonDotsNumber = 5;
     public static float burnDamage = 5.0f;
     public static int burnDotsNumber = 5;
     //Enemy upgrades
+    public static float bombSpeedIncrement = 0.25f;
+    public static float bombDamage = 3.0f;
     public static float mudArmor = 0.25f; // +%
-    public static float dotTime = 1.0f; // Seconds
     public static float zombieHpFactor = 0.6f; // %
     //Enemy jumper
     public static float jumperDefaultSpeed = 20.0f;
@@ -63,5 +75,14 @@ public static class Globals
     public static float getMoney()
     {
         return money;
+    }
+    public static bool IsPointOverUIObject() 
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x,Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
+
     }
 }
