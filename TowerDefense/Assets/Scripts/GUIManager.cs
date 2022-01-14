@@ -21,22 +21,6 @@ public class GUIManager : MonoBehaviour
     {
         if (camera && panel) 
         { 
-            //if (Input.GetMouseButtonDown(0) )
-            //{
-            //    //click fuera
-            //    if (!Globals.IsPointOverUIObject())
-            //    {
-
-            //        if (panel.activeSelf) 
-            //        {
-            //            CloseTowerMenu();
-            //        }
-            //        else
-            //        {
-            //           // OpenTowerMenu();
-            //        }
-            //    }
-            //}
 
             if (Input.GetMouseButton(1))
             {
@@ -68,6 +52,7 @@ public class GUIManager : MonoBehaviour
             {
                 NewBuildMenuPanel.SetActive(false);
                 UpgradeBuildMenuPanel.SetActive(true);
+                
             } 
         }
     }
