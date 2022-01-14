@@ -9,6 +9,7 @@ public class EnemyMovement : MonoBehaviour
     public GameObject enemyModel;
     public GameObject mudArea;
     public GameObject poisonArea;
+    public GameObject bombArea;
     public GameObject tombModel;
     public float castleDistanceRemaining { get { return GetPathRemainingDistance(enemyAgent); } }
     public float doorDamage { get { return attackDamage; } }
@@ -35,6 +36,10 @@ public class EnemyMovement : MonoBehaviour
     private float spawnTime = 0.0f;
     void Start()
     {
+        if (enemyUpgrades.Contains(Globals.EnemyUpgrade.Bomb))
+        {
+            speed *= Globals.bombSpeedIncrement;
+        }
         if (enemyUpgrades.Contains(Globals.EnemyUpgrade.MudArmor))
         {
             hp += hp * Globals.mudArmor;
@@ -120,12 +125,12 @@ public class EnemyMovement : MonoBehaviour
     {
         if (enemyStates.Count > 0 && dotTimer <= 0.0f)
         {
-            if (enemyStates.Contains(Globals.EnemyState.Poison))
+            if (poisonDots > 0 && enemyStates.Contains(Globals.EnemyState.Poison))
             {
                 poisonDots--;
                 TakeDamage(Globals.poisonDamage);
             }
-            if (enemyStates.Contains(Globals.EnemyState.Burn))
+            if (burnDots > 0 && enemyStates.Contains(Globals.EnemyState.Burn))
             {
                 burnDots--;
                 TakeDamage(Globals.burnDamage);
@@ -192,6 +197,22 @@ public class EnemyMovement : MonoBehaviour
             {
                 poisonDots = Globals.poisonDotsNumber;
             }
+        }
+        if (other.CompareTag("FireArea"))
+        {
+            ReliableOnTriggerExit.NotifyTriggerEnter(other, gameObject, OnTriggerExit);
+            if (!enemyStates.Contains(Globals.EnemyState.Burn))
+            {
+                enemyStates.Add(Globals.EnemyState.Burn);
+            }
+            if (burnDots < Globals.burnDotsNumber)
+            {
+                burnDots = Globals.burnDotsNumber;
+            }
+        }
+        if (other.CompareTag("BombTurretArea"))
+        {
+            TakeDamage(Globals.bombDamage);
         }
     }
     private void OnTriggerExit(Collider other)
