@@ -2,38 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Torret : MonoBehaviour
+public class BasicTurret : Turret
 {
-
-    enum Type {Fire, Posion, Neutral}
-    enum AimType { Area, Single, Donut}
+    
 
     Type type = Type.Neutral;
     AimType aimType = AimType.Single;
 
-    public ParticleSystem ShootEffect;
-
-    public  GameObject Target;
-    public GameObject Bullet;
-    public GameObject Punta;
-    public GameObject Base;
-    public BaseTorret RangeZone;
-
+    //public ParticleSystem ShootEffect;
     public AudioSource ShootFX;
 
-    public List<EnemyMovement> EnemiesInside = new List<EnemyMovement>();
-    private List<EnemyMovement> EnemisToDelete = new List<EnemyMovement>();
-    public float SpeedAttack;
-    public float RestTimeAttack;
-    public float Offset;
-    public float Damage;
-    public float BulletSpeed = 4.0f; 
-    public float UpgradeNumber = 0;
+    public GameObject Base;
+
     public bool ShootFail = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -47,7 +32,7 @@ public class Torret : MonoBehaviour
                 Vector3 displacement = Target.transform.position - transform.position;
                 float targetMoveAngle = Vector3.Angle(-displacement, Target.GetComponent<EnemyMovement>().enemyAgent.velocity) * Mathf.Deg2Rad;
                 //if the target is stopping or if it is impossible for the projectile to catch up with the target (Sine Formula)
-                if (Target.GetComponent<EnemyMovement>().enemyAgent.velocity.magnitude == 0 || 
+                if (Target.GetComponent<EnemyMovement>().enemyAgent.velocity.magnitude == 0 ||
                     Target.GetComponent<EnemyMovement>().enemyAgent.velocity.magnitude > BulletSpeed && Mathf.Sin(targetMoveAngle) / BulletSpeed > Mathf.Cos(targetMoveAngle) / Target.GetComponent<EnemyMovement>().enemyAgent.velocity.magnitude)
                 {
                     FindNewEnemy();
@@ -61,10 +46,9 @@ public class Torret : MonoBehaviour
                 if (!ShootFail)
                 {
                     gameObject.transform.LookAt(aux);
-                    if(Base != null)Base.GetComponent<Base>().Orientation(transform);
                 }
             }
-           if(!ShootFail) CheckColdDowns();
+            if (!ShootFail) CheckColdDowns();
         }
         else
         {
@@ -74,8 +58,7 @@ public class Torret : MonoBehaviour
         CleanEnemyList();
 
         //For Debug
-        if (Input.GetKeyDown("w")) UpgradeTower();
-        if (Input.GetKeyDown("s")) DownGradeTower();
+        
 
     }
 
@@ -100,7 +83,7 @@ public class Torret : MonoBehaviour
     {
         float menor = 99999999999;
         foreach (EnemyMovement enemy in EnemiesInside)
-        {    
+        {
             if (enemy == null) EnemisToDelete.Add(enemy);
             else if (menor > enemy.castleDistanceRemaining)
             {
@@ -113,14 +96,14 @@ public class Torret : MonoBehaviour
     void Shoot()
     {
         GameObject b;
-        ShootEffect.Play();
+        //ShootEffect.Play();
         b = Instantiate(Bullet, Punta.transform.position, Punta.transform.rotation);
         ShootFX.Play();
         b.GetComponent<Bullet>().Damage = Damage;
         b.GetComponent<Bullet>().Speed = BulletSpeed;
     }
 
-   void CleanEnemyList()
+    void CleanEnemyList()
     {
         foreach (EnemyMovement enemy in EnemisToDelete)
         {
@@ -128,17 +111,8 @@ public class Torret : MonoBehaviour
         }
         EnemisToDelete = new List<EnemyMovement>();
     }
-    
-    public void AddEnemy(GameObject e)
-    {
-        EnemiesInside.Add(e.GetComponent<EnemyMovement>());
-    }
 
-    public void RemoveEnemy(GameObject e)
-    {
-        if (Target == e) Target = null;
-        EnemiesInside.Remove(e.GetComponent<EnemyMovement>());
-    }
+    
     //Methods for Buttons & UI
 
     public void UpgradeTower()
@@ -159,7 +133,8 @@ public class Torret : MonoBehaviour
 
     public void SetTurretType(int x)
     {
-        switch (x) {
+        switch (x)
+        {
             case 0:
                 aimType = AimType.Area;
                 break;
@@ -186,7 +161,7 @@ public class Torret : MonoBehaviour
                 break;
         }
     }
-    
+
     public void ShowRangeZone()
     {
         Base.GetComponent<MeshRenderer>().enabled = true;

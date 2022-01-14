@@ -56,7 +56,6 @@ public class EnemyMovement : MonoBehaviour
     }
     void Update()
     {
-
         if (!dead)
         {
             DotDamage();
@@ -71,7 +70,6 @@ public class EnemyMovement : MonoBehaviour
             else {
                 deadTimer -= Time.deltaTime;
             }
-
         }
     }
     public void Init(Globals.EnemyType type = Globals.EnemyType.Standard, bool bombs = false, bool mudArmor = false, bool zombie = false, Transform doorPosition = null, float waitTime = 0.0f)

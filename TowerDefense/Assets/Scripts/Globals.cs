@@ -30,6 +30,10 @@ public static class Globals
     public static float defaultBomberAttackSpeed = 1.0f;
     public static float defaultcauldronTowerDamage = 1.0f;
     public static float defaultcauldronTowerAttackSpeed = 1.0f;
+    private static int numberOfTowers = 0;
+    private static int defaultTowerCost = 200;
+    private static int defaultTowerAddCost = 50;
+    public static int towerCost { get { return defaultTowerCost + (numberOfTowers * defaultTowerAddCost); } }
     //Dots
     public static float dotTime = 1.0f; // Seconds
     public static float poisonDamage = 5.0f;

@@ -43,10 +43,12 @@ public class GUIManager : MonoBehaviour
             {
                 NewBuildMenuPanel.SetActive(true);
                 UpgradeBuildMenuPanel.SetActive(false);
-                Button btn = BuildButton.GetComponent<Button>();
-                btn.onClick.AddListener(Build);
-                placedObjectWorldPosition = _placedObjectWorldPosition;
-                placedObjectOrigin = _placedObjectOrigin;
+                if (Globals.getMoney() >= Globals.towerCost) {
+                    Button btn = BuildButton.GetComponent<Button>();
+                    btn.onClick.AddListener(Build);
+                    placedObjectWorldPosition = _placedObjectWorldPosition;
+                    placedObjectOrigin = _placedObjectOrigin;
+                }
             }
             else 
             {
