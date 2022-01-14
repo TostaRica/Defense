@@ -34,4 +34,8 @@ public class PlacedObject : MonoBehaviour {
     public override string ToString() {
         return placedObjectTypeSO.nameString;
     }
+    public GameObject GetPrefab() {
+        // return placedObjectTypeSO.prefab;
+        return null;
+    }
 }

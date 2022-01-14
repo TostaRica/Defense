@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class GUIManager : MonoBehaviour
 {
     public GameObject panel;
     public Camera camera;
+    public GameObject NewBuildMenuPanel;
+    public GameObject UpgradeBuildMenuPanel;
+    public GameObject BuildButton;
+    private Vector3 placedObjectWorldPosition = default(Vector3);
+    private Vector2Int placedObjectOrigin = default(Vector2Int);
     public void Start()
     {
     }
@@ -15,22 +21,22 @@ public class GUIManager : MonoBehaviour
     {
         if (camera && panel) 
         { 
-            if (Input.GetMouseButtonDown(0) )
-            {
-                //click fuera
-                if (!Globals.IsPointOverUIObject())
-                {
+            //if (Input.GetMouseButtonDown(0) )
+            //{
+            //    //click fuera
+            //    if (!Globals.IsPointOverUIObject())
+            //    {
 
-                    if (panel.activeSelf) 
-                    {
-                        CloseTowerMenu();
-                    }
-                    else
-                    {
-                        OpenTowerMenu();
-                    }
-                }
-            }
+            //        if (panel.activeSelf) 
+            //        {
+            //            CloseTowerMenu();
+            //        }
+            //        else
+            //        {
+            //           // OpenTowerMenu();
+            //        }
+            //    }
+            //}
 
             if (Input.GetMouseButton(1))
             {
@@ -38,7 +44,8 @@ public class GUIManager : MonoBehaviour
             }
         }
     }
-    public void OpenTowerMenu(GameObject tower = null){
+    public void OpenTowerMenu(GameObject tower = null, Vector3 _placedObjectWorldPosition = default(Vector3), Vector2Int _placedObjectOrigin = default(Vector2Int))
+    {
         if (camera && panel)
         {
             RectTransform rectTrans = panel.GetComponent<RectTransform>();
@@ -50,11 +57,17 @@ public class GUIManager : MonoBehaviour
             rectTrans.anchoredPosition = new Vector2(mouseX, mouseY);
             if (!tower)
             {
-
+                NewBuildMenuPanel.SetActive(true);
+                UpgradeBuildMenuPanel.SetActive(false);
+                Button btn = BuildButton.GetComponent<Button>();
+                btn.onClick.AddListener(Build);
+                placedObjectWorldPosition = _placedObjectWorldPosition;
+                placedObjectOrigin = _placedObjectOrigin;
             }
             else 
             {
-                
+                NewBuildMenuPanel.SetActive(false);
+                UpgradeBuildMenuPanel.SetActive(true);
             } 
         }
     }
@@ -64,6 +77,10 @@ public class GUIManager : MonoBehaviour
             {
                 panel.SetActive(false);
             }
+    }
+    void Build() {
+        GridBuildingSystem.Instance.Build(placedObjectWorldPosition, placedObjectOrigin);
+        panel.SetActive(false);
     }
 
 }
