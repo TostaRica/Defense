@@ -27300,6 +27300,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GridBuildingSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 7026665985885969439, guid: aed2ffb9bc2a7214bbab72c5dc203ad0, type: 3}
+      propertyPath: GUIManager
+      value: 
+      objectReference: {fileID: 5322078275564301281}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aed2ffb9bc2a7214bbab72c5dc203ad0, type: 3}
 --- !u!1 &979184362
@@ -94261,6 +94265,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 5322078273647126100}
   camera: {fileID: 1776473886}
+  NewBuildMenuPanel: {fileID: 1709611903}
+  UpgradeBuildMenuPanel: {fileID: 1752989862}
+  BuildButton: {fileID: 971810228}
 --- !u!1 &5322078275564301284
 GameObject:
   m_ObjectHideFlags: 0
