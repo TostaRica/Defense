@@ -118,6 +118,7 @@ public class EnemyMovement : MonoBehaviour
     }
     public void Kill() {
         //Todo: kill animation
+        gameObject.GetComponent<Animator>().Play("Dying");
         Globals.currentWaveEnemies.Remove(gameObject);
         Destroy(gameObject);
     }
@@ -230,12 +231,14 @@ public class EnemyMovement : MonoBehaviour
     private void Dash() 
     {
         enemyAgent.speed = 200;
+        gameObject.GetComponent<Animator>().SetFloat("Velocity", enemyAgent.speed);
         enemyStates.Add(Globals.EnemyState.Dashing);
         dashTimer = Globals.jumperDefaultDashTime;
     }
     private void StopDash()
     {
         enemyAgent.speed = speed;
+        gameObject.GetComponent<Animator>().SetFloat("Velocity", enemyAgent.speed);
         enemyStates.Remove(Globals.EnemyState.Dashing);
         dashTimer = 0.0f;
         dashCooldoown = Globals.jumperDashCooldown;
