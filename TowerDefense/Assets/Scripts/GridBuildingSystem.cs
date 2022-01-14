@@ -68,9 +68,15 @@ public class GridBuildingSystem : MonoBehaviour {
             return placedObject;
         }
     }
+
     public void Build(Vector3 placedObjectWorldPosition, Vector2Int placedObjectOrigin) {
         PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, placedObjectOrigin, PlacedObjectTypeSO.Dir.Down, placedObjectTypeSO);
+        List<Vector2Int> gridPositionList = placedObjectTypeSO.GetGridPositionList(placedObjectOrigin, dir);
+        foreach (Vector2Int gridPosition in gridPositionList) {
+            grid.GetGridObject(gridPosition.x, gridPosition.y).SetPlacedObject(placedObject);
+        }
     }
+
     private void Update() {
         if (Input.GetMouseButtonDown(0) && !Globals.IsPointOverUIObject()) {
             Vector3 mousePosition = Mouse3D.GetMouseWorldPosition();
@@ -90,18 +96,16 @@ public class GridBuildingSystem : MonoBehaviour {
                 }
             }
 
+            Vector2Int rotationOffset = placedObjectTypeSO.GetRotationOffset(dir);
+            Vector3 placedObjectWorldPosition = grid.GetWorldPosition(x, z) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * grid.GetCellSize();
             if (canBuild) {
-                
-                Vector2Int rotationOffset = placedObjectTypeSO.GetRotationOffset(dir);
-                Vector3 placedObjectWorldPosition = grid.GetWorldPosition(x, z) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * grid.GetCellSize();
-
-                //PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, placedObjectOrigin, dir, placedObjectTypeSO);
                 if (GUIManager) GUIManager.OpenTowerMenu(null, placedObjectWorldPosition, placedObjectOrigin);
-                //foreach (Vector2Int gridPosition in gridPositionList) {
-                //    grid.GetGridObject(gridPosition.x, gridPosition.y).SetPlacedObject(placedObject);
-                //}
 
                 OnObjectPlaced?.Invoke(this, EventArgs.Empty);
+            } else {
+                PlacedObject placedObject = grid.GetGridObject(placedObjectOrigin.x, placedObjectOrigin.y).placedObject;
+
+                if (placedObject != null && GUIManager) GUIManager.OpenTowerMenu(placedObject.GetPrefab(), placedObjectWorldPosition, placedObjectOrigin);
             }
         }
 
@@ -136,7 +140,7 @@ public class GridBuildingSystem : MonoBehaviour {
 
         GridObject gridObject = grid.GetGridObject(x, z);
 
-        return gridObject.CanBuild();
+        return gridObject != null ? gridObject.CanBuild() : false;
     }
 
     private void DeselectObjectType() {

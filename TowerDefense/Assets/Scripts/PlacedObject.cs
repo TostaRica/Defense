@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlacedObject : MonoBehaviour {
 
     public static PlacedObject Create(Vector3 worldPosition, Vector2Int origin, PlacedObjectTypeSO.Dir dir, PlacedObjectTypeSO placedObjectTypeSO) {
-        Transform placedObjectTransform = Instantiate(placedObjectTypeSO.prefab, worldPosition, Quaternion.Euler(0, placedObjectTypeSO.GetRotationAngle(dir), 0));
+        Transform placedObjectTransform = Instantiate(placedObjectTypeSO.prefab.transform, worldPosition, Quaternion.Euler(0, placedObjectTypeSO.GetRotationAngle(dir), 0));
 
         PlacedObject placedObject = placedObjectTransform.GetComponent<PlacedObject>();
         placedObject.Setup(placedObjectTypeSO, origin, dir);
@@ -34,8 +34,8 @@ public class PlacedObject : MonoBehaviour {
     public override string ToString() {
         return placedObjectTypeSO.nameString;
     }
+
     public GameObject GetPrefab() {
-        // return placedObjectTypeSO.prefab;
-        return null;
+        return placedObjectTypeSO.prefab;
     }
 }
