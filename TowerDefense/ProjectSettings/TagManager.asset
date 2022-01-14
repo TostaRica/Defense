@@ -13,6 +13,8 @@ TagManager:
   - BombArea
   - BombTurretArea
   - FireArea
+  - FxTemporaire
+  - Menu
   layers:
   - Default
   - TransparentFX
