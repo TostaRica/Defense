@@ -68,6 +68,8 @@ public static class Globals
     public static float poisonTime = 0.5f;
     //Waves
     public static Queue<Wave> waves = new Queue<Wave>();
+    public static int totalNumberOfWaves = 0;
+    public static int currentWaveNumber = 0;
     public static Wave currentWave = null;
     public static Queue<GameObject> currentWaveWaitingEnemies = new Queue<GameObject>();
     public static List<GameObject> currentWaveEnemies = new List<GameObject>();
@@ -89,6 +91,5 @@ public static class Globals
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         return results.Count > 0;
-
     }
 }
