@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    public enum Type { Fire, Posion, Neutral }
+    
 
     public float SpeedAttack;
 
@@ -12,7 +12,7 @@ public class Turret : MonoBehaviour
     public float RestTimeAttack;
     public float Offset;
     public float BulletSpeed = 4.0f;
-    public Type type = Type.Neutral;
+    public TowerManager.Type type = TowerManager.Type.Neutral;
     public TowerManager.AimType aimType = TowerManager.AimType.Single;
     public TowerManager.TowerType towerType = TowerManager.TowerType.Basic; 
     public List<EnemyMovement> EnemiesInside = new List<EnemyMovement>();

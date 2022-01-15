@@ -12,7 +12,7 @@ public class BasicTurret : Turret
     void Start()
     {
         towerType = TowerManager.TowerType.Basic;
-        type = Type.Neutral;
+        type = TowerManager.Type.Neutral;
         aimType = TowerManager.AimType.Single;
     }
 

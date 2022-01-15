@@ -9,12 +9,13 @@ public class TowerManager : MonoBehaviour
         Basic = 0, Ballista = 1, Canon = 2, Caoldron = 3
     }
     public enum AimType { Area, Single, Donut }
+    public enum Type { Fire, Poison, Neutral }
     public GameObject[] Turrets;
 
     public ParticleSystem ChangeTowerEffect;
 
     private int activeTower = 0;
-    private Turret activeTurret = null;
+    public Turret activeTurret = null;
     public int speedAttackLvl = 0;
     public int damageLvl = 0;
     public Turret turretScript { get { return Turrets[activeTower].GetComponent<Turret>(); } }
@@ -69,13 +70,13 @@ public class TowerManager : MonoBehaviour
                         break;
 
                 }
-                activeTurret.SpeedAttack = defaultSpeed + (defaultSpeed * Globals.speedUpgradeRate * speedAttackLvl);
+                activeTurret.SpeedAttack = defaultSpeed - (defaultSpeed * Globals.speedUpgradeRate * speedAttackLvl);
             }
         }
     }
-    public void SetBulletType(AimType _type)
+    public void SetElement(Type element)
     {
-        activeTurret.aimType = _type;
+        activeTurret.type = element;
     }
     public void ChangeTower(TowerType type)
     {
