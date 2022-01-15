@@ -43,7 +43,7 @@ public static class Globals
     public static float burnDamage = 5.0f;
     public static int burnDotsNumber = 5;
     //Enemy upgrades
-    public static float bombSpeedIncrement = 0.25f;
+    public static float bombSpeedIncrement = 0.6f;
     public static float bombDamage = 3.0f;
     public static float mudArmor = 0.25f; // +%
     public static float zombieHpFactor = 0.6f; // %

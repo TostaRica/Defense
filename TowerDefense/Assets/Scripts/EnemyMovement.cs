@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour
     //stats
     private float hp = 10.0f;
     private float zombieHp = 10.0f;
-    private float speed = 1.0f;
+    public float speed = 1.0f;
     private float attackDamage = 1.0f;
     private bool dashSkill = false;
     private bool dead = false;
@@ -38,7 +38,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (enemyUpgrades.Contains(Globals.EnemyUpgrade.Bomb))
         {
-            speed *= Globals.bombSpeedIncrement;
+            speed += speed*Globals.bombSpeedIncrement;
         }
         if (enemyUpgrades.Contains(Globals.EnemyUpgrade.MudArmor))
         {
@@ -53,6 +53,7 @@ public class EnemyMovement : MonoBehaviour
         enemyAgent.acceleration = 9999;
         enemyAgent.angularSpeed = 9999;
         enemyAgent.autoBraking = false;
+        enemyAgent.speed = speed;
     }
     void Update()
     {
