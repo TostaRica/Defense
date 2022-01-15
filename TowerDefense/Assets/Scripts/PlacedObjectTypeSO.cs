@@ -23,8 +23,9 @@ public class PlacedObjectTypeSO : ScriptableObject {
     }
 
     public string nameString;
-    public Transform prefab;
+    public GameObject prefab;
     public Transform visual;
+    public Transform visualError;
     public int width;
     public int height;
 

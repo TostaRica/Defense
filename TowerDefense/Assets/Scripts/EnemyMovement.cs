@@ -9,6 +9,7 @@ public class EnemyMovement : MonoBehaviour
     public GameObject enemyModel;
     public GameObject mudArea;
     public GameObject poisonArea;
+    public GameObject bombArea;
     public GameObject tombModel;
     public float castleDistanceRemaining { get { return GetPathRemainingDistance(enemyAgent); } }
     public float doorDamage { get { return attackDamage; } }
@@ -35,6 +36,10 @@ public class EnemyMovement : MonoBehaviour
     private float spawnTime = 0.0f;
     void Start()
     {
+        if (enemyUpgrades.Contains(Globals.EnemyUpgrade.Bomb))
+        {
+            speed *= Globals.bombSpeedIncrement;
+        }
         if (enemyUpgrades.Contains(Globals.EnemyUpgrade.MudArmor))
         {
             hp += hp * Globals.mudArmor;
@@ -51,7 +56,6 @@ public class EnemyMovement : MonoBehaviour
     }
     void Update()
     {
-
         if (!dead)
         {
             DotDamage();
@@ -66,7 +70,6 @@ public class EnemyMovement : MonoBehaviour
             else {
                 deadTimer -= Time.deltaTime;
             }
-
         }
     }
     public void Init(Globals.EnemyType type = Globals.EnemyType.Standard, bool bombs = false, bool mudArmor = false, bool zombie = false, Transform doorPosition = null, float waitTime = 0.0f)
@@ -113,19 +116,29 @@ public class EnemyMovement : MonoBehaviour
     }
     public void Kill() {
         //Todo: kill animation
+        gameObject.GetComponent<Animator>().Play("Dying");
+
         Globals.currentWaveEnemies.Remove(gameObject);
         Destroy(gameObject);
+        float time = gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
+        //StartCoroutine(OnCompleteDieAnimation(time));
     }
+    //IEnumerator OnCompleteDieAnimation(float seconds)
+    //{
+    //    yield return new WaitForSeconds(seconds);
+    //    Globals.currentWaveEnemies.Remove(gameObject);
+    //    Destroy(gameObject);
+    //}
     private void DotDamage()
     {
         if (enemyStates.Count > 0 && dotTimer <= 0.0f)
         {
-            if (enemyStates.Contains(Globals.EnemyState.Poison))
+            if (poisonDots > 0 && enemyStates.Contains(Globals.EnemyState.Poison))
             {
                 poisonDots--;
                 TakeDamage(Globals.poisonDamage);
             }
-            if (enemyStates.Contains(Globals.EnemyState.Burn))
+            if (burnDots > 0 && enemyStates.Contains(Globals.EnemyState.Burn))
             {
                 burnDots--;
                 TakeDamage(Globals.burnDamage);
@@ -193,6 +206,22 @@ public class EnemyMovement : MonoBehaviour
                 poisonDots = Globals.poisonDotsNumber;
             }
         }
+        if (other.CompareTag("FireArea"))
+        {
+            ReliableOnTriggerExit.NotifyTriggerEnter(other, gameObject, OnTriggerExit);
+            if (!enemyStates.Contains(Globals.EnemyState.Burn))
+            {
+                enemyStates.Add(Globals.EnemyState.Burn);
+            }
+            if (burnDots < Globals.burnDotsNumber)
+            {
+                burnDots = Globals.burnDotsNumber;
+            }
+        }
+        if (other.CompareTag("BombTurretArea"))
+        {
+            TakeDamage(Globals.bombDamage);
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -209,12 +238,14 @@ public class EnemyMovement : MonoBehaviour
     private void Dash() 
     {
         enemyAgent.speed = 200;
+        gameObject.GetComponent<Animator>().SetFloat("Velocity", enemyAgent.speed);
         enemyStates.Add(Globals.EnemyState.Dashing);
         dashTimer = Globals.jumperDefaultDashTime;
     }
     private void StopDash()
     {
         enemyAgent.speed = speed;
+        gameObject.GetComponent<Animator>().SetFloat("Velocity", enemyAgent.speed);
         enemyStates.Remove(Globals.EnemyState.Dashing);
         dashTimer = 0.0f;
         dashCooldoown = Globals.jumperDashCooldown;

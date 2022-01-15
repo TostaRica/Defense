@@ -35,11 +35,12 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<EnemyMovement>().TakeDamage(Damage);
+           other.gameObject.GetComponent<EnemyMovement>().TakeDamage(Damage);
            if( aimType == AimType.Area) Instantiate(Area, transform.position, transform.rotation);
+           Instantiate(HitEffect, transform.position, transform.rotation);
+           Destroy(this.gameObject);
         }
-        Instantiate(HitEffect, transform.position, transform.rotation);
-        Destroy(this.gameObject);
+      
     }
 
 
