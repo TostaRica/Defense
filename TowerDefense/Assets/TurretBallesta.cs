@@ -23,7 +23,7 @@ public class TurretBallesta : Turret
             ShootFail = false;
             if (aimType != TowerManager.AimType.Donut)
             {
-                Vector3 displacement = Target.transform.position - transform.position;
+                Vector3 displacement = Target.transform.position - Weapon.transform.position;
                 float targetMoveAngle = Vector3.Angle(-displacement, Target.GetComponent<EnemyMovement>().enemyAgent.velocity) * Mathf.Deg2Rad;
                 //if the target is stopping or if it is impossible for the projectile to catch up with the target (Sine Formula)
                 if (Target.GetComponent<EnemyMovement>().enemyAgent.velocity.magnitude == 0 ||
@@ -39,7 +39,7 @@ public class TurretBallesta : Turret
 
                 if (!ShootFail)
                 {
-                    gameObject.transform.LookAt(aux);
+                    Weapon.transform.LookAt(aux);
                     Base.GetComponent<Base>().Orientation(transform);
                 }
             }

@@ -12470,7 +12470,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 456766375}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &456766375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92195,6 +92207,9 @@ MonoBehaviour:
   buildButton: {fileID: 971810228}
   buildCancelButton: {fileID: 2009894513}
   buildText: {fileID: 115962875}
+  btnBallistaUpgrade: {fileID: 456766374}
+  btnCanonUpgrade: {fileID: 499409356}
+  btnCaulodron: {fileID: 1504132956}
 --- !u!224 &5322078274536177080
 RectTransform:
   m_ObjectHideFlags: 0
@@ -92678,7 +92693,7 @@ MonoBehaviour:
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 1
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 200, y: 200}
+  m_ReferenceResolution: {x: 800, y: 800}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

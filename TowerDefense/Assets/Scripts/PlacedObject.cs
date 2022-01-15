@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlacedObject : MonoBehaviour {
 
     public static PlacedObject Create(Vector3 worldPosition, Vector2Int origin, PlacedObjectTypeSO.Dir dir, PlacedObjectTypeSO placedObjectTypeSO) {
-        Transform placedObjectTransform = Instantiate(placedObjectTypeSO.prefab.transform, worldPosition, Quaternion.Euler(0, placedObjectTypeSO.GetRotationAngle(dir), 0));
+        GameObject placedObjectTransform = Instantiate(placedObjectTypeSO.prefab, worldPosition, Quaternion.Euler(0, placedObjectTypeSO.GetRotationAngle(dir), 0));
 
         PlacedObject placedObject = placedObjectTransform.GetComponent<PlacedObject>();
-        placedObject.Setup(placedObjectTypeSO, origin, dir);
+        placedObject.Setup(placedObjectTypeSO, origin, dir, placedObjectTransform);
 
         return placedObject;
     }
@@ -16,11 +16,12 @@ public class PlacedObject : MonoBehaviour {
     private PlacedObjectTypeSO placedObjectTypeSO;
     private Vector2Int origin;
     private PlacedObjectTypeSO.Dir dir;
-
-    private void Setup(PlacedObjectTypeSO placedObjectTypeSO, Vector2Int origin, PlacedObjectTypeSO.Dir dir) {
+    private GameObject prefabInstance;
+    private void Setup(PlacedObjectTypeSO placedObjectTypeSO, Vector2Int origin, PlacedObjectTypeSO.Dir dir, GameObject prefabInstance) {
         this.placedObjectTypeSO = placedObjectTypeSO;
         this.origin = origin;
         this.dir = dir;
+        this.prefabInstance = prefabInstance;
     }
 
     public List<Vector2Int> GetGridPositionList() {
@@ -35,7 +36,7 @@ public class PlacedObject : MonoBehaviour {
         return placedObjectTypeSO.nameString;
     }
 
-    public GameObject GetPrefab() {
-        return placedObjectTypeSO.prefab;
+    public GameObject GetPrefabInstace() {
+        return prefabInstance;
     }
 }

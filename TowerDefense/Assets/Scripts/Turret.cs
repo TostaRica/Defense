@@ -22,6 +22,7 @@ public class Turret : MonoBehaviour
     public GameObject Target;
     public GameObject Bullet;
     public GameObject Punta;
+    public GameObject Weapon;
     public GameObject Base;
 
     public void AddEnemy(GameObject e)

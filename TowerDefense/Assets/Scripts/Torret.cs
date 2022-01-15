@@ -13,7 +13,7 @@ public class Torret : MonoBehaviour
 
     public ParticleSystem ShootEffect;
 
-    public  GameObject Target;
+    public GameObject Target;
     public GameObject Bullet;
     public GameObject Punta;
     public GameObject Base;

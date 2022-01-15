@@ -52,6 +52,8 @@ MonoBehaviour:
   - {fileID: 4070304400637997940}
   - {fileID: 3443388307744286063}
   ChangeTowerEffect: {fileID: 2430609434819635650}
+  speedAttackLvl: 0
+  damageLvl: 0
 --- !u!1 &2556816280662571571
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,7 +66,7 @@ GameObject:
   - component: {fileID: 2556816280662571534}
   - component: {fileID: 2556816280662571535}
   - component: {fileID: 2556816280662571569}
-  - component: {fileID: 2556816280662571533}
+  - component: {fileID: 6007684362186082065}
   m_Layer: 0
   m_Name: Punta
   m_TagString: Untagged
@@ -231,7 +233,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2556816280662571533
+--- !u!114 &6007684362186082065
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -244,18 +246,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpeedAttack: 1
+  Damage: 5
   RestTimeAttack: 0
   Offset: 0
-  Damage: 5
   BulletSpeed: 100
-  UpgradeNumber: 0
+  type: 2
+  aimType: 1
+  towerType: 0
   EnemiesInside: []
   RangeZone: {fileID: 6765565297856177252}
   Target: {fileID: 0}
   Bullet: {fileID: 5748481178643933824, guid: 268f8659daf07ac419563acedb22cd08, type: 3}
   Punta: {fileID: 2556816280662571571}
-  ShootFX: {fileID: 2556816280662571569}
   Base: {fileID: 2556816280662571571}
+  ShootFX: {fileID: 2556816280662571569}
   ShootFail: 0
 --- !u!1 &2556816281049826128
 GameObject:
@@ -579,19 +583,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpeedAttack: 0.5
+  Damage: 0
   RestTimeAttack: 0
   Offset: 0
-  Damage: 0
   BulletSpeed: 100
-  UpgradeNumber: 0
+  type: 2
+  aimType: 1
+  towerType: 0
   EnemiesInside: []
   RangeZone: {fileID: 6462591781831524192}
   Target: {fileID: 0}
   Bullet: {fileID: 5748481178643933824, guid: 268f8659daf07ac419563acedb22cd08, type: 3}
   Punta: {fileID: 2556816280074328505}
+  Base: {fileID: 3166428816703805830}
   ShootEffect: {fileID: 2823761272641672447}
   ShootFX: {fileID: 2556816280074328455}
-  Base: {fileID: 3166428816703805830}
   ShootFail: 0
 --- !u!1001 &2556816280311840071
 PrefabInstance:
@@ -846,16 +852,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpeedAttack: 0.5
+  Damage: 0
   RestTimeAttack: 0
   Offset: 0
-  Damage: 0
   BulletSpeed: 100
-  UpgradeNumber: 0
+  type: 2
+  aimType: 1
+  towerType: 0
   EnemiesInside: []
   RangeZone: {fileID: 2556816279991912217}
   Target: {fileID: 0}
   Bullet: {fileID: 3524020934624966964, guid: 286488a9b4db0c94bb60138923bc053c, type: 3}
   Punta: {fileID: 2556816280635839781}
-  ShootFX: {fileID: 2556816279770636919}
   Base: {fileID: 3258240351537003277}
+  ShootFX: {fileID: 2556816279770636919}
   ShootFail: 0

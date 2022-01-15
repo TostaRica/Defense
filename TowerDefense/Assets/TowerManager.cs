@@ -6,13 +6,12 @@ public class TowerManager : MonoBehaviour
 {
     public enum TowerType
     {
-        Basic = 0, Canon = 1, Ballista = 2, Caoldron = 3
+        Basic = 0, Ballista = 1, Canon = 2, Caoldron = 3
     }
     public enum AimType { Area, Single, Donut }
     public GameObject[] Turrets;
 
     public ParticleSystem ChangeTowerEffect;
-    
 
     private int activeTower = 0;
     private Turret activeTurret = null;
@@ -99,10 +98,12 @@ public class TowerManager : MonoBehaviour
             }
         }
     }
-
     void Start()
     {
-        activeTurret = Turrets[activeTower].GetComponent<Turret>();
+        if (Turrets[activeTower]) {
+            activeTurret = Turrets[activeTower].GetComponent<Turret>();
+            Turrets[0].SetActive(true);
+        }
     }
 
    

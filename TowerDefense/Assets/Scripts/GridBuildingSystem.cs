@@ -105,7 +105,7 @@ public class GridBuildingSystem : MonoBehaviour {
             } else {
                 PlacedObject placedObject = grid.GetGridObject(placedObjectOrigin.x, placedObjectOrigin.y).placedObject;
 
-                if (placedObject != null && GUIManager) GUIManager.OpenTowerMenu(placedObject.GetPrefab(), placedObjectWorldPosition, placedObjectOrigin);
+                if (placedObject != null && GUIManager) GUIManager.OpenTowerMenu(placedObject.GetPrefabInstace(), placedObjectWorldPosition, placedObjectOrigin);
             }
         }
 

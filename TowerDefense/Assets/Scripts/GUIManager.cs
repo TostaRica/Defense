@@ -28,7 +28,7 @@ public class GUIManager : MonoBehaviour
     {
        if(buildButton) btnBuild = buildButton.GetComponent<Button>();
        if (btnBuild) btnBuild.onClick.AddListener(Build);
-       if(btnBallistaUpgrade) btnBallistaUpgrade.onClick.AddListener(delegate { UpgradeTower(TowerManager.TowerType.Ballista); });
+       if (btnBallistaUpgrade) btnBallistaUpgrade.onClick.AddListener(delegate { UpgradeTower(TowerManager.TowerType.Ballista); });
        if (btnCanonUpgrade) btnCanonUpgrade.onClick.AddListener(delegate { UpgradeTower(TowerManager.TowerType.Canon); });
         //btnCaulodron.onClick.AddListener(delegate { UpgradeTower(TowerManager.TowerType.Caoldron); });
     }
