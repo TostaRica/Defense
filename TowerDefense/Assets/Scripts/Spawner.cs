@@ -13,6 +13,7 @@ public class Spawner : MonoBehaviour
     void Start()
     {
        InitWaves();
+       Globals.totalNumberOfWaves = Globals.waves.Count;
     }
     void Update()
     {
@@ -42,6 +43,7 @@ public class Spawner : MonoBehaviour
     }
     private void StartNextWave() {
         if(Globals.waves.Count > 0) {
+            Globals.currentWaveNumber++;
             WaveInstantiate(Globals.waves.Dequeue());
             StartCoroutine(ActivateEnemies());
             waveInProgress = true;
