@@ -9,13 +9,19 @@ public class GUIManager : MonoBehaviour
 {
     public GameObject panel;
     public Camera camera;
-    public GameObject NewBuildMenuPanel;
-    public GameObject UpgradeBuildMenuPanel;
-    public GameObject BuildButton;
+    public GameObject newBuildMenuPanel;
+    public GameObject upgradeBuildMenuPanel;
+    public GameObject buildButton;
+    public GameObject buildCancelButton;
+    public Text buildText;
     private Vector3 placedObjectWorldPosition = default(Vector3);
     private Vector2Int placedObjectOrigin = default(Vector2Int);
+    private Button btnBuild;
+    TowerManager selectedTower = null;
     public void Start()
     {
+        btnBuild = buildButton.GetComponent<Button>();
+        if (btnBuild) btnBuild.onClick.AddListener(Build);
     }
     public void Update()
     {
@@ -41,20 +47,31 @@ public class GUIManager : MonoBehaviour
             rectTrans.anchoredPosition = new Vector2(mouseX, mouseY);
             if (!tower)
             {
-                NewBuildMenuPanel.SetActive(true);
-                UpgradeBuildMenuPanel.SetActive(false);
-                if (Globals.getMoney() >= Globals.towerCost) {
-                    Button btn = BuildButton.GetComponent<Button>();
-                    btn.onClick.AddListener(Build);
-                    placedObjectWorldPosition = _placedObjectWorldPosition;
-                    placedObjectOrigin = _placedObjectOrigin;
-                }
+                newBuildMenuPanel.SetActive(true);
+                upgradeBuildMenuPanel.SetActive(false);
+
+                    if (buildButton && buildText && buildCancelButton)
+                    {
+                        if (Globals.getMoney() >= Globals.towerCost)
+                        {
+                            buildText.text = "Wanna build a tower here for "+ Globals.towerCost +" Gold?";
+                            placedObjectWorldPosition = _placedObjectWorldPosition;
+                            placedObjectOrigin = _placedObjectOrigin;
+                            buildButton.SetActive(true);
+                            buildCancelButton.SetActive(true);
+                    }
+                        else {
+                            buildText.text = "Not enough gold to build a tower";
+                            buildButton.SetActive(false);
+                            buildCancelButton.SetActive(false);
+                        }
+                    }
             }
-            else 
+            else //Tower Upgrades
             {
-                NewBuildMenuPanel.SetActive(false);
-                UpgradeBuildMenuPanel.SetActive(true);
-                
+                newBuildMenuPanel.SetActive(false);
+                upgradeBuildMenuPanel.SetActive(true);
+                selectedTower = tower.GetComponent<TowerManager>();
             } 
         }
     }
@@ -67,6 +84,8 @@ public class GUIManager : MonoBehaviour
     }
     void Build() {
         GridBuildingSystem.Instance.Build(placedObjectWorldPosition, placedObjectOrigin);
+        Globals.updateMoney(-Globals.towerCost);
+        Globals.numberOfTowers++;
         panel.SetActive(false);
     }
 

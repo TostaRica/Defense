@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class TurretCannon : Turret
 {
-    Type type = Type.Neutral;
-    AimType aimType = AimType.Area;
-
     //public ParticleSystem ShootEffect;
     public AudioSource ShootFX;
-
-    public GameObject Base;
 
     public bool ShootFail = false;
     // Start is called before the first frame update
     void Start()
     {
-
+        aimType = TowerManager.AimType.Area;
     }
 
     // Update is called once per frame
@@ -25,7 +20,7 @@ public class TurretCannon : Turret
         if (Target != null)
         {
             ShootFail = false;
-            if (aimType != AimType.Donut)
+            if (aimType != TowerManager.AimType.Donut)
             {
                 Vector3 displacement = Target.transform.position - transform.position;
                 float targetMoveAngle = Vector3.Angle(-displacement, Target.GetComponent<EnemyMovement>().enemyAgent.velocity) * Mathf.Deg2Rad;
@@ -109,65 +104,5 @@ public class TurretCannon : Turret
             EnemiesInside.Remove(enemy);
         }
         EnemisToDelete = new List<EnemyMovement>();
-    }
-
-
-    //Methods for Buttons & UI
-
-    public void UpgradeTower()
-    {
-        RangeZone.UpgradeZone();
-        UpgradeNumber++;
-        SpeedAttack /= 2;
-        Damage *= 2;
-    }
-
-    public void DownGradeTower()
-    {
-        RangeZone.DowngradeZone();
-        UpgradeNumber--;
-        SpeedAttack *= 2;
-        Damage /= 2;
-    }
-
-    public void SetTurretType(int x)
-    {
-        switch (x)
-        {
-            case 0:
-                aimType = AimType.Area;
-                break;
-            case 1:
-                aimType = AimType.Single;
-                break;
-            default:
-                aimType = AimType.Donut;
-                break;
-        }
-    }
-    public void SetBulletType(int x)
-    {
-        switch (x)
-        {
-            case 0:
-                type = Type.Fire;
-                break;
-            case 1:
-                type = Type.Posion;
-                break;
-            default:
-                type = Type.Neutral;
-                break;
-        }
-    }
-
-    public void ShowRangeZone()
-    {
-        Base.GetComponent<MeshRenderer>().enabled = true;
-    }
-
-    public void HideRangeZone()
-    {
-        Base.GetComponent<MeshRenderer>().enabled = false;
     }
 }

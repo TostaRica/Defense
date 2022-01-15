@@ -4,36 +4,106 @@ using UnityEngine;
 
 public class TowerManager : MonoBehaviour
 {
+    public enum TowerType
+    {
+        Basic = 0, Canon = 1, Ballista = 2, Caoldron = 3
+    }
+    public enum AimType { Area, Single, Donut }
     public GameObject[] Turrets;
 
     public ParticleSystem ChangeTowerEffect;
-    // Start is called before the first frame update
-    void Start()
-    {
-        ChangeTower(Random.Range(0,3));
-    }
+    
 
-    // Update is called once per frame
-    void Update()
+    private int activeTower = 0;
+    private Turret activeTurret = null;
+    public int speedAttackLvl = 0;
+    public int damageLvl = 0;
+    public Turret turretScript { get { return Turrets[activeTower].GetComponent<Turret>(); } }
+    public void UpgradeTowerDamage()
     {
-        if (Input.GetKeyDown("a")) ChangeTower(0);
-        if (Input.GetKeyDown("s")) ChangeTower(1);
-        if (Input.GetKeyDown("d")) ChangeTower(2);
-    }
+        if (activeTurret) { 
+            if (damageLvl < 3)
+            {
+                damageLvl++;
+                float defaultDamage = 0.0f;
+                switch (activeTurret.towerType)
+                {
+                    case TowerManager.TowerType.Basic:
+                        defaultDamage = Globals.defaultSimpleTowerDamage;
+                        break;
+                    case TowerManager.TowerType.Canon:
+                        defaultDamage = Globals.defaultBomberTowerDamage;
+                        break;
+                    case TowerManager.TowerType.Ballista:
+                        defaultDamage = Globals.defaultBallistaTowerDamage;
+                        break;
+                    case TowerManager.TowerType.Caoldron:
+                        defaultDamage = Globals.defaultCauldronTowerDamage;
+                        break;
 
-    public void ChangeTower(int x)
+                }
+                activeTurret.Damage = defaultDamage + (defaultDamage * Globals.damageUpgradeRate * damageLvl);
+            }
+        }
+    }
+    public void UpgradeTowerSpeed()
+    {
+        if (activeTurret)
+        {
+            if (speedAttackLvl < 3)
+            {
+                speedAttackLvl++;
+                float defaultSpeed = 0.0f;
+                switch (activeTurret.towerType)
+                {
+                    case TowerManager.TowerType.Basic:
+                        defaultSpeed = Globals.defaultSimpleTowerAttackSpeed;
+                        break;
+                    case TowerManager.TowerType.Canon:
+                        defaultSpeed = Globals.defaultBomberTowerAttackSpeed;
+                        break;
+                    case TowerManager.TowerType.Ballista:
+                        defaultSpeed = Globals.defaultBallistaTowerAttackSpeed;
+                        break;
+                    case TowerManager.TowerType.Caoldron:
+                        defaultSpeed = Globals.defaultCauldronTowerAttackSpeed;
+                        break;
+
+                }
+                activeTurret.SpeedAttack = defaultSpeed + (defaultSpeed * Globals.speedUpgradeRate * speedAttackLvl);
+            }
+        }
+    }
+    public void SetBulletType(AimType _type)
+    {
+        activeTurret.aimType = _type;
+    }
+    public void ChangeTower(TowerType type)
     {
         ChangeTowerEffect.Play();
         for (int i = 0; i < Turrets.Length; i++)
         {
-            if (i != x)
+            if (i != (int)type)
             {
                 Turrets[i].SetActive(false);
             }
             else
             {
+                activeTower = i;
+                Turret newTurret = Turrets[activeTower].GetComponent<Turret>();
+                newTurret.Damage = activeTurret.Damage;
+                newTurret.SpeedAttack = activeTurret.SpeedAttack;
+                newTurret.type = activeTurret.type;
+                activeTurret = newTurret;
                 Turrets[i].SetActive(true);
             }
         }
     }
+
+    void Start()
+    {
+        activeTurret = Turrets[activeTower].GetComponent<Turret>();
+    }
+
+   
 }
