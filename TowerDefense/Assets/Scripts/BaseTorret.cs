@@ -29,7 +29,7 @@ public class BaseTorret : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            Torret.GetComponent<Torret>().RemoveEnemy(other.gameObject);
+            Torret.GetComponent<Turret>().RemoveEnemy(other.gameObject);
         }
     }
 
@@ -37,7 +37,7 @@ public class BaseTorret : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            Torret.GetComponent<Torret>().AddEnemy(other.gameObject);
+            Torret.GetComponent<Turret>().AddEnemy(other.gameObject);
         }
     }
 }

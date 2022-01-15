@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Base : MonoBehaviour
 {
-    public EnemyMovement Target;
 
     public float Offset;
     // Start is called before the first frame update
@@ -24,8 +23,5 @@ public class Base : MonoBehaviour
         Vector3 newRotation = new Vector3(0, lookPos.eulerAngles.y, 0);
         transform.eulerAngles = newRotation;
     }
-    public void SetTarget(EnemyMovement e)
-    {
-        Target = e;
-    }
+
 }

@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     enum AimType { Area, Single, Donut }
 
     Type type = Type.Neutral;
-    AimType aimType = AimType.Area;
+    AimType aimType = AimType.Single;
 
     public float Speed;
     public float Live;
@@ -35,10 +35,28 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<EnemyMovement>().TakeDamage(Damage);
+           other.gameObject.GetComponent<EnemyMovement>().TakeDamage(Damage);
            if( aimType == AimType.Area) Instantiate(Area, transform.position, transform.rotation);
+           Instantiate(HitEffect, transform.position, transform.rotation);
+           Destroy(this.gameObject);
         }
-        Instantiate(HitEffect, transform.position, transform.rotation);
-        Destroy(this.gameObject);
+      
+    }
+
+
+    public void SetBulletType(int x)
+    {
+        switch (x)
+        {
+            case 0:
+                type = Type.Fire;
+                break;
+            case 1:
+                type = Type.Posion;
+                break;
+            default:
+                type = Type.Neutral;
+                break;
+        }
     }
 }

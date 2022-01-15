@@ -18,18 +18,24 @@ public static class Globals
         Jumper, Standard, Heavy
     };
     //Money
-    private static float money = 0.0f;
+    private static float money = 40000.0f;
     //Pause
     public static bool isGamePaused = false;
     //Towers
-    public static float defaultSimpleTowerDamage = 1.0f;
+    public static float defaultSimpleTowerDamage = 5.0f;
     public static float defaultSimpleTowerAttackSpeed = 1.0f;
     public static float defaultBallistaTowerDamage = 1.0f;
     public static float defaultBallistaTowerAttackSpeed = 1.0f;
     public static float defaultBomberTowerDamage = 1.0f;
-    public static float defaultBomberAttackSpeed = 1.0f;
-    public static float defaultcauldronTowerDamage = 1.0f;
-    public static float defaultcauldronTowerAttackSpeed = 1.0f;
+    public static float defaultBomberTowerAttackSpeed = 1.0f;
+    public static float defaultCauldronTowerDamage = 1.0f;
+    public static float defaultCauldronTowerAttackSpeed = 1.0f;
+    public static float damageUpgradeRate = 0.2f;
+    public static float speedUpgradeRate = 0.2f;
+    public static int numberOfTowers = 0;
+    private static int defaultTowerCost = 200;
+    private static int defaultTowerAddCost = 50;
+    public static int towerCost { get { return defaultTowerCost + (numberOfTowers * defaultTowerAddCost); } }
     //Dots
     public static float dotTime = 1.0f; // Seconds
     public static float poisonDamage = 5.0f;

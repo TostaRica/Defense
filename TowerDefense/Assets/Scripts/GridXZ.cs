@@ -53,7 +53,7 @@ public class GridXZ<TGridObject> {
             }
         }
 
-        bool showDebug = true;
+        bool showDebug = false;
         if (showDebug) {
             TextMesh[,] debugTextArray = new TextMesh[width, height];
 
@@ -132,75 +132,67 @@ public class GridXZ<TGridObject> {
     }
 
     private void LoadBlockedCells() {
-        blockedCells.Add((9,0));
+        blockedCells.Add((0, 1));
+        blockedCells.Add((1, 1));
+        blockedCells.Add((2, 1));
+        blockedCells.Add((3, 1));
+        blockedCells.Add((4, 1));
+        blockedCells.Add((5, 1));
+        blockedCells.Add((6, 1));
+        blockedCells.Add((8, 1));
+        blockedCells.Add((9, 1));
 
-        blockedCells.Add((0,1));
-        blockedCells.Add((1,1));
-        blockedCells.Add((2,1));
-        blockedCells.Add((3,1));
-        blockedCells.Add((4,1));
-        blockedCells.Add((5,1));
-        blockedCells.Add((7,1));
-        blockedCells.Add((8,1));
-        blockedCells.Add((9,1));
+        blockedCells.Add((0, 2));
+        blockedCells.Add((2, 2));
+        blockedCells.Add((3, 2));
+        blockedCells.Add((4, 2));
+        blockedCells.Add((6, 2));
+        blockedCells.Add((8, 2));
 
-        blockedCells.Add((1,2));
-        blockedCells.Add((2,2));
-        blockedCells.Add((3,2));
-        blockedCells.Add((5,2));
-        blockedCells.Add((7,2));
-        blockedCells.Add((9,2));
+        blockedCells.Add((0, 3));
+        blockedCells.Add((2, 3));
+        blockedCells.Add((4, 3));
+        blockedCells.Add((5, 3));
+        blockedCells.Add((6, 3));
+        blockedCells.Add((8, 3));
 
-        blockedCells.Add((1,3));
-        blockedCells.Add((3,3));
-        blockedCells.Add((4,3));
-        blockedCells.Add((5,3));
-        blockedCells.Add((7,3));
-        blockedCells.Add((9,3));
+        blockedCells.Add((0, 4));
+        blockedCells.Add((2, 4));
+        blockedCells.Add((8, 4));
 
-        blockedCells.Add((1,4));
-        blockedCells.Add((7,4));
-        blockedCells.Add((9,4));
+        blockedCells.Add((0, 5));
+        blockedCells.Add((2, 5));
+        blockedCells.Add((4, 5));
+        blockedCells.Add((5, 5));
+        blockedCells.Add((6, 5));
+        blockedCells.Add((8, 5));
 
-        blockedCells.Add((1,5));
-        blockedCells.Add((3,5));
-        blockedCells.Add((4,5));
-        blockedCells.Add((5,5));
-        blockedCells.Add((7,5));
-        blockedCells.Add((9,5));
+        blockedCells.Add((0, 6));
+        blockedCells.Add((2, 6));
+        blockedCells.Add((4, 6));
+        blockedCells.Add((5, 6));
+        blockedCells.Add((6, 6));
+        blockedCells.Add((8, 6));
 
-        blockedCells.Add((0,6));
-        blockedCells.Add((1,6));
-        blockedCells.Add((3,6));
-        blockedCells.Add((4,6));
-        blockedCells.Add((5,6));
-        blockedCells.Add((7,6));
-        blockedCells.Add((9,6));
+        blockedCells.Add((0, 7));
+        blockedCells.Add((1, 7));
+        blockedCells.Add((2, 7));
+        blockedCells.Add((4, 7));
+        blockedCells.Add((5, 7));
+        blockedCells.Add((6, 7));
+        blockedCells.Add((8, 7));
 
-        blockedCells.Add((0,7));
-        blockedCells.Add((7,7));
-        blockedCells.Add((9,7));
+        blockedCells.Add((0, 8));
+        blockedCells.Add((8, 8));
 
-        blockedCells.Add((0,8));
-        blockedCells.Add((1,8));
-        blockedCells.Add((2,8));
-        blockedCells.Add((3,8));
-        blockedCells.Add((4,8));
-        blockedCells.Add((5,8));
-        blockedCells.Add((6,8));
-        blockedCells.Add((7,8));
-        blockedCells.Add((8,8));
-        blockedCells.Add((9,8));
-
-        blockedCells.Add((0,9));
-        blockedCells.Add((1,9));
-        blockedCells.Add((2,9));
-        blockedCells.Add((3,9));
-        blockedCells.Add((4,9));
-        blockedCells.Add((5,9));
-        blockedCells.Add((6,9));
-        blockedCells.Add((7,9));
-        blockedCells.Add((8,9));
-        blockedCells.Add((9,9));
+        blockedCells.Add((0, 9));
+        blockedCells.Add((1, 9));
+        blockedCells.Add((2, 9));
+        blockedCells.Add((3, 9));
+        blockedCells.Add((4, 9));
+        blockedCells.Add((5, 9));
+        blockedCells.Add((6, 9));
+        blockedCells.Add((7, 9));
+        blockedCells.Add((8, 9));
     }
 }
