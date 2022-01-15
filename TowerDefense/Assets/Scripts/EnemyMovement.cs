@@ -117,9 +117,18 @@ public class EnemyMovement : MonoBehaviour
     public void Kill() {
         //Todo: kill animation
         gameObject.GetComponent<Animator>().Play("Dying");
+
         Globals.currentWaveEnemies.Remove(gameObject);
         Destroy(gameObject);
+        float time = gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
+        //StartCoroutine(OnCompleteDieAnimation(time));
     }
+    //IEnumerator OnCompleteDieAnimation(float seconds)
+    //{
+    //    yield return new WaitForSeconds(seconds);
+    //    Globals.currentWaveEnemies.Remove(gameObject);
+    //    Destroy(gameObject);
+    //}
     private void DotDamage()
     {
         if (enemyStates.Count > 0 && dotTimer <= 0.0f)

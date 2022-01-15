@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class Wave
 {
+    public float waitTime = 0.0f;
+    public float moneyReward = 0.0f;
+    private int enemiesCount = 0;
     public struct Enemy {
         public Globals.EnemyType enemyType;
         public bool bombUpgrade;
         public bool mudArmorUpgrade;
         public bool zombieUpgrade;
         public float waitTime;
+
         public Enemy (Globals.EnemyType _enemyType, bool _bombUpgrade, bool _mudArmorUpgrade, bool _zombieUpgrade , float _waitTime)
         {
             enemyType = _enemyType;
@@ -19,11 +23,12 @@ public class Wave
             waitTime = _waitTime;
         }
     }
-    public Wave(float wait = 0.0f) {
+    public Wave(float wait = 0.0f, float money = 0.0f) {
         waitTime = wait;
+        moneyReward = money;
     }
-    public float waitTime = 0.0f;
-    private int enemiesCount = 0;
+
+
     public int enemiesNumber { get { return enemiesCount; } }
 
     Queue<Enemy> enemies = new Queue<Enemy>();

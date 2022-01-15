@@ -14,25 +14,26 @@ public class GUIManager : MonoBehaviour
     public GameObject buildButton;
     public GameObject buildCancelButton;
     public Text buildText;
+
+    public Button btnBallistaUpgrade;
+    public Button btnCanonUpgrade;
+    public Button btnCaulodron;
+
     private Vector3 placedObjectWorldPosition = default(Vector3);
     private Vector2Int placedObjectOrigin = default(Vector2Int);
     private Button btnBuild;
+
     TowerManager selectedTower = null;
     public void Start()
     {
-        btnBuild = buildButton.GetComponent<Button>();
-        if (btnBuild) btnBuild.onClick.AddListener(Build);
+       if(buildButton) btnBuild = buildButton.GetComponent<Button>();
+       if (btnBuild) btnBuild.onClick.AddListener(Build);
+       if(btnBallistaUpgrade) btnBallistaUpgrade.onClick.AddListener(delegate { UpgradeTower(TowerManager.TowerType.Ballista); });
+       if (btnCanonUpgrade) btnCanonUpgrade.onClick.AddListener(delegate { UpgradeTower(TowerManager.TowerType.Canon); });
+        //btnCaulodron.onClick.AddListener(delegate { UpgradeTower(TowerManager.TowerType.Caoldron); });
     }
     public void Update()
     {
-        if (camera && panel) 
-        { 
-
-            if (Input.GetMouseButton(1))
-            {
-                CloseTowerMenu();
-            }
-        }
     }
     public void OpenTowerMenu(GameObject tower = null, Vector3 _placedObjectWorldPosition = default(Vector3), Vector2Int _placedObjectOrigin = default(Vector2Int))
     {
@@ -82,11 +83,16 @@ public class GUIManager : MonoBehaviour
                 panel.SetActive(false);
             }
     }
+    public void UpgradeTower(TowerManager.TowerType towerType) 
+    {
+        if (selectedTower) selectedTower.ChangeTower(towerType);
+    }
     void Build() {
         GridBuildingSystem.Instance.Build(placedObjectWorldPosition, placedObjectOrigin);
         Globals.updateMoney(-Globals.towerCost);
         Globals.numberOfTowers++;
         panel.SetActive(false);
     }
+    
 
 }
