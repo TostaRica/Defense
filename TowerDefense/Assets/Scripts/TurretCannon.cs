@@ -95,6 +95,7 @@ public class TurretCannon : Turret
         ShootFX.Play();
         b.GetComponent<Bullet>().Damage = Damage;
         b.GetComponent<Bullet>().Speed = BulletSpeed;
+        b.GetComponent<Bullet>().SetBulletType((int)type);
     }
 
     void CleanEnemyList()

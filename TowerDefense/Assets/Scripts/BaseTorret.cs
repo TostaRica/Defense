@@ -49,6 +49,8 @@ public class BaseTorret : MonoBehaviour
             if (other.gameObject.tag == "Enemy")
             {
                 other.gameObject.GetComponent<EnemyMovement>().TakeDamage(Torret.GetComponent<Turret>().Damage);
+                if (Torret.GetComponent<Turret>().type == TowerManager.Type.Fire) other.gameObject.GetComponent<EnemyMovement>().AddState(Globals.EnemyState.Burn);
+                if (Torret.GetComponent<Turret>().type == TowerManager.Type.Poison) other.gameObject.GetComponent<EnemyMovement>().AddState(Globals.EnemyState.Poison);
             }
         }
     }
