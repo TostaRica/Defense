@@ -53,7 +53,7 @@ public class Spawner : MonoBehaviour
 
         /// bomb, mud,  zombie
         Globals.waves = new Queue<Wave>();
-        Wave wave1 = new Wave(0.0f, 45000.0f);
+        Wave wave1 = new Wave(0.0f, 1000.0f);
         wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.5f);
         wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.5f);
         wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.5f);
@@ -87,15 +87,16 @@ public class Spawner : MonoBehaviour
     }
     IEnumerator ActivateEnemies()
     {
-        if (Globals.currentWaveWaitingEnemies.Count > 0) {
-            float spawnTime = Globals.currentWaveWaitingEnemies.Peek().GetComponent<EnemyMovement>().spawnWaitTime;
+        while (Globals.currentWaveWaitingEnemies.Count > 0) {
+            EnemyMovement eMovement= Globals.currentWaveWaitingEnemies.Peek().GetComponent<EnemyMovement>();
+            float spawnTime = 0.0f;
+            if (eMovement) spawnTime = eMovement.spawnWaitTime;
             yield return new WaitForSeconds(spawnTime);
             GameObject enemyGO = Globals.currentWaveWaitingEnemies.Dequeue();
             if (enemyGO)
             {
                 enemyGO.SetActive(true);
                 Globals.currentWaveEnemies.Add(enemyGO);
-                StartCoroutine(ActivateEnemies());
             }
         }
     }

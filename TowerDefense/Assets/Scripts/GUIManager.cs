@@ -41,10 +41,12 @@ public class GUIManager : MonoBehaviour
     private Vector2Int placedObjectOrigin = default(Vector2Int);
     private Button btnBuild;
 
+    public Spawner spwaner;
     GameObject selectedTowerGO = null;
     TowerManager selectedTower = null;
     public void Start()
     {
+        Time.timeScale = 1;
         if (buildButton) btnBuild = buildButton.GetComponent<Button>();
         if (btnBuild) btnBuild.onClick.AddListener(Build);
         if (btnBallistaUpgrade) btnBallistaUpgrade.onClick.AddListener(delegate { UpgradeTower(TowerManager.TowerType.Ballista); });
@@ -176,12 +178,22 @@ public class GUIManager : MonoBehaviour
             else attackUIArrows[i].SelectColor(ArrowIcon.ArrowIconColor.White);
         }
     }
+    void DestroyCoroutines() {
+        foreach (GameObject go in Globals.currentWaveEnemies)
+        {
+            go.GetComponent<EnemyMovement>().StopAllCoroutines();
+        }
+        if (spwaner) spwaner.StopAllCoroutines();
+
+    }
     void Reload()
     {
+        DestroyCoroutines();
         SceneManager.LoadScene("MainScene");
     }
     void Exit() 
     {
+        DestroyCoroutines();
         SceneManager.LoadScene("MainMenu");
     }
 }

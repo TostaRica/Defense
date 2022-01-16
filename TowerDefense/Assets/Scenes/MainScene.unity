@@ -55752,11 +55752,11 @@ PrefabInstance:
     - target: {fileID: 7198910429644221633, guid: 97658a785c0c0fa45b05510bf039c7b4, type: 3}
       propertyPath: goldLabel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1442979145543864258}
     - target: {fileID: 7198910429644221633, guid: 97658a785c0c0fa45b05510bf039c7b4, type: 3}
       propertyPath: castleHpLabel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1442979144580635522}
     - target: {fileID: 7198910429644221637, guid: 97658a785c0c0fa45b05510bf039c7b4, type: 3}
       propertyPath: m_RootOrder
       value: 4
