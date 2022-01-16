@@ -108,6 +108,45 @@ public class Spawner : MonoBehaviour
         wave4.AddEnemy(Globals.EnemyType.Jumper, false, false, false, 0.5f);
 
         Globals.waves.Enqueue(wave4);
+
+        Wave wave5 = new Wave(4.0f, 1200.0f);
+
+        wave5.AddEnemy(Globals.EnemyType.Standard, true, false, false, 0.5f);
+        wave5.AddEnemy(Globals.EnemyType.Standard, true, false, false, 0.5f);
+        wave5.AddEnemy(Globals.EnemyType.Standard, true, false, false, 0.5f);
+        wave5.AddEnemy(Globals.EnemyType.Standard, true, false, false, 0.5f);
+        wave5.AddEnemy(Globals.EnemyType.Standard, true, false, false, 0.5f);
+        wave5.AddEnemy(Globals.EnemyType.Standard, true, false, false, 0.5f);
+        wave5.AddEnemy(Globals.EnemyType.Standard, true, false, false, 0.5f);
+        wave5.AddEnemy(Globals.EnemyType.Standard, true, false, false, 0.5f);
+        wave5.AddEnemy(Globals.EnemyType.Standard, true, false, false, 0.5f);
+        wave5.AddEnemy(Globals.EnemyType.Standard, false, true, false, 0.5f);
+        wave5.AddEnemy(Globals.EnemyType.Standard, false, true, false, 0.5f);
+        wave5.AddEnemy(Globals.EnemyType.Heavy, false, false, true, 0.5f);
+        wave5.AddEnemy(Globals.EnemyType.Heavy, false, false, true, 0.5f);
+
+        Globals.waves.Enqueue(wave5);
+
+        Wave wave6 = new Wave(4.0f, 1200.0f);
+
+        wave6.AddEnemy(Globals.EnemyType.Heavy, true, true, true, 0.5f);
+        wave6.AddEnemy(Globals.EnemyType.Heavy, true, true, true, 0.5f);
+        wave6.AddEnemy(Globals.EnemyType.Jumper, true, false, false, 0.5f);
+        wave6.AddEnemy(Globals.EnemyType.Jumper, true, false, false, 0.5f);
+        wave6.AddEnemy(Globals.EnemyType.Jumper, true, false, false, 0.5f);
+        wave6.AddEnemy(Globals.EnemyType.Standard, true, false, true, 0.5f);
+        wave6.AddEnemy(Globals.EnemyType.Standard, true, false, true, 0.5f);
+        wave6.AddEnemy(Globals.EnemyType.Standard, true, false, true, 0.5f);
+        wave6.AddEnemy(Globals.EnemyType.Standard, true, false, false, 0.5f);
+        wave6.AddEnemy(Globals.EnemyType.Standard, true, false, false, 0.5f);
+        wave6.AddEnemy(Globals.EnemyType.Standard, true, false, false, 0.5f);
+        wave6.AddEnemy(Globals.EnemyType.Standard, true, false, false, 0.5f);
+        wave6.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.5f);
+        wave6.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.5f);
+        wave6.AddEnemy(Globals.EnemyType.Heavy, false, false, false, 0.5f);
+        wave6.AddEnemy(Globals.EnemyType.Heavy, false, false, false, 0.5f);
+
+        Globals.waves.Enqueue(wave6);
         Globals.totalNumberOfWaves = Globals.waves.Count;
     }
     IEnumerator ActivateEnemies()
