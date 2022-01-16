@@ -122,8 +122,8 @@ public class TowerManager : MonoBehaviour
                 {
                     activeTower = i;
                     Turret newTurret = Turrets[activeTower].GetComponent<Turret>();
-                    newTurret.Damage = activeTurret.Damage;
-                    newTurret.SpeedAttack = activeTurret.SpeedAttack;
+                    newTurret.Damage = CalculateDamage(newTurret.GetTowerType());
+                    newTurret.SpeedAttack = CalculateSpeed(newTurret.GetTowerType());
                     newTurret.type = activeTurret.type;
                     activeTurret = newTurret;
                     Turrets[i].SetActive(true);
@@ -132,12 +132,50 @@ public class TowerManager : MonoBehaviour
         }
         return upgraded;
     }
+    float CalculateDamage(TowerType towerType) {
+        float damage = 0.0f;
+        switch (towerType) {
+            case TowerType.Basic:
+                damage = Globals.defaultSimpleTowerDamage + (Globals.defaultSimpleTowerDamage * Globals.damageUpgradeRate * damageLvl);
+                break;
+            case TowerType.Ballista:
+                damage = Globals.defaultBallistaTowerDamage  + (Globals.defaultBallistaTowerDamage * Globals.damageUpgradeRate * damageLvl);
+                break;
+            case TowerType.Canon:
+                damage = Globals.defaultBomberTowerDamage + (Globals.defaultBomberTowerDamage * Globals.damageUpgradeRate * damageLvl);
+                break;
+            case TowerType.Caoldron:
+                damage = Globals.defaultCauldronTowerDamage + (Globals.defaultCauldronTowerDamage * Globals.damageUpgradeRate * damageLvl);
+                break;
+        }
+        return damage;
+    }
+    float CalculateSpeed(TowerType towerType)
+    {
+        float speed = 0.0f;
+        switch (towerType)
+        {
+            case TowerType.Basic:
+                speed = Globals.defaultSimpleTowerAttackSpeed - (Globals.defaultSimpleTowerAttackSpeed * Globals.speedUpgradeRate * speedAttackLvl);
+                break;
+            case TowerType.Ballista:
+                speed = Globals.defaultBallistaTowerAttackSpeed - (Globals.defaultBallistaTowerAttackSpeed * Globals.speedUpgradeRate * speedAttackLvl);
+                break;
+            case TowerType.Canon:
+                speed = Globals.defaultBomberTowerAttackSpeed - (Globals.defaultBomberTowerAttackSpeed * Globals.speedUpgradeRate * speedAttackLvl);
+                break;
+            case TowerType.Caoldron:
+                speed = Globals.defaultCauldronTowerAttackSpeed - (Globals.defaultCauldronTowerAttackSpeed * Globals.speedUpgradeRate * speedAttackLvl);
+                break;
+        }
+        return speed;
+    }
     void Start()
     {
         if (Turrets[activeTower]) {
             activeTurret = Turrets[activeTower].GetComponent<Turret>();
             activeTurret.Damage = Globals.defaultSimpleTowerDamage + (Globals.defaultSimpleTowerDamage * Globals.damageUpgradeRate * damageLvl);
-            activeTurret.SpeedAttack = Globals.defaultSimpleTowerAttackSpeed - (Globals.defaultSimpleTowerAttackSpeed * Globals.defaultSimpleTowerAttackSpeed * damageLvl);
+            activeTurret.SpeedAttack = Globals.defaultSimpleTowerAttackSpeed - (Globals.defaultSimpleTowerAttackSpeed * Globals.speedUpgradeRate * speedAttackLvl);
         }
        // DestoyTower();
     }

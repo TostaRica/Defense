@@ -84,6 +84,7 @@ public class GUIManager : MonoBehaviour
     {
         Globals.money = 0.0f;
         Globals.currentWaveNumber = 0;
+        Globals.numberOfTowers = 0;
     }
     public void Update()
     {
@@ -196,6 +197,7 @@ public class GUIManager : MonoBehaviour
     {
         loseAnimationOn = true;
         yield return new WaitForSeconds(5.0f);
+        Time.timeScale = 0;
         if (loseMenuPanel) loseMenuPanel.SetActive(true);
         if (upgradeBuildMenuPanel) upgradeBuildMenuPanel.SetActive(false);
         if (newBuildMenuPanel) upgradeBuildMenuPanel.SetActive(false);
