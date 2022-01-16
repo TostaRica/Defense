@@ -34,7 +34,7 @@ public static class Globals
     public static float speedUpgradeRate = 0.2f;
     public static int numberOfTowers = 0;
     private static int defaultTowerCost = 200;
-    private static int defaultTowerAddCost = 50;
+    private static int defaultTowerAddCost = 75;
     public static int towerCost { get { return defaultTowerCost + (numberOfTowers * defaultTowerAddCost); } }
     //Dots
     public static float dotTime = 1.0f; // Seconds
@@ -49,18 +49,18 @@ public static class Globals
     public static float zombieHpFactor = 0.6f; // %
     //Enemy jumper
     public static float jumperDefaultSpeed = 20.0f;
-    public static float jumperDefaultHp = 10.0f;
+    public static float jumperDefaultHp = 5.0f;
     public static float jumperDefaultDoorDamage = 1.0f;
-    public static float jumperDefaultDashSpeed = 300.0f;
-    public static float jumperDefaultDashTime = 0.5f;
-    public static float jumperDashCooldown = 5.0f;
+    public static float jumperDefaultDashSpeed = 125.0f;
+    public static float jumperDefaultDashTime = 0.25f;
+    public static float jumperDashCooldown = 3.5f;
     //Enemy standard
     public static float standardDefaultSpeed = 20.0f;
     public static float standardDefaultHp = 10.0f;
     public static float standardDefaultDoorDamage = 1.0f;
     //Enemy heavy
-    public static float heavyDefaultSpeed = 20.0f;
-    public static float heavyDefaultHp = 10.0f;
+    public static float heavyDefaultSpeed = 15.0f;
+    public static float heavyDefaultHp = 50.0f;
     public static float heavyDefaultDoorDamage = 1.0f;
     //Areas
     public static float mudAndDeadTime = 2.0f;
