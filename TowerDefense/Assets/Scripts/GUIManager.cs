@@ -178,22 +178,12 @@ public class GUIManager : MonoBehaviour
             else attackUIArrows[i].SelectColor(ArrowIcon.ArrowIconColor.White);
         }
     }
-    void DestroyCoroutines() {
-        foreach (GameObject go in Globals.currentWaveEnemies)
-        {
-            go.GetComponent<EnemyMovement>().StopAllCoroutines();
-        }
-        if (spwaner) spwaner.StopAllCoroutines();
-
-    }
     void Reload()
     {
-        DestroyCoroutines();
         SceneManager.LoadScene("MainScene");
     }
     void Exit() 
     {
-        DestroyCoroutines();
         SceneManager.LoadScene("MainMenu");
     }
 }

@@ -16,6 +16,7 @@ public class EnemyMovement : MonoBehaviour
     public bool isZombie { get { return enemyStates.Contains(Globals.EnemyState.Zombie); } }
     public bool hasZombieUpgrade { get { return enemyUpgrades.Contains(Globals.EnemyUpgrade.Zombie); } }
     public float spawnWaitTime { get { return spawnTime; } }
+    public bool isDead { get { return dead; } }
     //stats
     private float hp = 10.0f;
     private float zombieHp = 10.0f;
@@ -118,18 +119,15 @@ public class EnemyMovement : MonoBehaviour
     public void Kill() {
         //Todo: kill animation
         gameObject.GetComponent<Animator>().Play("Dying");
-
+        float time = gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
+        StartCoroutine(OnCompleteDieAnimation(time));
+    }
+    IEnumerator OnCompleteDieAnimation(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
         Globals.currentWaveEnemies.Remove(gameObject);
         Destroy(gameObject);
-        float time = gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
-        //StartCoroutine(OnCompleteDieAnimation(time));
     }
-    //IEnumerator OnCompleteDieAnimation(float seconds)
-    //{
-    //    yield return new WaitForSeconds(seconds);
-    //    Globals.currentWaveEnemies.Remove(gameObject);
-    //    Destroy(gameObject);
-    //}
     private void DotDamage()
     {
         if (enemyStates.Count > 0 && dotTimer <= 0.0f)
@@ -169,6 +167,10 @@ public class EnemyMovement : MonoBehaviour
         if (!dead) dead = true;
         if (enemyAgent) enemyAgent.enabled = false;
         if (enemyModel) enemyModel.SetActive(false);
+        if (bombArea && enemyUpgrades.Contains(Globals.EnemyUpgrade.Bomb))
+        {
+            bombArea.SetActive(true);
+        }
         if (tombModel && enemyUpgrades.Contains(Globals.EnemyUpgrade.Zombie)) 
         {
             tombModel.SetActive(true);
@@ -182,7 +184,12 @@ public class EnemyMovement : MonoBehaviour
         {
             poisonArea.SetActive(true);
         }
-        if (!enemyStates.Contains(Globals.EnemyState.Poison) && !enemyUpgrades.Contains(Globals.EnemyUpgrade.MudArmor) && !enemyUpgrades.Contains(Globals.EnemyUpgrade.Zombie)) Kill();
+        
+        if (!enemyStates.Contains(Globals.EnemyState.Poison) && !enemyUpgrades.Contains(Globals.EnemyUpgrade.MudArmor) && !enemyUpgrades.Contains(Globals.EnemyUpgrade.Zombie))
+        {
+            enemyModel.SetActive(true);
+            Kill();
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -220,6 +227,10 @@ public class EnemyMovement : MonoBehaviour
             }
         }
         if (other.CompareTag("BombTurretArea"))
+        {
+            TakeDamage(Globals.bombDamage);
+        }
+        if (other.CompareTag("BombArea"))
         {
             TakeDamage(Globals.bombDamage);
         }
