@@ -16,6 +16,7 @@ public class Bullet : MonoBehaviour
 
     public GameObject Area;
     public GameObject HitEffect;
+    public GameObject GroundHitEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +40,10 @@ public class Bullet : MonoBehaviour
            if( aimType == AimType.Area) Instantiate(Area, transform.position, transform.rotation);
            Instantiate(HitEffect, transform.position, transform.rotation);
            Destroy(this.gameObject);
+        }
+        else
+        {
+           // Instantiate(GroundHitEffect, transform.position, transform.rotation);
         }
       
     }
