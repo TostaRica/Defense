@@ -53,10 +53,21 @@ public class OilTurret : Turret
     {
         ActiveFire();
         RestTimeDuration = Duration;
+        ParticleSystem.MainModule settings;
         ParticleSystem[] rigidbodiesOfAllChild = this.gameObject.GetComponentsInChildren<ParticleSystem>();
         for (int i = 0; i < rigidbodiesOfAllChild.Length; i++)
         {
-            rigidbodiesOfAllChild[i].Play();
+            if (type == TowerManager.Type.Poison)
+            {
+                settings = rigidbodiesOfAllChild[i].main;
+                settings.startColor = Color.green;
+            }
+            else
+            {
+                settings = rigidbodiesOfAllChild[i].main;
+                settings.startColor = Color.white;
+            }
+           rigidbodiesOfAllChild[i].Play();
         }
     }
 }

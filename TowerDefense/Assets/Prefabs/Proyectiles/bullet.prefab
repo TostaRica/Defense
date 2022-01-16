@@ -113,9 +113,10 @@ MonoBehaviour:
   Speed: 10
   Live: 5
   Damage: 0
-  Area: {fileID: 0}
+  Area: {fileID: 4940754690447166871, guid: 3d34ffac1b3759b47ba0c02d26120ad1, type: 3}
   HitEffect: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
   GroundHitEffect: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3, type: 3}
+  PosionEffect: {fileID: 0}
 --- !u!54 &2178485607829671424
 Rigidbody:
   m_ObjectHideFlags: 0
