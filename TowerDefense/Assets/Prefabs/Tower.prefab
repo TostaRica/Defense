@@ -1518,6 +1518,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6285884705899788358, guid: 43fce267ddd9e234e9f838c662e4c206, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6285884707015165798, guid: 43fce267ddd9e234e9f838c662e4c206, type: 3}
       propertyPath: Torret
       value: 
