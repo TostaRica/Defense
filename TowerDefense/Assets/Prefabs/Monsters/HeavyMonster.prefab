@@ -2583,7 +2583,6 @@ MonoBehaviour:
   poisonArea: {fileID: 1513924755}
   bombArea: {fileID: 0}
   tombModel: {fileID: 716508448}
-  speed: 1
 --- !u!136 &-8603255290377335305
 CapsuleCollider:
   m_ObjectHideFlags: 0
