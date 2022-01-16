@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &111281564
 Transform:
   m_ObjectHideFlags: 0
@@ -2007,6 +2007,7 @@ MonoBehaviour:
   bombArea: {fileID: 0}
   tombModel: {fileID: 569292557}
   resurrect: {fileID: 2332137740869959133}
+  hp: 10
 --- !u!136 &-6475536389221470635
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2179,11 +2180,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4201597293143198, guid: 4f4d0b65c238dd944982f1b52af60366, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.32
       objectReference: {fileID: 0}
     - target: {fileID: 4201597293143198, guid: 4f4d0b65c238dd944982f1b52af60366, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4201597293143198, guid: 4f4d0b65c238dd944982f1b52af60366, type: 3}
       propertyPath: m_LocalRotation.w

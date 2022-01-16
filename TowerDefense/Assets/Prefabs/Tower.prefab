@@ -344,6 +344,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 2.1
       objectReference: {fileID: 0}
+    - target: {fileID: 783607767618123896, guid: 43fce267ddd9e234e9f838c662e4c206, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 12.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 783607767618123896, guid: 43fce267ddd9e234e9f838c662e4c206, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 783607767618123896, guid: 43fce267ddd9e234e9f838c662e4c206, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 12.3
+      objectReference: {fileID: 0}
     - target: {fileID: 783607767618123897, guid: 43fce267ddd9e234e9f838c662e4c206, type: 3}
       propertyPath: Torret
       value: 
@@ -496,14 +508,50 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6285884705899788377, guid: 43fce267ddd9e234e9f838c662e4c206, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9506
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285884705899788377, guid: 43fce267ddd9e234e9f838c662e4c206, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.09506002
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285884705899788377, guid: 43fce267ddd9e234e9f838c662e4c206, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.9506
+      objectReference: {fileID: 0}
     - target: {fileID: 6285884707015165798, guid: 43fce267ddd9e234e9f838c662e4c206, type: 3}
       propertyPath: Torret
       value: 
       objectReference: {fileID: 95433120119155514}
+    - target: {fileID: 6285884707015165799, guid: 43fce267ddd9e234e9f838c662e4c206, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285884707015165799, guid: 43fce267ddd9e234e9f838c662e4c206, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.085000016
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285884707015165799, guid: 43fce267ddd9e234e9f838c662e4c206, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.85
+      objectReference: {fileID: 0}
     - target: {fileID: 8073812001164017664, guid: 43fce267ddd9e234e9f838c662e4c206, type: 3}
       propertyPath: Torret
       value: 
       objectReference: {fileID: 4519187062010461379}
+    - target: {fileID: 8073812001164017665, guid: 43fce267ddd9e234e9f838c662e4c206, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 19.654
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073812001164017665, guid: 43fce267ddd9e234e9f838c662e4c206, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.9654
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073812001164017665, guid: 43fce267ddd9e234e9f838c662e4c206, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 19.654
+      objectReference: {fileID: 0}
     - target: {fileID: 8376783311857163012, guid: 43fce267ddd9e234e9f838c662e4c206, type: 3}
       propertyPath: Torret
       value: 
