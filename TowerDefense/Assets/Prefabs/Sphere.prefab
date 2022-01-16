@@ -113,3 +113,5 @@ MonoBehaviour:
   Damage: 0
   Area: {fileID: 4940754690447166871, guid: 3d34ffac1b3759b47ba0c02d26120ad1, type: 3}
   HitEffect: {fileID: 160360, guid: 9a079115abeba8743bd2a0730b8e9f36, type: 3}
+  GroundHitEffect: {fileID: 0}
+  PosionEffect: {fileID: 1965343156803978, guid: aa8d6482d70a23445b4b2a928ed1b845, type: 3}

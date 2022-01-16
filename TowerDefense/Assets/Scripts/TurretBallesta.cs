@@ -5,7 +5,7 @@ using UnityEngine;
 public class TurretBallesta : Turret
 {
 
-    public ParticleSystem ShootEffect;
+    public GameObject ShootEffect;
     public AudioSource ShootFX;
 
     public bool ShootFail = false;
@@ -40,7 +40,7 @@ public class TurretBallesta : Turret
                 if (!ShootFail)
                 {
                     Weapon.transform.LookAt(aux);
-                    Base.GetComponent<Base>().Orientation(transform);
+                  //  Base.GetComponent<Base>().Orientation(transform);
                 }
             }
             if (!ShootFail) CheckColdDowns();
@@ -91,7 +91,8 @@ public class TurretBallesta : Turret
     void Shoot()
     {
         GameObject b;
-        ShootEffect.Play();
+
+        Instantiate(ShootEffect, Punta.transform.position, Punta.transform.rotation);
         b = Instantiate(Bullet, Punta.transform.position, Punta.transform.rotation);
         ShootFX.Play();
         b.GetComponent<Bullet>().Damage = Damage;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TurretCannon : Turret
 {
-    //public ParticleSystem ShootEffect;
+    public GameObject ShootEffect;
     public AudioSource ShootFX;
 
     public bool ShootFail = false;
@@ -91,8 +91,10 @@ public class TurretCannon : Turret
     {
         GameObject b;
         //ShootEffect.Play();
+        Instantiate(ShootEffect, Punta.transform.position, Punta.transform.rotation);
         b = Instantiate(Bullet, Punta.transform.position, Punta.transform.rotation);
         ShootFX.Play();
+        b.GetComponent<Bullet>().SetAimType((int)aimType); 
         b.GetComponent<Bullet>().Damage = Damage;
         b.GetComponent<Bullet>().Speed = BulletSpeed;
         b.GetComponent<Bullet>().SetBulletType((int)type);
