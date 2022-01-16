@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44850332, g: 0.4985457, b: 0.57564616, a: 1}
+  m_IndirectSpecularColor: {r: 0.4392734, g: 0.48757124, b: 0.5678166, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1119,6 +1119,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
 --- !u!4 &58513159 stripped
@@ -2100,6 +2104,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EM_wood_fence3_PRE (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
 --- !u!4 &96784537 stripped
@@ -2510,6 +2518,10 @@ PrefabInstance:
     - target: {fileID: 4962470467559020375, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
@@ -5084,7 +5096,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3618583387943629426, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_RootOrder
-      value: 83
+      value: 82
       objectReference: {fileID: 0}
     - target: {fileID: 3618583387943629426, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5569,6 +5581,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 977344494}
     m_Modifications:
+    - target: {fileID: 3478185754744181923, guid: e230728435a5e0e4199e30e1b83ec327, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8511486831225168850, guid: e230728435a5e0e4199e30e1b83ec327, type: 3}
       propertyPath: m_RootOrder
       value: 38
@@ -7004,6 +7020,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EM_wood_fence3_PRE (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
 --- !u!4 &250304725 stripped
@@ -7246,6 +7266,10 @@ PrefabInstance:
     - target: {fileID: 4962470467559020375, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
@@ -8493,6 +8517,14 @@ PrefabInstance:
     - target: {fileID: 4962470467559020375, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
@@ -9766,7 +9798,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3618583387943629426, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_RootOrder
-      value: 81
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 3618583387943629426, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9869,6 +9901,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EM_wood_fence3b_PRE (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7461278207209886093, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
 --- !u!1 &349582838
@@ -9945,7 +9981,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &352683467
 Mesh:
@@ -10246,6 +10282,10 @@ PrefabInstance:
     - target: {fileID: 4142215202734221512, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_Name
       value: EM_wood_fence3_PRE (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
@@ -11985,6 +12025,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EM_wood_fence3b_PRE (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7461278207209886093, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
 --- !u!4 &425670694 stripped
@@ -12210,6 +12254,10 @@ PrefabInstance:
     - target: {fileID: 3069774869389720646, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
       propertyPath: m_Name
       value: EM_wood_fence3b_PRE (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7461278207209886093, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
@@ -14631,7 +14679,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3618583387943629426, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_RootOrder
-      value: 76
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 3618583387943629426, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14750,6 +14798,10 @@ PrefabInstance:
     - target: {fileID: 4142215202734221512, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_Name
       value: EM_wood_fence3_PRE (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
@@ -14935,7 +14987,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2080736761447480495, guid: 5d8687cee97e5d743b355afe994861d0, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2080736761447480495, guid: 5d8687cee97e5d743b355afe994861d0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18841,6 +18893,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EM_wood_fence3_PRE (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
 --- !u!4 &635585709 stripped
@@ -19337,7 +19393,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2436965638503491324, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
       propertyPath: m_RootOrder
-      value: 77
+      value: 76
       objectReference: {fileID: 0}
     - target: {fileID: 2436965638503491324, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19439,6 +19495,10 @@ PrefabInstance:
     - target: {fileID: 4142215202734221512, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_Name
       value: EM_wood_fence3_PRE (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
@@ -20187,6 +20247,10 @@ PrefabInstance:
     - target: {fileID: 4962470467559020375, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
@@ -23342,6 +23406,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EM_wood_fence3b_PRE (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 7461278207209886093, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
 --- !u!4 &818366249 stripped
@@ -23835,7 +23903,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2436965638503491324, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
       propertyPath: m_RootOrder
-      value: 80
+      value: 79
       objectReference: {fileID: 0}
     - target: {fileID: 2436965638503491324, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27179,7 +27247,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7026665985885969436, guid: aed2ffb9bc2a7214bbab72c5dc203ad0, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7026665985885969436, guid: aed2ffb9bc2a7214bbab72c5dc203ad0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27342,7 +27410,7 @@ Transform:
   - {fileID: 47856795}
   - {fileID: 2002205992}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &983470391
 GameObject:
@@ -30136,6 +30204,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
 --- !u!4 &1025541370 stripped
@@ -30278,6 +30350,10 @@ PrefabInstance:
     - target: {fileID: 3069774869389720646, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
       propertyPath: m_Name
       value: EM_wood_fence3b_PRE (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7461278207209886093, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
@@ -30953,6 +31029,10 @@ PrefabInstance:
     - target: {fileID: 4962470467559020375, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
@@ -32417,6 +32497,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EM_wood_fence3b_PRE (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 7461278207209886093, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
 --- !u!4 &1127197862 stripped
@@ -32436,16 +32520,28 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1940234759794378548, guid: 36ac835ad8264b743b8165dd8503384f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940234759794378548, guid: 36ac835ad8264b743b8165dd8503384f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940234759794378548, guid: 36ac835ad8264b743b8165dd8503384f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940234759794378548, guid: 36ac835ad8264b743b8165dd8503384f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.1
+      value: -2.66
       objectReference: {fileID: 0}
     - target: {fileID: 1940234759794378548, guid: 36ac835ad8264b743b8165dd8503384f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.75
+      value: 4.14
       objectReference: {fileID: 0}
     - target: {fileID: 1940234759794378548, guid: 36ac835ad8264b743b8165dd8503384f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 40
+      value: 44.29
       objectReference: {fileID: 0}
     - target: {fileID: 1940234759794378548, guid: 36ac835ad8264b743b8165dd8503384f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -32494,6 +32590,10 @@ PrefabInstance:
     - target: {fileID: 1940234759794378551, guid: 36ac835ad8264b743b8165dd8503384f, type: 3}
       propertyPath: m_Name
       value: Spawner v1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940234759794378571, guid: 36ac835ad8264b743b8165dd8503384f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36ac835ad8264b743b8165dd8503384f, type: 3}
@@ -32715,6 +32815,10 @@ PrefabInstance:
     - target: {fileID: 4142215202734221512, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_Name
       value: EM_wood_fence3_PRE (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
@@ -35921,6 +36025,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EM_wood_fence3_PRE (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
 --- !u!4 &1223221242 stripped
@@ -36230,6 +36338,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EM_wood_fence3b_PRE (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7461278207209886093, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
 --- !u!4 &1263197938 stripped
@@ -36372,6 +36484,10 @@ PrefabInstance:
     - target: {fileID: 3069774869389720646, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
       propertyPath: m_Name
       value: EM_wood_fence3b_PRE (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7461278207209886093, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
@@ -38634,6 +38750,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 977344494}
     m_Modifications:
+    - target: {fileID: 3478185754744181923, guid: e230728435a5e0e4199e30e1b83ec327, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8511486831225168850, guid: e230728435a5e0e4199e30e1b83ec327, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -38907,6 +39027,10 @@ PrefabInstance:
     - target: {fileID: 3069774869389720646, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
       propertyPath: m_Name
       value: EM_wood_fence3b_PRE
+      objectReference: {fileID: 0}
+    - target: {fileID: 7461278207209886093, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
@@ -39320,7 +39444,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3618583387943629426, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_RootOrder
-      value: 82
+      value: 81
       objectReference: {fileID: 0}
     - target: {fileID: 3618583387943629426, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_LocalPosition.x
@@ -42544,6 +42668,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 977344494}
     m_Modifications:
+    - target: {fileID: 3478185754744181923, guid: e230728435a5e0e4199e30e1b83ec327, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8511486831225168850, guid: e230728435a5e0e4199e30e1b83ec327, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -42648,6 +42776,10 @@ PrefabInstance:
     - target: {fileID: 3069774869389720646, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
       propertyPath: m_Name
       value: EM_wood_fence3b_PRE (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7461278207209886093, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
@@ -44989,7 +45121,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3618583387943629426, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_RootOrder
-      value: 78
+      value: 77
       objectReference: {fileID: 0}
     - target: {fileID: 3618583387943629426, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_LocalPosition.x
@@ -45123,13 +45255,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599407277}
-  m_LocalRotation: {x: 0.110975206, y: -0.42448005, z: 0.6627652, w: 0.6068307}
-  m_LocalPosition: {x: 52.6, y: 107.4, z: 80.4}
+  m_LocalRotation: {x: 0.08985833, y: -0.051359862, z: 0.590077, w: 0.8006852}
+  m_LocalPosition: {x: 29.899994, y: 362.7, z: -88.899994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 44.215, y: -30.9, z: 82.234}
+  m_Father: {fileID: 1776473887}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 11.801, y: 1.393, z: 72.922}
 --- !u!43 &1615130727
 Mesh:
   m_ObjectHideFlags: 0
@@ -45767,7 +45899,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1628513776
 GameObject:
@@ -48804,6 +48936,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.125
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
 --- !u!4 &1719155164 stripped
@@ -50933,6 +51073,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EM_wood_fence3b_PRE (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7461278207209886093, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
 --- !u!4 &1766152750 stripped
@@ -51117,6 +51261,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1442979146637556991}
+  - {fileID: 1599407279}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
@@ -51383,6 +51528,14 @@ PrefabInstance:
     - target: {fileID: 3069774869389720646, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
       propertyPath: m_Name
       value: EM_wood_fence3b_PRE (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7461278207209886093, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7461278207209886093, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
@@ -51866,6 +52019,10 @@ PrefabInstance:
     - target: {fileID: 4962470467559020375, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
@@ -53173,6 +53330,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
 --- !u!4 &1848688404 stripped
@@ -53584,6 +53745,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
 --- !u!4 &1856856279 stripped
@@ -53657,6 +53822,10 @@ PrefabInstance:
     - target: {fileID: 3069774869389720646, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
       propertyPath: m_Name
       value: EM_wood_fence3b_PRE (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7461278207209886093, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6332ccad0dce64d47b1ce41ff716e75c, type: 3}
@@ -55350,7 +55519,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3618583387943629426, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_RootOrder
-      value: 79
+      value: 78
       objectReference: {fileID: 0}
     - target: {fileID: 3618583387943629426, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_LocalPosition.x
@@ -55752,11 +55921,11 @@ PrefabInstance:
     - target: {fileID: 7198910429644221633, guid: 97658a785c0c0fa45b05510bf039c7b4, type: 3}
       propertyPath: goldLabel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1442979145543864258}
     - target: {fileID: 7198910429644221633, guid: 97658a785c0c0fa45b05510bf039c7b4, type: 3}
       propertyPath: castleHpLabel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1442979144580635522}
     - target: {fileID: 7198910429644221637, guid: 97658a785c0c0fa45b05510bf039c7b4, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -55775,15 +55944,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7198910429644221637, guid: 97658a785c0c0fa45b05510bf039c7b4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 305.7
+      value: 302.5
       objectReference: {fileID: 0}
     - target: {fileID: 7198910429644221637, guid: 97658a785c0c0fa45b05510bf039c7b4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.78
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 7198910429644221637, guid: 97658a785c0c0fa45b05510bf039c7b4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 45.5
+      value: 49.9
       objectReference: {fileID: 0}
     - target: {fileID: 7198910429644221637, guid: 97658a785c0c0fa45b05510bf039c7b4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -55811,6 +55980,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7198910429644221637, guid: 97658a785c0c0fa45b05510bf039c7b4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7198910429644221639, guid: 97658a785c0c0fa45b05510bf039c7b4, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7198910429644221754, guid: 97658a785c0c0fa45b05510bf039c7b4, type: 3}
@@ -56625,6 +56798,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EM_wood_fence3_PRE (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
 --- !u!4 &1955984944 stripped
@@ -57104,6 +57281,10 @@ PrefabInstance:
     - target: {fileID: 4962470467559020375, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
@@ -58527,6 +58708,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
 --- !u!43 &1988646588
@@ -58747,6 +58932,10 @@ PrefabInstance:
     - target: {fileID: 4142215202734221512, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
       propertyPath: m_Name
       value: EM_wood_fence3_PRE (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389596710318163203, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9008489d07b494fb8ae58439666110, type: 3}
@@ -59092,7 +59281,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1761148498838970347, guid: c08390ae71f17844990b368ee2f62a17, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1761148498838970347, guid: c08390ae71f17844990b368ee2f62a17, type: 3}
       propertyPath: m_LocalPosition.x
@@ -63251,6 +63440,7 @@ MonoBehaviour:
   - {fileID: 6581601174913019127}
   - {fileID: 6581601174278509949}
   - {fileID: 6581601173856445260}
+  spwaner: {fileID: 0}
 --- !u!1 &1442979146637556990
 GameObject:
   m_ObjectHideFlags: 0
@@ -96154,7 +96344,7 @@ Transform:
   - {fileID: 2541868897173962015}
   - {fileID: 887671310}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2541868896447050274
 GameObject:
@@ -100117,7 +100307,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 
 --- !u!1 &6763751457779113610
 GameObject:
   m_ObjectHideFlags: 0
@@ -100152,8 +100342,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 110, y: -25}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 120, y: -25}
+  m_SizeDelta: {x: 90, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6763751457862665124
 CanvasRenderer:

@@ -18,7 +18,7 @@ public class Bomb : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy")) {
-            gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            other.GetComponent<EnemyMovement>().TakeDamage(Globals.bombDamage);
         }
     }
 }

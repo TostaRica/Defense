@@ -79,7 +79,7 @@ public class BasicTurret : Turret
         float menor = 99999999999;
         foreach (EnemyMovement enemy in EnemiesInside)
         {
-            if (enemy == null) EnemisToDelete.Add(enemy);
+            if (enemy == null || enemy.isDead) EnemisToDelete.Add(enemy);
             else if (menor > enemy.castleDistanceRemaining)
             {
                 menor = enemy.castleDistanceRemaining;
@@ -93,7 +93,7 @@ public class BasicTurret : Turret
         GameObject b;
         //ShootEffect.Play();
         b = Instantiate(Bullet, Punta.transform.position, Punta.transform.rotation);
-       // ShootFX.Play();
+        ShootFX.Play();
         b.GetComponent<Bullet>().Damage = Damage;
         b.GetComponent<Bullet>().Speed = BulletSpeed;
     }
