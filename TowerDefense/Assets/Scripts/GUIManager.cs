@@ -77,6 +77,13 @@ public class GUIManager : MonoBehaviour
         if (btnWinExit) btnWinExit.onClick.AddListener(Exit);
         if (btnLoseExit) btnLoseExit.onClick.AddListener(Exit);
         loseAnimationOn = false;
+
+        InitGlobals();
+    }
+    private void InitGlobals() 
+    {
+        Globals.money = 0.0f;
+        Globals.currentWaveNumber = 0;
     }
     public void Update()
     {

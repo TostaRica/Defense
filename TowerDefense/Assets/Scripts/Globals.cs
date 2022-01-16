@@ -18,7 +18,7 @@ public static class Globals
         Jumper, Standard, Heavy
     };
     //Money
-    private static float money = 40000.0f;
+    public static float money = 0.0f;
     //Pause
     public static bool isGamePaused = false;
     //Towers

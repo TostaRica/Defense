@@ -18,7 +18,7 @@ public class EnemyMovement : MonoBehaviour
     public float spawnWaitTime { get { return spawnTime; } }
     public bool isDead { get { return dead; } }
     //stats
-    private float hp = 10.0f;
+    public float hp = 10.0f;
     private float zombieHp = 10.0f;
     private float speed = 1.0f;
     private float attackDamage = 1.0f;
