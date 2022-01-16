@@ -11,6 +11,7 @@ public class EnemyMovement : MonoBehaviour
     public GameObject poisonArea;
     public GameObject bombArea;
     public GameObject tombModel;
+    public GameObject resurrect;
     public float castleDistanceRemaining { get { return GetPathRemainingDistance(enemyAgent); } }
     public float doorDamage { get { return attackDamage; } }
     public bool isZombie { get { return enemyStates.Contains(Globals.EnemyState.Zombie); } }
@@ -160,6 +161,8 @@ public class EnemyMovement : MonoBehaviour
             enemyModel.SetActive(true);
             enemyAgent.enabled = true;
             enemyAgent.SetDestination(castleDoor.position);
+            resurrect.SetActive(true);
+
         }
     }
     private void Die() 
