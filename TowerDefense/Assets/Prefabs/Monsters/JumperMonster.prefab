@@ -1999,7 +1999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAgent: {fileID: 1135463789}
   castleDoor: {fileID: 0}
-  enemyModel: {fileID: 4530003306004163416}
+  enemyModel: {fileID: 9122308325327206653}
   mudArea: {fileID: 111281559}
   poisonArea: {fileID: 1392459324}
   bombArea: {fileID: 0}
