@@ -8,6 +8,10 @@ public class BasicTurret : Turret
     public AudioSource ShootFX;
 
     public bool ShootFail = false;
+    public override TowerManager.TowerType GetTowerType()
+    {
+        return TowerManager.TowerType.Basic;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -63,7 +67,7 @@ public class BasicTurret : Turret
         if (RestTimeAttack <= 0)
         {
             RestTimeAttack = SpeedAttack;
-            if (Target != null)
+            if (Target != null && !Target.GetComponent<EnemyMovement>().isDead)
             {
                 Shoot();
             }

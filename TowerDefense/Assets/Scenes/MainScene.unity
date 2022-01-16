@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43927312, g: 0.487571, b: 0.5678161, a: 1}
+  m_IndirectSpecularColor: {r: 0.4392734, g: 0.48757124, b: 0.5678166, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -65100,12 +65100,18 @@ MonoBehaviour:
   camera: {fileID: 1776473886}
   newBuildMenuPanel: {fileID: 6763751456721173859}
   upgradeBuildMenuPanel: {fileID: 6763751456529934010}
+  winMenuPanel: {fileID: 313367915}
+  loseMenuPanel: {fileID: 293584224}
   pauseMenuPanel: {fileID: 6763751457389147581}
   buildButton: {fileID: 6763751457862665128}
   buildCancelButton: {fileID: 6763751456954607725}
   btnResume: {fileID: 6763751456864291302}
   btnRetry: {fileID: 6763751456759704833}
   btnExit: {fileID: 6763751457195732290}
+  btnWinRetry: {fileID: 1317542107}
+  btnWinExit: {fileID: 24193136}
+  btnLoseRetry: {fileID: 212435774}
+  btnLoseExit: {fileID: 274453345}
   buildText: {fileID: 6763751457241601511}
   wavesEnemiesText: {fileID: 1442979146535705509}
   wavesNumberOfWavesText: {fileID: 6763751457779113605}
