@@ -44,7 +44,7 @@ public static class Globals
     public static int burnDotsNumber = 5;
     //Enemy upgrades
     public static float bombSpeedIncrement = 0.6f;
-    public static float bombDamage = 3.0f;
+    public static float bombDamage = 5.0f;
     public static float mudArmor = 0.25f; // +%
     public static float zombieHpFactor = 0.6f; // %
     //Enemy jumper
@@ -67,10 +67,10 @@ public static class Globals
     public static float mudSlowSpeed = 0.25f;
     public static float poisonTime = 0.5f;
     //Waves
-    public static Queue<Wave> waves = new Queue<Wave>();
     public static int totalNumberOfWaves = 0;
     public static int currentWaveNumber = 0;
     public static Wave currentWave = null;
+    public static Queue<Wave> waves = new Queue<Wave>();
     public static Queue<GameObject> currentWaveWaitingEnemies = new Queue<GameObject>();
     public static List<GameObject> currentWaveEnemies = new List<GameObject>();
     //Door 

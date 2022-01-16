@@ -41,11 +41,13 @@ public class GUIManager : MonoBehaviour
     private Vector2Int placedObjectOrigin = default(Vector2Int);
     private Button btnBuild;
 
+    public Spawner spwaner;
     GameObject selectedTowerGO = null;
     TowerManager selectedTower = null;
 
     public void Start()
     {
+        Time.timeScale = 1;
         if (buildButton) btnBuild = buildButton.GetComponent<Button>();
         if (btnBuild) btnBuild.onClick.AddListener(Build);
         if (btnBallistaUpgrade) btnBallistaUpgrade.onClick.AddListener(delegate { UpgradeTower(TowerManager.TowerType.Ballista); });
@@ -66,7 +68,7 @@ public class GUIManager : MonoBehaviour
             TogglePause();
         }
         if (wavesEnemiesText) wavesEnemiesText.text = Globals.currentWaveEnemies.Count.ToString();
-        if (wavesNumberOfWavesText) wavesNumberOfWavesText.text = Globals.waves.Count.ToString() + "/" + Globals.totalNumberOfWaves;
+        if (wavesNumberOfWavesText) wavesNumberOfWavesText.text = Globals.currentWaveNumber + "/" + Globals.totalNumberOfWaves;
     }
     public void TogglePause() {
         if (pauseMenuPanel)
