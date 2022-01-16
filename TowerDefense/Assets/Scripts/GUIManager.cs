@@ -43,7 +43,6 @@ public class GUIManager : MonoBehaviour
 
     GameObject selectedTowerGO = null;
     TowerManager selectedTower = null;
-    private bool retry = false;
     public void Start()
     {
         if (buildButton) btnBuild = buildButton.GetComponent<Button>();
@@ -55,8 +54,9 @@ public class GUIManager : MonoBehaviour
         if (btnIncreaseDamage) btnIncreaseDamage.onClick.AddListener(delegate { UpgradeTowerDamage(); });
         if (btnFireUpgrade) btnFireUpgrade.onClick.AddListener(delegate { SetElement(TowerManager.Type.Fire); });
         if (btnPoisonUpgrade) btnPoisonUpgrade.onClick.AddListener(delegate {SetElement(TowerManager.Type.Poison); });
-        if (btnResume) btnResume.onClick.AddListener(TogglePause);
-        //if (btnExit) btnExit.onClick.AddListener(TogglePause);
+        if (btnResume) btnResume.onClick.AddListener(TogglePause); 
+        if (btnRetry) btnRetry.onClick.AddListener(Reload);
+        if (btnExit) btnExit.onClick.AddListener(Exit);
     }
     public void Update()
     {
@@ -175,5 +175,13 @@ public class GUIManager : MonoBehaviour
             if (i < attackLvl) attackUIArrows[i].SelectColor(ArrowIcon.ArrowIconColor.Green);
             else attackUIArrows[i].SelectColor(ArrowIcon.ArrowIconColor.White);
         }
+    }
+    void Reload()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
+    void Exit() 
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

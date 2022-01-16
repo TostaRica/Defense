@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour
     //stats
     private float hp = 10.0f;
     private float zombieHp = 10.0f;
-    public float speed = 1.0f;
+    private float speed = 1.0f;
     private float attackDamage = 1.0f;
     private bool dashSkill = false;
     private bool dead = false;
@@ -82,18 +82,18 @@ public class EnemyMovement : MonoBehaviour
         switch (type)
         {
             case Globals.EnemyType.Jumper:
-                hp = Globals.jumperDefaultHp;
+                hp = Globals.jumperDefaultHp+ Globals.jumperDefaultHp*(Globals.currentWaveNumber/3);
                 speed = Globals.jumperDefaultSpeed;
                 attackDamage = Globals.jumperDefaultDoorDamage;
                 dashSkill = true;
                 break;
             case Globals.EnemyType.Standard:
-                hp = Globals.standardDefaultHp;
+                hp = Globals.standardDefaultHp+ Globals.standardDefaultHp * (Globals.currentWaveNumber / 3);
                 speed = Globals.standardDefaultSpeed;
                 attackDamage = Globals.standardDefaultDoorDamage;
                 break;
             case Globals.EnemyType.Heavy:
-                hp = Globals.heavyDefaultHp;
+                hp = Globals.heavyDefaultHp+ Globals.heavyDefaultHp * (Globals.currentWaveNumber / 3);
                 speed = Globals.heavyDefaultSpeed;
                 attackDamage = Globals.standardDefaultDoorDamage;
                 break;
