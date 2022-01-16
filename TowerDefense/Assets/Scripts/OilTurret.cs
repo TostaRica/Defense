@@ -7,6 +7,7 @@ public class OilTurret : Turret
     public GameObject Fire;
     public float Duration;
     public float RestTimeDuration;
+    public GameObject flare;
     public override TowerManager.TowerType GetTowerType()
     {
         return TowerManager.TowerType.Caoldron;
@@ -44,10 +45,12 @@ public class OilTurret : Turret
     void ActiveFire()
     {
         Fire.SetActive(true);
+        flare.SetActive(true);
     }
     void DisableFire()
     {
         Fire.SetActive(false);
+        flare.SetActive(false);
     }
 
     void Shoot()
