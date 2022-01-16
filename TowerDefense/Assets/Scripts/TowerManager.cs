@@ -18,6 +18,7 @@ public class TowerManager : MonoBehaviour
     public ParticleSystem GameOver;
 
     private int activeTower = 0;
+    private bool loseAnimationOn = false;
     public Turret activeTurret = null;
     public int speedAttackLvl = 0;
     public int damageLvl = 0;
@@ -139,8 +140,13 @@ public class TowerManager : MonoBehaviour
         }
        // DestoyTower();
     }
-    public void DestoyTower()
+    private void Update()
     {
+        if (Globals.doorCurrentHp <= 0.0f && !loseAnimationOn) DestroyTower();
+    }
+    public void DestroyTower()
+    {
+        loseAnimationOn = true;
         GameOver.Play();
         Rigidbody[] rigidbodiesOfAllChild = this.gameObject.GetComponentsInChildren<Rigidbody>();
         for (int i = 0; i < rigidbodiesOfAllChild.Length; i++)

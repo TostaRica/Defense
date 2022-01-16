@@ -12,6 +12,8 @@ public class GUIManager : MonoBehaviour
     public Camera camera;
     public GameObject newBuildMenuPanel;
     public GameObject upgradeBuildMenuPanel;
+    public GameObject winMenuPanel;
+    public GameObject loseMenuPanel;
     public GameObject pauseMenuPanel;
     public GameObject buildButton;
     public GameObject buildCancelButton;
@@ -19,6 +21,13 @@ public class GUIManager : MonoBehaviour
     public Button btnResume;
     public Button btnRetry;
     public Button btnExit;
+
+    public Button btnWinRetry;
+    public Button btnWinExit;
+
+    public Button btnLoseRetry;
+    public Button btnLoseExit;
+
 
     public Text buildText;
     public Text wavesEnemiesText;
@@ -44,6 +53,7 @@ public class GUIManager : MonoBehaviour
     public Spawner spwaner;
     GameObject selectedTowerGO = null;
     TowerManager selectedTower = null;
+    private bool loseAnimationOn = false;
 
     public void Start()
     {
@@ -53,16 +63,24 @@ public class GUIManager : MonoBehaviour
         if (btnBallistaUpgrade) btnBallistaUpgrade.onClick.AddListener(delegate { UpgradeTower(TowerManager.TowerType.Ballista); });
         if (btnCanonUpgrade) btnCanonUpgrade.onClick.AddListener(delegate { UpgradeTower(TowerManager.TowerType.Canon); });
         if (btnCaulodron) btnCaulodron.onClick.AddListener(delegate { UpgradeTower(TowerManager.TowerType.Caoldron); });
-        if (btnIncreaseSpeed) btnIncreaseSpeed.onClick.AddListener(delegate { UpgradeTowerSpeed(); });
-        if (btnIncreaseDamage) btnIncreaseDamage.onClick.AddListener(delegate { UpgradeTowerDamage(); });
+        if (btnIncreaseSpeed) btnIncreaseSpeed.onClick.AddListener(UpgradeTowerSpeed);
+        if (btnIncreaseDamage) btnIncreaseDamage.onClick.AddListener(UpgradeTowerDamage);
         if (btnFireUpgrade) btnFireUpgrade.onClick.AddListener(delegate { SetElement(TowerManager.Type.Fire); });
         if (btnPoisonUpgrade) btnPoisonUpgrade.onClick.AddListener(delegate {SetElement(TowerManager.Type.Poison); });
         if (btnResume) btnResume.onClick.AddListener(TogglePause); 
+
         if (btnRetry) btnRetry.onClick.AddListener(Reload);
+        if (btnWinRetry) btnWinRetry.onClick.AddListener(Reload);
+        if (btnLoseRetry) btnLoseRetry.onClick.AddListener(Reload);
+
         if (btnExit) btnExit.onClick.AddListener(Exit);
+        if (btnWinExit) btnWinExit.onClick.AddListener(Exit);
+        if (btnLoseExit) btnLoseExit.onClick.AddListener(Exit);
+        loseAnimationOn = false;
     }
     public void Update()
     {
+        CheckGameStatus();
         if (Input.GetKeyDown(KeyCode.Escape)) 
         {
             TogglePause();
@@ -153,6 +171,27 @@ public class GUIManager : MonoBehaviour
         if (rectTrans.rect.size.x * rectTrans.transform.localScale.x + Input.mousePosition.x > camera.pixelWidth) mouseX -= rectTrans.rect.size.x * rectTrans.transform.localScale.x;
         if (rectTrans.rect.size.y * rectTrans.transform.localScale.y + Input.mousePosition.y > camera.pixelHeight) mouseY -= rectTrans.rect.size.y * rectTrans.transform.localScale.y;
         rectTrans.anchoredPosition = new Vector2(mouseX, mouseY);
+    }
+    void CheckGameStatus() 
+    {
+        if (Globals.waves.Count == 0 && (Globals.currentWaveWaitingEnemies.Count == 0 && Globals.currentWaveEnemies.Count == 0))
+        {
+            Time.timeScale = 0;
+            if (winMenuPanel) winMenuPanel.SetActive(true);
+            if (upgradeBuildMenuPanel) upgradeBuildMenuPanel.SetActive(false);
+            if (newBuildMenuPanel) upgradeBuildMenuPanel.SetActive(false);
+        }
+        if (Globals.doorCurrentHp <= 0.0f && !loseAnimationOn) {
+            StartCoroutine(OpenLoseWindow());
+        }
+    }
+    IEnumerator OpenLoseWindow() 
+    {
+        loseAnimationOn = true;
+        yield return new WaitForSeconds(5.0f);
+        if (loseMenuPanel) loseMenuPanel.SetActive(true);
+        if (upgradeBuildMenuPanel) upgradeBuildMenuPanel.SetActive(false);
+        if (newBuildMenuPanel) upgradeBuildMenuPanel.SetActive(false);
     }
     void UpgradeTower(TowerManager.TowerType towerType) 
     {
