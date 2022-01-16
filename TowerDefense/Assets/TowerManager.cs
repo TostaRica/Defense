@@ -11,6 +11,8 @@ public class TowerManager : MonoBehaviour
     public enum AimType { Area, Single, Donut }
     public enum Type { Fire, Poison, Neutral }
     public GameObject[] Turrets;
+    public GameObject RedFlag;
+    public GameObject GreenFlag;
 
     public ParticleSystem ChangeTowerEffect;
     public ParticleSystem GameOver;
@@ -78,6 +80,19 @@ public class TowerManager : MonoBehaviour
     public void SetElement(Type element)
     {
         activeTurret.type = element;
+        if(element == Type.Fire)
+        {
+            RedFlag.SetActive(true);
+            GreenFlag.SetActive(false);
+        }else if(element == Type.Poison){
+            RedFlag.SetActive(false);
+            GreenFlag.SetActive(true);
+        }
+        else
+        {
+            RedFlag.SetActive(false);
+            GreenFlag.SetActive(false);
+        }
     }
     public void ChangeTower(TowerType type)
     {
