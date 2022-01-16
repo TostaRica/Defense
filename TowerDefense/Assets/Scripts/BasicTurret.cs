@@ -93,7 +93,7 @@ public class BasicTurret : Turret
         GameObject b;
         //ShootEffect.Play();
         b = Instantiate(Bullet, Punta.transform.position, Punta.transform.rotation);
-       // ShootFX.Play();
+        ShootFX.Play();
         b.GetComponent<Bullet>().Damage = Damage;
         b.GetComponent<Bullet>().Speed = BulletSpeed;
     }

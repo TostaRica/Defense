@@ -25,6 +25,7 @@ public class Turret : MonoBehaviour
     public GameObject Weapon;
     public GameObject Base;
 
+
     public void AddEnemy(GameObject e)
     {
         EnemiesInside.Add(e.GetComponent<EnemyMovement>());

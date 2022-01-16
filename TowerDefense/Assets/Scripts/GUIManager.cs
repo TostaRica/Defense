@@ -44,6 +44,7 @@ public class GUIManager : MonoBehaviour
     public Spawner spwaner;
     GameObject selectedTowerGO = null;
     TowerManager selectedTower = null;
+
     public void Start()
     {
         Time.timeScale = 1;
@@ -51,7 +52,7 @@ public class GUIManager : MonoBehaviour
         if (btnBuild) btnBuild.onClick.AddListener(Build);
         if (btnBallistaUpgrade) btnBallistaUpgrade.onClick.AddListener(delegate { UpgradeTower(TowerManager.TowerType.Ballista); });
         if (btnCanonUpgrade) btnCanonUpgrade.onClick.AddListener(delegate { UpgradeTower(TowerManager.TowerType.Canon); });
-        //btnCaulodron.onClick.AddListener(delegate { UpgradeTower(TowerManager.TowerType.Caoldron); });
+        if (btnCaulodron) btnCaulodron.onClick.AddListener(delegate { UpgradeTower(TowerManager.TowerType.Caoldron); });
         if (btnIncreaseSpeed) btnIncreaseSpeed.onClick.AddListener(delegate { UpgradeTowerSpeed(); });
         if (btnIncreaseDamage) btnIncreaseDamage.onClick.AddListener(delegate { UpgradeTowerDamage(); });
         if (btnFireUpgrade) btnFireUpgrade.onClick.AddListener(delegate { SetElement(TowerManager.Type.Fire); });
