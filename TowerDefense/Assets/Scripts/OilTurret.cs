@@ -7,6 +7,7 @@ public class OilTurret : Turret
     public GameObject Fire;
     public float Duration;
     public float RestTimeDuration;
+    public GameObject flare;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,10 +41,12 @@ public class OilTurret : Turret
     void ActiveFire()
     {
         Fire.SetActive(true);
+        flare.SetActive(true);
     }
     void DisableFire()
     {
         Fire.SetActive(false);
+        flare.SetActive(false);
     }
 
     void Shoot()
