@@ -59,8 +59,8 @@ public class Spawner : MonoBehaviour
         // //wave1.AddEnemy(Globals.EnemyType.Standard, true, false, false, 0.0f);
         // //wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.0f);
 
-        wave1.AddEnemy(Globals.EnemyType.Standard, false, true, false, 0.0f);
-       // wave1.AddEnemy(Globals.EnemyType.Heavy, true, false, false, 1.0f);
+        wave1.AddEnemy(Globals.EnemyType.Heavy, false, true, false, 0.0f);
+        wave1.AddEnemy(Globals.EnemyType.Heavy, false, false, false, 1.0f);
 
         //wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.1f);
         //wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.1f);
