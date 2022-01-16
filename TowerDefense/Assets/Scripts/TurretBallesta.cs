@@ -10,9 +10,14 @@ public class TurretBallesta : Turret
 
     public bool ShootFail = false;
     // Start is called before the first frame update
+    public override TowerManager.TowerType GetTowerType()
+    {
+        return TowerManager.TowerType.Ballista;
+    }
     void Start()
     {
         aimType = TowerManager.AimType.Single;
+        towerType = TowerManager.TowerType.Ballista;
     }
 
     // Update is called once per frame
@@ -63,7 +68,7 @@ public class TurretBallesta : Turret
         if (RestTimeAttack <= 0)
         {
             RestTimeAttack = SpeedAttack;
-            if (Target != null)
+            if (Target != null && !Target.GetComponent<EnemyMovement>().isDead)
             {
                 Shoot();
             }
@@ -79,7 +84,7 @@ public class TurretBallesta : Turret
         float menor = 99999999999;
         foreach (EnemyMovement enemy in EnemiesInside)
         {
-            if (enemy == null) EnemisToDelete.Add(enemy);
+            if (enemy == null || enemy.isDead) EnemisToDelete.Add(enemy);
             else if (menor > enemy.castleDistanceRemaining)
             {
                 menor = enemy.castleDistanceRemaining;

@@ -18,7 +18,7 @@ public static class Globals
         Jumper, Standard, Heavy
     };
     //Money
-    private static float money = 40000.0f;
+    public static float money = 0.0f;
     //Pause
     public static bool isGamePaused = false;
     //Towers
@@ -33,9 +33,14 @@ public static class Globals
     public static float damageUpgradeRate = 0.2f;
     public static float speedUpgradeRate = 0.2f;
     public static int numberOfTowers = 0;
-    private static int defaultTowerCost = 200;
-    private static int defaultTowerAddCost = 75;
-    public static int towerCost { get { return defaultTowerCost + (numberOfTowers * defaultTowerAddCost); } }
+    private static float defaultTowerCost = 200;
+    private static float defaultTowerAddCost = 75;
+    public static float defaultTowerTypeUpgradeCost = 350;
+    public static float defaultTowerAttackAndSpeedUpgradeCost = 150;
+    public static float defaultTowerAttackAndSpeedUpgradeCostRatio = 2.0f;
+    public static float defaultTowerElementUpgradeCost = 500;
+
+    public static float towerCost { get { return defaultTowerCost + (numberOfTowers * defaultTowerAddCost); } }
     //Dots
     public static float dotTime = 1.0f; // Seconds
     public static float poisonDamage = 5.0f;
@@ -76,6 +81,7 @@ public static class Globals
     //Door 
     public static float doorDefaultHp = 100.0f;
     public static Text goldLabel;
+    public static float doorCurrentHp = doorDefaultHp;
     public static void updateMoney(float amount) {
         money += amount;
         if(goldLabel) goldLabel.text = money.ToString();
