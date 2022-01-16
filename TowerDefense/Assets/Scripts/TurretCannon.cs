@@ -9,11 +9,15 @@ public class TurretCannon : Turret
 
     public bool ShootFail = false;
     // Start is called before the first frame update
+    public override TowerManager.TowerType GetTowerType()
+    {
+        return TowerManager.TowerType.Canon;
+    }
     void Start()
     {
         aimType = TowerManager.AimType.Area;
+        towerType = TowerManager.TowerType.Canon;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -62,7 +66,7 @@ public class TurretCannon : Turret
         if (RestTimeAttack <= 0)
         {
             RestTimeAttack = SpeedAttack;
-            if (Target != null)
+            if (Target != null && !Target.GetComponent<EnemyMovement>().isDead)
             {
                 Shoot();
             }
@@ -78,7 +82,7 @@ public class TurretCannon : Turret
         float menor = 99999999999;
         foreach (EnemyMovement enemy in EnemiesInside)
         {
-            if (enemy == null) EnemisToDelete.Add(enemy);
+            if (enemy == null || enemy.isDead) EnemisToDelete.Add(enemy);
             else if (menor > enemy.castleDistanceRemaining)
             {
                 menor = enemy.castleDistanceRemaining;

@@ -111,10 +111,27 @@ public class GUIManager : MonoBehaviour
                 upgradeBuildMenuPanel.SetActive(true);
                 selectedTowerGO = tower;
                 selectedTower = tower.GetComponent<TowerManager>();
-                if (selectedTower.activeTurret.towerType != TowerManager.TowerType.Basic) {
+                if (selectedTower.activeTurret.GetTowerType() != TowerManager.TowerType.Basic)
+                {
                     btnCanonUpgrade.enabled = false;
                     btnBallistaUpgrade.enabled = false;
                     btnCaulodron.enabled = false;
+                }
+                else 
+                {
+                    btnCanonUpgrade.enabled = true;
+                    btnBallistaUpgrade.enabled = true;
+                    btnCaulodron.enabled = true;
+                }
+                if (selectedTower.activeTurret.type != TowerManager.Type.Neutral)
+                {
+                    btnFireUpgrade.enabled = false;
+                    btnPoisonUpgrade.enabled = false;
+                }
+                else 
+                {
+                    btnFireUpgrade.enabled = true;
+                    btnPoisonUpgrade.enabled = true;
                 }
                 SetUIAttack(selectedTower.damageLvl);
                 SetUISpeed(selectedTower.speedAttackLvl);
@@ -139,23 +156,49 @@ public class GUIManager : MonoBehaviour
     }
     void UpgradeTower(TowerManager.TowerType towerType) 
     {
-        if (selectedTower) selectedTower.ChangeTower(towerType);
-        OpenTowerMenu(selectedTowerGO, default(Vector3), default(Vector2Int), true);
+        if (selectedTower)
+        {
+            float upgradeCost = Globals.defaultTowerTypeUpgradeCost;
+            if (Globals.getMoney() >= upgradeCost)
+            {
+                if(selectedTower.ChangeTower(towerType)) Globals.updateMoney(-upgradeCost);
+                OpenTowerMenu(selectedTowerGO, default(Vector3), default(Vector2Int), true);
+            }
+        }
     }
     void UpgradeTowerDamage()
     {
-        if (selectedTower) selectedTower.UpgradeTowerDamage();
-        OpenTowerMenu(selectedTowerGO, default(Vector3), default(Vector2Int), true);
+        if (selectedTower) { 
+            float upgradeCost = Globals.defaultTowerAttackAndSpeedUpgradeCost + Globals.defaultTowerAttackAndSpeedUpgradeCost * Globals.defaultTowerAttackAndSpeedUpgradeCostRatio * selectedTower.damageLvl;
+            if (Globals.getMoney() >= upgradeCost) {
+                if(selectedTower.UpgradeTowerDamage()) Globals.updateMoney(-upgradeCost);
+                OpenTowerMenu(selectedTowerGO, default(Vector3), default(Vector2Int), true);
+            }
+        }
     }
     void UpgradeTowerSpeed()
     {
-        if (selectedTower) selectedTower.UpgradeTowerSpeed();
-        OpenTowerMenu(selectedTowerGO, default(Vector3), default(Vector2Int), true);
+        if (selectedTower)
+        {
+            float upgradeCost = Globals.defaultTowerAttackAndSpeedUpgradeCost + Globals.defaultTowerAttackAndSpeedUpgradeCost * Globals.defaultTowerAttackAndSpeedUpgradeCostRatio * selectedTower.damageLvl;
+            if (Globals.getMoney() >= upgradeCost)
+            {
+                if(selectedTower.UpgradeTowerSpeed()) Globals.updateMoney(-upgradeCost);
+                OpenTowerMenu(selectedTowerGO, default(Vector3), default(Vector2Int), true);
+            }
+        }
     }
     void SetElement(TowerManager.Type element)
     {
-        if (selectedTower) selectedTower.SetElement(element);
-        OpenTowerMenu(selectedTowerGO, default(Vector3), default(Vector2Int), true);
+        if (selectedTower)
+        {
+            float upgradeCost = Globals.defaultTowerElementUpgradeCost;
+            if (Globals.getMoney() >= upgradeCost)
+            {
+                if(selectedTower.SetElement(element)) Globals.updateMoney(-upgradeCost);
+                OpenTowerMenu(selectedTowerGO, default(Vector3), default(Vector2Int), true);
+            }
+        }
     }
     void Build() {
         GridBuildingSystem.Instance.Build(placedObjectWorldPosition, placedObjectOrigin);

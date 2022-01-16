@@ -43,4 +43,7 @@ public class Turret : MonoBehaviour
     {
         Base.GetComponent<MeshRenderer>().enabled = false;
     }
+    public virtual TowerManager.TowerType GetTowerType() {
+        return this.towerType;
+    }
 }
