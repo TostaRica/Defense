@@ -103,8 +103,6 @@ public class Spawner : MonoBehaviour
         wave2.AddEnemy(Globals.EnemyType.Jumper, false, false, false, 0.5f);
 
         Globals.waves.Enqueue(wave2);
-
-        
         Wave wave3 = new Wave(4.0f, 300.0f);
         wave3.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.0f);
         wave3.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.2f);

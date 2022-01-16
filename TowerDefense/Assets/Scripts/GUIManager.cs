@@ -67,7 +67,7 @@ public class GUIManager : MonoBehaviour
             TogglePause();
         }
         if (wavesEnemiesText) wavesEnemiesText.text = Globals.currentWaveEnemies.Count.ToString();
-        if (wavesNumberOfWavesText) wavesNumberOfWavesText.text = Globals.waves.Count.ToString() + "/" + Globals.totalNumberOfWaves;
+        if (wavesNumberOfWavesText) wavesNumberOfWavesText.text = Globals.currentWaveNumber + "/" + Globals.totalNumberOfWaves;
     }
     public void TogglePause() {
         if (pauseMenuPanel)
