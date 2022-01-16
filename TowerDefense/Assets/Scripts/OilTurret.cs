@@ -7,7 +7,6 @@ public class OilTurret : Turret
     public GameObject Fire;
     public float Duration;
     public float RestTimeDuration;
-    public GameObject flare;
     public override TowerManager.TowerType GetTowerType()
     {
         return TowerManager.TowerType.Caoldron;
@@ -30,6 +29,7 @@ public class OilTurret : Turret
         {
             DisableFire();
         }
+        CleanEnemyList();
     }
 
     void CheckColdDowns()
@@ -45,18 +45,20 @@ public class OilTurret : Turret
     void ActiveFire()
     {
         Fire.SetActive(true);
-        flare.SetActive(true);
     }
     void DisableFire()
     {
         Fire.SetActive(false);
-        flare.SetActive(false);
     }
 
     void Shoot()
     {
-        ActiveFire();
-        RestTimeDuration = Duration;
+        foreach (EnemyMovement enemy in EnemiesInside)
+        {
+            if (enemy == null || enemy.isDead) EnemisToDelete.Add(enemy);
+            enemy.GetComponent<EnemyMovement>().TakeDamage(Damage);
+        }
+
         ParticleSystem.MainModule settings;
         ParticleSystem[] rigidbodiesOfAllChild = this.gameObject.GetComponentsInChildren<ParticleSystem>();
         for (int i = 0; i < rigidbodiesOfAllChild.Length; i++)
@@ -73,5 +75,19 @@ public class OilTurret : Turret
             }
            rigidbodiesOfAllChild[i].Play();
         }
+    }
+
+    void CleanEnemyList()
+    {
+        foreach (EnemyMovement enemy in EnemiesInside)
+        {
+            if (enemy == null || enemy.isDead) EnemisToDelete.Add(enemy);
+        }
+
+        foreach (EnemyMovement enemy in EnemisToDelete)
+        {
+            EnemiesInside.Remove(enemy);
+        }
+        EnemisToDelete = new List<EnemyMovement>();
     }
 }
