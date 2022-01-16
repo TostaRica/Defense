@@ -37,7 +37,14 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
            other.gameObject.GetComponent<EnemyMovement>().TakeDamage(Damage);
-           if( aimType == AimType.Area) Instantiate(Area, transform.position, transform.rotation);
+           if (type == Type.Posion) other.gameObject.GetComponent<EnemyMovement>().AddState(Globals.EnemyState.Poison);
+           if (type == Type.Fire) other.gameObject.GetComponent<EnemyMovement>().AddState(Globals.EnemyState.Burn);
+            if (aimType == AimType.Area)
+            {
+                GameObject areaGo = Instantiate(Area, transform.position, transform.rotation);
+                areaGo.GetComponent<AreaExplosion>().type = (TowerManager.Type)(int)type;
+                areaGo.GetComponent<AreaExplosion>().Damage = Damage;
+            }
            Instantiate(HitEffect, transform.position, transform.rotation);
            Destroy(this.gameObject);
         }
