@@ -55,7 +55,7 @@ public static class Globals
     //Enemy jumper
     public static float jumperDefaultSpeed = 20.0f;
     public static float jumperDefaultHp = 5.0f;
-    public static float jumperDefaultDoorDamage = 100.0f;
+    public static float jumperDefaultDoorDamage = 1.0f;
     public static float jumperDefaultDashSpeed = 125.0f;
     public static float jumperDefaultDashTime = 0.25f;
     public static float jumperDashCooldown = 3.5f;

@@ -171,7 +171,7 @@ public class EnemyMovement : MonoBehaviour
         {
             bombArea.SetActive(true);
         }
-        if (tombModel && enemyUpgrades.Contains(Globals.EnemyUpgrade.Zombie)) 
+        if (tombModel && enemyUpgrades.Contains(Globals.EnemyUpgrade.Zombie) && !enemyStates.Contains(Globals.EnemyState.Zombie)) 
         {
             tombModel.SetActive(true);
             deadTimer = Globals.mudAndDeadTime;
@@ -183,6 +183,7 @@ public class EnemyMovement : MonoBehaviour
         if (poisonArea && enemyStates.Contains(Globals.EnemyState.Poison))
         {
             poisonArea.SetActive(true);
+            Kill();
         }
         
         if (!enemyStates.Contains(Globals.EnemyState.Poison) && !enemyUpgrades.Contains(Globals.EnemyUpgrade.MudArmor) && !enemyUpgrades.Contains(Globals.EnemyUpgrade.Zombie))

@@ -136,7 +136,8 @@ public class TowerManager : MonoBehaviour
     {
         if (Turrets[activeTower]) {
             activeTurret = Turrets[activeTower].GetComponent<Turret>();
-            //Turrets[0].SetActive(true);
+            activeTurret.Damage = Globals.defaultSimpleTowerDamage + (Globals.defaultSimpleTowerDamage * Globals.damageUpgradeRate * damageLvl);
+            activeTurret.SpeedAttack = Globals.defaultSimpleTowerAttackSpeed - (Globals.defaultSimpleTowerAttackSpeed * Globals.defaultSimpleTowerAttackSpeed * damageLvl);
         }
        // DestoyTower();
     }

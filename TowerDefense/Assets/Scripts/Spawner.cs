@@ -54,11 +54,11 @@ public class Spawner : MonoBehaviour
         Globals.currentWaveEnemies = new List<GameObject>();
         /// bomb, mud,  zombie
         Globals.waves = new Queue<Wave>();
-        Wave wave1 = new Wave(0.0f, 1000.0f);
+        Wave wave1 = new Wave(0.0f, 10000.0f);
         // //test bomb + mud + zombie por separado
         // //wave1.AddEnemy(Globals.EnemyType.Standard, true, false, false, 0.0f);
         // //wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.0f);
-        wave1.AddEnemy(Globals.EnemyType.Jumper, true, true, false, 0.0f);
+        wave1.AddEnemy(Globals.EnemyType.Jumper, false, true, true, 0.0f);
         wave1.AddEnemy(Globals.EnemyType.Standard, false, true, false, 0.0f);
         wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false, 1.0f);
         wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.1f);
