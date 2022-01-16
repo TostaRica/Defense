@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BaseTorret : MonoBehaviour
 {
+    public bool AreaDamage;
     public GameObject Torret;
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,17 @@ public class BaseTorret : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             Torret.GetComponent<Turret>().AddEnemy(other.gameObject);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (AreaDamage)
+        {
+            if (other.gameObject.tag == "Enemy")
+            {
+                other.gameObject.GetComponent<EnemyMovement>().TakeDamage(Torret.GetComponent<Turret>().Damage);
+            }
         }
     }
 }
