@@ -43,6 +43,7 @@ public class GUIManager : MonoBehaviour
 
     GameObject selectedTowerGO = null;
     TowerManager selectedTower = null;
+
     public void Start()
     {
         if (buildButton) btnBuild = buildButton.GetComponent<Button>();
