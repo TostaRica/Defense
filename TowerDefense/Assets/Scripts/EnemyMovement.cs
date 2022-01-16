@@ -162,7 +162,6 @@ public class EnemyMovement : MonoBehaviour
             enemyAgent.enabled = true;
             enemyAgent.SetDestination(castleDoor.position);
             resurrect.SetActive(true);
-
         }
     }
     private void Die() 
