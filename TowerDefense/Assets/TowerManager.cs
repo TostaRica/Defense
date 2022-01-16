@@ -13,6 +13,7 @@ public class TowerManager : MonoBehaviour
     public GameObject[] Turrets;
 
     public ParticleSystem ChangeTowerEffect;
+    public ParticleSystem GameOver;
 
     private int activeTower = 0;
     public Turret activeTurret = null;
@@ -103,7 +104,18 @@ public class TowerManager : MonoBehaviour
     {
         if (Turrets[activeTower]) {
             activeTurret = Turrets[activeTower].GetComponent<Turret>();
-            Turrets[0].SetActive(true);
+            //Turrets[0].SetActive(true);
+        }
+       // DestoyTower();
+    }
+
+    public void DestoyTower()
+    {
+        GameOver.Play();
+        Rigidbody[] rigidbodiesOfAllChild = this.gameObject.GetComponentsInChildren<Rigidbody>();
+        for (int i = 0; i < rigidbodiesOfAllChild.Length; i++)
+        {
+            rigidbodiesOfAllChild[i].isKinematic = false;
         }
     }
 
