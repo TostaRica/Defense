@@ -43,6 +43,14 @@ public class GUIManager : MonoBehaviour
     public Button btnFireUpgrade;
     public Button btnPoisonUpgrade;
 
+    public Text Lbl_AttackCost;
+    public Text Lbl_SpeedCost;
+    public Text Lbl_BallistaCost;
+    public Text Lbl_CanonCost;
+    public Text Lbl_CauldronCost;
+    public Text Lbl_FireCost;
+    public Text Lbl_PoisonCost;
+
     public ArrowIcon[] attackUIArrows;
     public ArrowIcon[] speedUIArrows;
 
@@ -60,6 +68,7 @@ public class GUIManager : MonoBehaviour
         Time.timeScale = 1;
         if (buildButton) btnBuild = buildButton.GetComponent<Button>();
         if (btnBuild) btnBuild.onClick.AddListener(Build);
+
         if (btnBallistaUpgrade) btnBallistaUpgrade.onClick.AddListener(delegate { UpgradeTower(TowerManager.TowerType.Ballista); });
         if (btnCanonUpgrade) btnCanonUpgrade.onClick.AddListener(delegate { UpgradeTower(TowerManager.TowerType.Canon); });
         if (btnCaulodron) btnCaulodron.onClick.AddListener(delegate { UpgradeTower(TowerManager.TowerType.Caoldron); });
@@ -159,8 +168,10 @@ public class GUIManager : MonoBehaviour
                     btnFireUpgrade.enabled = true;
                     btnPoisonUpgrade.enabled = true;
                 }
+
                 SetUIAttack(selectedTower.damageLvl);
                 SetUISpeed(selectedTower.speedAttackLvl);
+                SetUIPrices();
             } 
         }
     }
@@ -228,7 +239,7 @@ public class GUIManager : MonoBehaviour
     {
         if (selectedTower)
         {
-            float upgradeCost = Globals.defaultTowerAttackAndSpeedUpgradeCost + Globals.defaultTowerAttackAndSpeedUpgradeCost * Globals.defaultTowerAttackAndSpeedUpgradeCostRatio * selectedTower.damageLvl;
+            float upgradeCost = Globals.defaultTowerAttackAndSpeedUpgradeCost + Globals.defaultTowerAttackAndSpeedUpgradeCost * Globals.defaultTowerAttackAndSpeedUpgradeCostRatio * selectedTower.speedAttackLvl;
             if (Globals.getMoney() >= upgradeCost)
             {
                 if(selectedTower.UpgradeTowerSpeed()) Globals.updateMoney(-upgradeCost);
@@ -277,5 +288,16 @@ public class GUIManager : MonoBehaviour
     void Exit() 
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    void SetUIPrices() 
+    {
+        if (Lbl_AttackCost) Lbl_AttackCost.text = (Globals.defaultTowerAttackAndSpeedUpgradeCost + Globals.defaultTowerAttackAndSpeedUpgradeCost * Globals.defaultTowerAttackAndSpeedUpgradeCostRatio * selectedTower.damageLvl).ToString();
+        if (Lbl_SpeedCost) Lbl_SpeedCost.text = (Globals.defaultTowerAttackAndSpeedUpgradeCost + Globals.defaultTowerAttackAndSpeedUpgradeCost * Globals.defaultTowerAttackAndSpeedUpgradeCostRatio * selectedTower.speedAttackLvl).ToString();
+        if (Lbl_BallistaCost) Lbl_BallistaCost.text = Globals.defaultTowerTypeUpgradeCost.ToString();
+        if (Lbl_CanonCost) Lbl_CanonCost.text = Globals.defaultTowerTypeUpgradeCost.ToString();
+        if (Lbl_CauldronCost) Lbl_CauldronCost.text = Globals.defaultTowerTypeUpgradeCost.ToString();
+        if (Lbl_FireCost) Lbl_FireCost.text = Globals.defaultTowerElementUpgradeCost.ToString();
+        if (Lbl_PoisonCost) Lbl_PoisonCost.text = Globals.defaultTowerElementUpgradeCost.ToString();
     }
 }
