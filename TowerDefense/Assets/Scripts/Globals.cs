@@ -27,9 +27,9 @@ public static class Globals
     public static float defaultBallistaTowerDamage = 50.0f;
     public static float defaultBallistaTowerAttackSpeed = 2f;
     public static float defaultBomberTowerDamage = 12.5f;
-    public static float defaultBomberTowerAttackSpeed = 1.1f;
-    public static float defaultCauldronTowerDamage = 1f;
-    public static float defaultCauldronTowerAttackSpeed = 2f;
+    public static float defaultBomberTowerAttackSpeed = 1.2f;
+    public static float defaultCauldronTowerDamage = 10.0f;
+    public static float defaultCauldronTowerAttackSpeed = 4f;
     public static float damageUpgradeRate = 0.3f;
     public static float speedUpgradeRate = 0.2f;
     public static int numberOfTowers = 0;
