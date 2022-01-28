@@ -178,6 +178,12 @@ public class EnemyMovement : MonoBehaviour
             tombModel.SetActive(true);
             deadTimer = Globals.mudAndDeadTime;
         }
+        if (tombModel && enemyUpgrades.Contains(Globals.EnemyUpgrade.Zombie) && enemyStates.Contains(Globals.EnemyState.Zombie)) 
+        {
+            tombModel.SetActive(false);
+            enemyModel.SetActive(true);
+            Kill();
+        }
         if (mudArea && enemyUpgrades.Contains(Globals.EnemyUpgrade.MudArmor))
         {
             mudArea.SetActive(true);
