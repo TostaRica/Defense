@@ -18,7 +18,7 @@ public class OilTurret : Turret
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
         CheckColdDowns();
         if (RestTimeDuration > 0)
@@ -32,7 +32,7 @@ public class OilTurret : Turret
         CleanEnemyList();
     }
 
-    void CheckColdDowns()
+    public override void CheckColdDowns()
     {
         RestTimeAttack -= Time.deltaTime;
         if (RestTimeAttack <= 0)
@@ -51,8 +51,9 @@ public class OilTurret : Turret
         Fire.SetActive(false);
     }
 
-    void Shoot()
+    public override void Shoot()
     {
+        ActiveFire();
         foreach (EnemyMovement enemy in EnemiesInside)
         {
             if (enemy == null || enemy.isDead) EnemisToDelete.Add(enemy);
@@ -77,7 +78,7 @@ public class OilTurret : Turret
         }
     }
 
-    void CleanEnemyList()
+    public override void CleanEnemyList()
     {
         foreach (EnemyMovement enemy in EnemiesInside)
         {

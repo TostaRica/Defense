@@ -18,6 +18,8 @@ public class Bullet : MonoBehaviour
     public GameObject HitEffect;
     public GameObject GroundHitEffect;
     public GameObject PosionEffect;
+
+    public GameObject Target;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +29,7 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * Time.deltaTime * Speed;
-
+        transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, Time.deltaTime * Speed);
         Live -= Time.deltaTime;
         if (Live <= 0) Destroy(this.gameObject);
     }
