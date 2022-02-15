@@ -4,16 +4,25 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Projectile
+  - MudArea
+  - Enemy
+  - PoisonArea
   - Enemy
   - Bullet
+  - BombArea
+  - BombTurretArea
+  - FireArea
+  - FxTemporaire
+  - Menu
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
+  - Ghost
   - 
   - 
   - 
