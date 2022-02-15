@@ -151,6 +151,7 @@ public class GUIManager : MonoBehaviour
             }
             else //Tower Upgrades
             {
+                tower.GetComponent<TowerManager>().turretScript.ShowBase();
                 newBuildMenuPanel.SetActive(false);
                 upgradeBuildMenuPanel.SetActive(true);
                 selectedTowerGO = tower;
