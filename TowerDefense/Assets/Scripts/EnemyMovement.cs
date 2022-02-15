@@ -27,6 +27,7 @@ public class EnemyMovement : MonoBehaviour
     private bool dead = false;
     private float dashTimer = 0.0f;
     private float dashCooldoown = Globals.jumperDashCooldown;
+    private float goldReward = 0.0f;
     private List<Globals.EnemyUpgrade> enemyUpgrades = new List<Globals.EnemyUpgrade>();
     private List<Globals.EnemyState> enemyStates = new List<Globals.EnemyState>();
 
@@ -36,6 +37,7 @@ public class EnemyMovement : MonoBehaviour
     private float dotTimer = 0.0f;
     private float deadTimer = 0.0f;
     private float spawnTime = 0.0f;
+
     void Start()
     {
         if (enemyUpgrades.Contains(Globals.EnemyUpgrade.Bomb))
@@ -75,7 +77,7 @@ public class EnemyMovement : MonoBehaviour
             }
         }
     }
-    public void Init(Globals.EnemyType type = Globals.EnemyType.Standard, bool bombs = false, bool mudArmor = false, bool zombie = false, Transform doorPosition = null, float waitTime = 0.0f)
+    public void Init(Globals.EnemyType type = Globals.EnemyType.Standard, bool bombs = false, bool mudArmor = false, bool zombie = false, Transform doorPosition = null, float waitTime = 0.0f, float _goldReward = 0.0f)
     {
         if (bombs) enemyUpgrades.Add(Globals.EnemyUpgrade.Bomb);
         if (mudArmor) enemyUpgrades.Add(Globals.EnemyUpgrade.MudArmor);
@@ -102,6 +104,7 @@ public class EnemyMovement : MonoBehaviour
         }
         enemyAgent.speed = speed;
         spawnTime = waitTime;
+        goldReward = _goldReward;
     }
     public void TakeDamage(float damage)
     {
@@ -118,8 +121,8 @@ public class EnemyMovement : MonoBehaviour
         if (state == Globals.EnemyState.Burn) burnDots = Globals.burnDotsNumber;
     }
     public void Kill() {
-        //Todo: kill animation
         gameObject.GetComponent<Animator>().Play("Dying");
+        Globals.UpdateMoney(goldReward);
         float time = gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
         StartCoroutine(OnCompleteDieAnimation(time));
     }

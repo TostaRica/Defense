@@ -43,6 +43,10 @@ public class GUIManager : MonoBehaviour
     public Button btnFireUpgrade;
     public Button btnPoisonUpgrade;
 
+    public Button btnX1;
+    public Button btnX2;
+    public Button btnX4;
+
     public Text Lbl_AttackCost;
     public Text Lbl_SpeedCost;
     public Text Lbl_BallistaCost;
@@ -85,13 +89,18 @@ public class GUIManager : MonoBehaviour
         if (btnExit) btnExit.onClick.AddListener(Exit);
         if (btnWinExit) btnWinExit.onClick.AddListener(Exit);
         if (btnLoseExit) btnLoseExit.onClick.AddListener(Exit);
+
+        if (btnX1) btnX1.onClick.AddListener(delegate { ChangeGameSpeed(1.0f); });
+        if (btnX2) btnX2.onClick.AddListener(delegate { ChangeGameSpeed(2.0f); });
+        if (btnX4) btnX4.onClick.AddListener(delegate { ChangeGameSpeed(4.0f); });
         loseAnimationOn = false;
 
         InitGlobals();
     }
     private void InitGlobals() 
     {
-        Globals.money = 0.0f;
+        Globals.money = 300.0f;
+        Globals.UpdateMoney(0.0f);
         Globals.currentWaveNumber = 0;
         Globals.numberOfTowers = 0;
     }
@@ -125,7 +134,7 @@ public class GUIManager : MonoBehaviour
 
                 if (buildButton && buildText && buildCancelButton)
                 {
-                    if (Globals.getMoney() >= Globals.towerCost)
+                    if (Globals.GetMoney() >= Globals.towerCost)
                     {
                         buildText.text = "Wanna build a tower here for "+ Globals.towerCost +" Gold?";
                         placedObjectWorldPosition = _placedObjectWorldPosition;
@@ -218,9 +227,9 @@ public class GUIManager : MonoBehaviour
         if (selectedTower)
         {
             float upgradeCost = Globals.defaultTowerTypeUpgradeCost;
-            if (Globals.getMoney() >= upgradeCost)
+            if (Globals.GetMoney() >= upgradeCost)
             {
-                if(selectedTower.ChangeTower(towerType)) Globals.updateMoney(-upgradeCost);
+                if(selectedTower.ChangeTower(towerType)) Globals.UpdateMoney(-upgradeCost);
                 OpenTowerMenu(selectedTowerGO, default(Vector3), default(Vector2Int), true);
             }
         }
@@ -229,8 +238,8 @@ public class GUIManager : MonoBehaviour
     {
         if (selectedTower) { 
             float upgradeCost = Globals.defaultTowerAttackAndSpeedUpgradeCost + Globals.defaultTowerAttackAndSpeedUpgradeCost * Globals.defaultTowerAttackAndSpeedUpgradeCostRatio * selectedTower.damageLvl;
-            if (Globals.getMoney() >= upgradeCost) {
-                if(selectedTower.UpgradeTowerDamage()) Globals.updateMoney(-upgradeCost);
+            if (Globals.GetMoney() >= upgradeCost) {
+                if(selectedTower.UpgradeTowerDamage()) Globals.UpdateMoney(-upgradeCost);
                 OpenTowerMenu(selectedTowerGO, default(Vector3), default(Vector2Int), true);
             }
         }
@@ -240,9 +249,9 @@ public class GUIManager : MonoBehaviour
         if (selectedTower)
         {
             float upgradeCost = Globals.defaultTowerAttackAndSpeedUpgradeCost + Globals.defaultTowerAttackAndSpeedUpgradeCost * Globals.defaultTowerAttackAndSpeedUpgradeCostRatio * selectedTower.speedAttackLvl;
-            if (Globals.getMoney() >= upgradeCost)
+            if (Globals.GetMoney() >= upgradeCost)
             {
-                if(selectedTower.UpgradeTowerSpeed()) Globals.updateMoney(-upgradeCost);
+                if(selectedTower.UpgradeTowerSpeed()) Globals.UpdateMoney(-upgradeCost);
                 OpenTowerMenu(selectedTowerGO, default(Vector3), default(Vector2Int), true);
             }
         }
@@ -252,16 +261,16 @@ public class GUIManager : MonoBehaviour
         if (selectedTower)
         {
             float upgradeCost = Globals.defaultTowerElementUpgradeCost;
-            if (Globals.getMoney() >= upgradeCost)
+            if (Globals.GetMoney() >= upgradeCost)
             {
-                if(selectedTower.SetElement(element)) Globals.updateMoney(-upgradeCost);
+                if(selectedTower.SetElement(element)) Globals.UpdateMoney(-upgradeCost);
                 OpenTowerMenu(selectedTowerGO, default(Vector3), default(Vector2Int), true);
             }
         }
     }
     void Build() {
         GridBuildingSystem.Instance.Build(placedObjectWorldPosition, placedObjectOrigin);
-        Globals.updateMoney(-Globals.towerCost);
+        Globals.UpdateMoney(-Globals.towerCost);
         Globals.numberOfTowers++;
         panel.SetActive(false);
     }
@@ -289,7 +298,10 @@ public class GUIManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
-
+    void ChangeGameSpeed(float speed) 
+    {
+        Time.timeScale = speed;
+    }
     void SetUIPrices() 
     {
         if (Lbl_AttackCost) Lbl_AttackCost.text = (Globals.defaultTowerAttackAndSpeedUpgradeCost + Globals.defaultTowerAttackAndSpeedUpgradeCost * Globals.defaultTowerAttackAndSpeedUpgradeCostRatio * selectedTower.damageLvl).ToString();
