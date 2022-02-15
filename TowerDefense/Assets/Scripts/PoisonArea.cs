@@ -18,7 +18,7 @@ public class PoisonArea : MonoBehaviour
         if (parent)
         {
             enemyScript = parent.GetComponent<EnemyMovement>();
-            if (!enemyScript.hasZombieUpgrade || enemyScript.isZombie)
+            if (!enemyScript.hasZombiePower || enemyScript.isZombie)
             {
                 enemyScript.Kill();
             }

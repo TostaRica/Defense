@@ -15,9 +15,12 @@ public class EnemyMovement : MonoBehaviour
     public float castleDistanceRemaining { get { return GetPathRemainingDistance(enemyAgent); } }
     public float doorDamage { get { return attackDamage; } }
     public bool isZombie { get { return enemyStates.Contains(Globals.EnemyState.Zombie); } }
-    public bool hasZombieUpgrade { get { return enemyUpgrades.Contains(Globals.EnemyUpgrade.Zombie); } }
+    public bool hasZombiePower { get { return enemyUpgrades.Contains(Globals.EnemyUpgrade.Zombie); } }
     public float spawnWaitTime { get { return spawnTime; } }
     public bool isDead { get { return dead; } }
+
+    public bool hasMudPower { get { return enemyUpgrades.Contains(Globals.EnemyUpgrade.MudArmor); } }
+    public bool hasBombPower { get { return enemyUpgrades.Contains(Globals.EnemyUpgrade.Bomb); } }
     //stats
     public float hp = 10.0f;
     private float zombieHp = 10.0f;

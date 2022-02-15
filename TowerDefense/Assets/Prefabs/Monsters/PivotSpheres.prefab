@@ -173,6 +173,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PivotSpheres: {fileID: 3982932119692274518}
+  monster: {fileID: 0}
+  sphereMud: {fileID: 5033803553651308231}
+  sphereBomb: {fileID: 2357014498267094760}
+  sphereZombie: {fileID: 7678603471832907838}
 --- !u!1 &5033803553651308231
 GameObject:
   m_ObjectHideFlags: 0

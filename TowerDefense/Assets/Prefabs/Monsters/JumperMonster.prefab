@@ -2434,6 +2434,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7573450236516610581, guid: 5e6b379552f18884295ecb7fda81694d, type: 3}
+      propertyPath: monster
+      value: 
+      objectReference: {fileID: 4530003306004163418}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e6b379552f18884295ecb7fda81694d, type: 3}
 --- !u!4 &2056908544601433804 stripped

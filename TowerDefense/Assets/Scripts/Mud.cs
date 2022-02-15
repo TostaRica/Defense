@@ -16,7 +16,7 @@ public class Mud : MonoBehaviour
         EnemyMovement enemyScript = null;
         if (parent) {
             enemyScript = parent.GetComponent<EnemyMovement>();
-            if (!enemyScript.hasZombieUpgrade || enemyScript.isZombie)
+            if (!enemyScript.hasZombiePower || enemyScript.isZombie)
             {
                 enemyScript.Kill();
             }
