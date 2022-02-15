@@ -4,13 +4,13 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine.SceneManagement;
 public class ParticleTester_cartoon_explosion_fire_smoke : MonoBehaviour {
 	public Object[] particleSystems;
 	private Vector2 scrollPosition;
 	
 	void Awake () {
-		particleSystems = Resources.LoadAll(Application.loadedLevelName+"/effects", typeof(GameObject));
+		particleSystems = Resources.LoadAll(SceneManager.GetActiveScene().name+"/effects", typeof(GameObject));
 	}
 	
 	void OnGUI () {

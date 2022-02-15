@@ -32,9 +32,9 @@ public class Spawner : MonoBehaviour
     {
         if (Globals.waves.Count > 0)
         {
+            if (Globals.currentWave != null) Globals.UpdateMoney(Globals.currentWave.moneyReward);
             Wave wave = Globals.waves.Peek();
             waitingWave = true;
-            Globals.updateMoney(wave.moneyReward);
             yield return new WaitForSeconds(wave.waitTime);
             waitingWave = false;
             StartNextWave();
@@ -60,6 +60,7 @@ public class Spawner : MonoBehaviour
         wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.5f);
         wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.5f);
         wave1.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.5f);
+        wave1.UpdateEnemiesGoldReward();
         // wave1.AddEnemy(Globals.EnemyType.Standard, false, false, true, 10.0f);
 
         Globals.waves.Enqueue(wave1);
@@ -72,6 +73,7 @@ public class Spawner : MonoBehaviour
         wave2.AddEnemy(Globals.EnemyType.Jumper, false, false, false, 0.5f);
         wave2.AddEnemy(Globals.EnemyType.Jumper, false, false, false, 0.5f);
         wave2.AddEnemy(Globals.EnemyType.Jumper, false, false, false, 0.5f);
+        wave2.UpdateEnemiesGoldReward();
 
         Globals.waves.Enqueue(wave2);
         Wave wave3 = new Wave(4.0f, 700.0f);
@@ -89,7 +91,7 @@ public class Spawner : MonoBehaviour
         wave3.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.3f);
         wave3.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.3f);
         wave3.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.3f);
-
+        wave3.UpdateEnemiesGoldReward();
         Globals.waves.Enqueue(wave3);
 
         Wave wave4 = new Wave(4.0f, 1000.0f);
@@ -106,7 +108,7 @@ public class Spawner : MonoBehaviour
         wave4.AddEnemy(Globals.EnemyType.Jumper, false, false, false, 0.5f);
         wave4.AddEnemy(Globals.EnemyType.Jumper, false, false, false, 0.5f);
         wave4.AddEnemy(Globals.EnemyType.Jumper, false, false, false, 0.5f);
-
+        wave4.UpdateEnemiesGoldReward();
         Globals.waves.Enqueue(wave4);
 
         Wave wave5 = new Wave(4.0f, 1200.0f);
@@ -124,7 +126,7 @@ public class Spawner : MonoBehaviour
         wave5.AddEnemy(Globals.EnemyType.Standard, false, true, false, 0.5f);
         wave5.AddEnemy(Globals.EnemyType.Heavy, false, false, true, 0.5f);
         wave5.AddEnemy(Globals.EnemyType.Heavy, false, false, true, 0.5f);
-
+        wave5.UpdateEnemiesGoldReward();
         Globals.waves.Enqueue(wave5);
 
         Wave wave6 = new Wave(4.0f, 1200.0f);
@@ -145,7 +147,7 @@ public class Spawner : MonoBehaviour
         wave6.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.5f);
         wave6.AddEnemy(Globals.EnemyType.Heavy, false, false, false, 0.5f);
         wave6.AddEnemy(Globals.EnemyType.Heavy, false, false, false, 0.5f);
-
+        wave6.UpdateEnemiesGoldReward();
         Globals.waves.Enqueue(wave6);
         Globals.totalNumberOfWaves = Globals.waves.Count;
     }
@@ -192,7 +194,7 @@ public class Spawner : MonoBehaviour
         enemyInstance.transform.position = transform.position;
         enemyInstance.SetActive(false);
         enemyScript = enemyInstance.GetComponent<EnemyMovement>();
-        enemyScript.Init(enemy.enemyType, enemy.bombUpgrade, enemy.mudArmorUpgrade, enemy.zombieUpgrade, door,enemy.waitTime);
+        enemyScript.Init(enemy.enemyType, enemy.bombUpgrade, enemy.mudArmorUpgrade, enemy.zombieUpgrade, door,enemy.waitTime, enemy.goldReward);
 
         Globals.currentWaveWaitingEnemies.Enqueue(enemyInstance);
     }
