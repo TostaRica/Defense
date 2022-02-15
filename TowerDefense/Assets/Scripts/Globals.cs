@@ -82,11 +82,11 @@ public static class Globals
     public static float doorDefaultHp = 5.0f;
     public static Text goldLabel;
     public static float doorCurrentHp = doorDefaultHp;
-    public static void updateMoney(float amount) {
+    public static void UpdateMoney(float amount) {
         money += amount;
         if(goldLabel) goldLabel.text = money.ToString();
     }
-    public static float getMoney()
+    public static float GetMoney()
     {
         return money;
     }
