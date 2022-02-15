@@ -6,6 +6,7 @@ public class AreaExplosion : MonoBehaviour
 {
     public float Live;
     public float Damage;
+    public TowerManager.Type type;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,9 @@ public class AreaExplosion : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<Enemy>().GetHit(Damage);
+            other.gameObject.GetComponent<EnemyMovement>().TakeDamage(Damage);
+            if (type == TowerManager.Type.Fire) other.gameObject.GetComponent<EnemyMovement>().AddState(Globals.EnemyState.Burn);
+            if (type == TowerManager.Type.Poison) other.gameObject.GetComponent<EnemyMovement>().AddState(Globals.EnemyState.Poison);
         }
     }
 }
