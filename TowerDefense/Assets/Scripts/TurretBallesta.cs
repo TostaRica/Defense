@@ -100,6 +100,7 @@ public class TurretBallesta : Turret
         Instantiate(ShootEffect, Punta.transform.position, Punta.transform.rotation);
         b = Instantiate(Bullet, Punta.transform.position, Punta.transform.rotation);
         ShootFX.Play();
+        b.GetComponent<Bullet>().Target = Target;
         b.GetComponent<Bullet>().Damage = Damage;
         b.GetComponent<Bullet>().Speed = BulletSpeed;
         b.GetComponent<Bullet>().SetBulletType((int)type);

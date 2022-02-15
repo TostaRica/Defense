@@ -98,6 +98,7 @@ public class BasicTurret : Turret
         //ShootEffect.Play();
         b = Instantiate(Bullet, Punta.transform.position, Punta.transform.rotation);
         ShootFX.Play();
+        b.GetComponent<Bullet>().Target = Target;
         b.GetComponent<Bullet>().Damage = Damage;
         b.GetComponent<Bullet>().Speed = BulletSpeed;
         b.GetComponent<Bullet>().SetBulletType((int)type);
