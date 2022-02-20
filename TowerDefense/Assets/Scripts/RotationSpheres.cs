@@ -21,13 +21,25 @@ public class RotationSpheres : MonoBehaviour
         bombs = monster.GetComponent<EnemyMovement>().hasBombPower;
 
         if (zombie){
+            sphereZombie.GetComponent<MeshRenderer>().enabled = true;
+        }
+        else
+        {
             sphereZombie.GetComponent<MeshRenderer>().enabled = false;
         }
         if (mudarmor)
         {
+            sphereMud.GetComponent<MeshRenderer>().enabled = true;
+        }
+        else
+        {
             sphereMud.GetComponent<MeshRenderer>().enabled = false;
         }
         if (bombs)
+        {
+            sphereBomb.GetComponent<MeshRenderer>().enabled = true;
+        }
+        else
         {
             sphereBomb.GetComponent<MeshRenderer>().enabled = false;
         }
