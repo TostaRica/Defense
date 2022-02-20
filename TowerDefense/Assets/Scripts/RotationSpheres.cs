@@ -48,6 +48,6 @@ public class RotationSpheres : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PivotSpheres.transform.Rotate(new Vector3(0, 0, 1)); 
+        PivotSpheres.transform.Rotate(new Vector3(0, 0, 200*Time.deltaTime)); 
     }
 }
