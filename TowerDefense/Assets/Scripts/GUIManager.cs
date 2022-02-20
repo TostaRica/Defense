@@ -39,7 +39,7 @@ public class GUIManager : MonoBehaviour
 
     public Button btnIncreaseSpeed;
     public Button btnIncreaseDamage;
-    
+
     public Button btnFireUpgrade;
     public Button btnPoisonUpgrade;
 
@@ -66,6 +66,8 @@ public class GUIManager : MonoBehaviour
     GameObject selectedTowerGO = null;
     TowerManager selectedTower = null;
     private bool loseAnimationOn = false;
+    GameObject lastTower = null;
+    bool firstPanelOpen = false;
 
     public void Start()
     {
@@ -79,8 +81,8 @@ public class GUIManager : MonoBehaviour
         if (btnIncreaseSpeed) btnIncreaseSpeed.onClick.AddListener(UpgradeTowerSpeed);
         if (btnIncreaseDamage) btnIncreaseDamage.onClick.AddListener(UpgradeTowerDamage);
         if (btnFireUpgrade) btnFireUpgrade.onClick.AddListener(delegate { SetElement(TowerManager.Type.Fire); });
-        if (btnPoisonUpgrade) btnPoisonUpgrade.onClick.AddListener(delegate {SetElement(TowerManager.Type.Poison); });
-        if (btnResume) btnResume.onClick.AddListener(TogglePause); 
+        if (btnPoisonUpgrade) btnPoisonUpgrade.onClick.AddListener(delegate { SetElement(TowerManager.Type.Poison); });
+        if (btnResume) btnResume.onClick.AddListener(TogglePause);
 
         if (btnRetry) btnRetry.onClick.AddListener(Reload);
         if (btnWinRetry) btnWinRetry.onClick.AddListener(Reload);
@@ -99,7 +101,7 @@ public class GUIManager : MonoBehaviour
     }
     private void InitGlobals() 
     {
-        Globals.money = 300.0f;
+        Globals.money = 30000.0f;
         Globals.UpdateMoney(0.0f);
         Globals.currentWaveNumber = 0;
         Globals.numberOfTowers = 0;
@@ -110,6 +112,16 @@ public class GUIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)) 
         {
             TogglePause();
+        }
+        if (Input.GetMouseButtonDown(0) && !Globals.IsPointOverUIObject() && panel && panel.activeSelf)
+        {
+            if (!firstPanelOpen)
+            {
+                panel.SetActive(false);
+                if (selectedTowerGO != null) selectedTowerGO.GetComponent<TowerManager>().turretScript.HideBase();
+            }
+            else firstPanelOpen = false;
+           
         }
         if (wavesEnemiesText) wavesEnemiesText.text = Globals.currentWaveEnemies.Count.ToString();
         if (wavesNumberOfWavesText) wavesNumberOfWavesText.text = Globals.currentWaveNumber + "/" + Globals.totalNumberOfWaves;
@@ -126,6 +138,7 @@ public class GUIManager : MonoBehaviour
         if (camera && panel)
         {
             panel.SetActive(true);
+            firstPanelOpen = true;
             if (!refresh) UpdatePanelPosition();
             if (!tower)
             {
@@ -141,7 +154,7 @@ public class GUIManager : MonoBehaviour
                         placedObjectOrigin = _placedObjectOrigin;
                         buildButton.SetActive(true);
                         buildCancelButton.SetActive(true);
-                }
+                    }
                     else {
                         buildText.text = "Not enough gold to build a tower";
                         buildButton.SetActive(false);
