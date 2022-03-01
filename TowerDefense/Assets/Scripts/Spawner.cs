@@ -12,7 +12,11 @@ public class Spawner : MonoBehaviour
     bool waitingWave = false;
     void Start()
     {
-       InitWaves();
+        Globals.currentWave = null;
+        Globals.waves = new Queue<Wave>();
+        Globals.currentWaveWaitingEnemies = new Queue<GameObject>();
+        Globals.currentWaveEnemies = new List<GameObject>();
+        InitWaves();
     }
     void Update()
     {
