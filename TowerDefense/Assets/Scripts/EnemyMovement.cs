@@ -236,10 +236,6 @@ public class EnemyMovement : MonoBehaviour
                 burnDots = Globals.burnDotsNumber;
             }
         }
-        if (other.CompareTag("BombTurretArea"))
-        {
-            TakeDamage(Globals.bombDamage);
-        }
         if (other.CompareTag("BombArea"))
         {
             TakeDamage(Globals.bombDamage);

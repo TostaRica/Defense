@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class TurretBallesta : Turret
 {
-
-
-    // Start is called before the first frame update
-    public override TowerManager.TowerType GetTowerType()
-    {
-        return TowerManager.TowerType.Ballista;
-    }
-    void Start()
+    void Awake()
     {
         aimType = TowerManager.AimType.Single;
         towerType = TowerManager.TowerType.Ballista;

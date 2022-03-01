@@ -7,13 +7,9 @@ public class OilTurret : Turret
     public GameObject Fire;
     public float Duration;
     public float RestTimeDuration;
-    public override TowerManager.TowerType GetTowerType()
+    void Awake()
     {
-        return TowerManager.TowerType.Caoldron;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
+        aimType = TowerManager.AimType.Donut;
         towerType = TowerManager.TowerType.Caoldron;
     }
 

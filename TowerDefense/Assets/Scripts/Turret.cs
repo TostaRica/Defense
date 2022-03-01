@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    
-
     public float SpeedAttack;
-
     public float Damage;
     public float RestTimeAttack;
     public float Offset;
@@ -64,7 +61,6 @@ public class Turret : MonoBehaviour
 
         CleanEnemyList();
     } 
-
     public void FindNewEnemy()
     { 
         float menor = 99999999999;
@@ -112,6 +108,7 @@ public class Turret : MonoBehaviour
         b.GetComponent<Bullet>().Target = Target;
         b.GetComponent<Bullet>().Damage = Damage;
         b.GetComponent<Bullet>().Speed = BulletSpeed;
+        b.GetComponent<Bullet>().aimType = aimType;
         b.GetComponent<Bullet>().SetBulletType((int)type);
     }
     public void AddEnemy(GameObject e)
@@ -138,9 +135,9 @@ public class Turret : MonoBehaviour
     {
         Base.GetComponent<MeshRenderer>().enabled = true;
     }
-
     public virtual void HideBase()
     {
         Base.GetComponent<MeshRenderer>().enabled = false;
     }
+
 }
