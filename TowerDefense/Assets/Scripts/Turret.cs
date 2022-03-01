@@ -63,15 +63,15 @@ public class Turret : MonoBehaviour
         }
 
         CleanEnemyList();
-    }
+    } 
 
     public void FindNewEnemy()
-    {
+    { 
         float menor = 99999999999;
         foreach (EnemyMovement enemy in EnemiesInside)
         {
-            if (enemy == null || enemy.isDead) EnemisToDelete.Add(enemy);
-            else if (menor > enemy.castleDistanceRemaining)
+            if (enemy == null) EnemisToDelete.Add(enemy);
+            else if (menor > enemy.castleDistanceRemaining && !enemy.isDead)
             {
                 menor = enemy.castleDistanceRemaining;
                 Target = enemy.gameObject;
@@ -134,7 +134,6 @@ public class Turret : MonoBehaviour
     public virtual TowerManager.TowerType GetTowerType() {
         return this.towerType;
     }
-
     public virtual void ShowBase()
     {
         Base.GetComponent<MeshRenderer>().enabled = true;

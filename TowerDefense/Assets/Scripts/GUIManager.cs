@@ -101,7 +101,7 @@ public class GUIManager : MonoBehaviour
     }
     private void InitGlobals() 
     {
-        Globals.money = 30000.0f;
+        Globals.money = 300.0f;
         Globals.UpdateMoney(0.0f);
         Globals.currentWaveNumber = 0;
         Globals.numberOfTowers = 0;

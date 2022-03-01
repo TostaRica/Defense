@@ -69,6 +69,12 @@ public class EnemyMovement : MonoBehaviour
             DotDamage();
             if (hp <= 0.0f) Die();
             DashChecker();
+            if (enemyStates.Contains(Globals.EnemyState.Slow))
+            {
+                enemyAgent.speed = speed * Globals.mudSlowSpeed;
+                enemyStates.Remove(Globals.EnemyState.Slow);
+            }
+            else enemyAgent.speed = speed;
         }
         else {
             if (deadTimer <= 0.0f)
@@ -208,18 +214,8 @@ public class EnemyMovement : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("MudArea"))
-        {
-            ReliableOnTriggerExit.NotifyTriggerEnter(other, gameObject, OnTriggerExit);
-            if (!enemyStates.Contains(Globals.EnemyState.Slow))
-            {
-                enemyAgent.speed = speed * Globals.mudSlowSpeed;
-                enemyStates.Add(Globals.EnemyState.Slow);
-            }
-        }
         if (other.CompareTag("PoisonArea"))
         {
-            ReliableOnTriggerExit.NotifyTriggerEnter(other, gameObject, OnTriggerExit);
             if (!enemyStates.Contains(Globals.EnemyState.Poison))
             {
                 enemyStates.Add(Globals.EnemyState.Poison);
@@ -231,7 +227,6 @@ public class EnemyMovement : MonoBehaviour
         }
         if (other.CompareTag("FireArea"))
         {
-            ReliableOnTriggerExit.NotifyTriggerEnter(other, gameObject, OnTriggerExit);
             if (!enemyStates.Contains(Globals.EnemyState.Burn))
             {
                 enemyStates.Add(Globals.EnemyState.Burn);
@@ -250,15 +245,13 @@ public class EnemyMovement : MonoBehaviour
             TakeDamage(Globals.bombDamage);
         }
     }
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("MudArea"))
         {
-            ReliableOnTriggerExit.NotifyTriggerExit(other, gameObject);
-            enemyStates.Remove(Globals.EnemyState.Slow);
             if (!enemyStates.Contains(Globals.EnemyState.Slow))
             {
-                enemyAgent.speed = speed;
+                enemyStates.Add(Globals.EnemyState.Slow);
             }
         }
     }
