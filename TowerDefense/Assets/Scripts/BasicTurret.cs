@@ -10,7 +10,7 @@ public class BasicTurret : Turret
         return TowerManager.TowerType.Basic;
     }
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         towerType = TowerManager.TowerType.Basic;
         type = TowerManager.Type.Neutral;
