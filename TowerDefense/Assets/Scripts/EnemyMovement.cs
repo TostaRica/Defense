@@ -69,12 +69,14 @@ public class EnemyMovement : MonoBehaviour
             DotDamage();
             if (hp <= 0.0f) Die();
             DashChecker();
-            if (enemyStates.Contains(Globals.EnemyState.Slow))
-            {
-                enemyAgent.speed = speed * Globals.mudSlowSpeed;
-                enemyStates.Remove(Globals.EnemyState.Slow);
+            if (!enemyStates.Contains(Globals.EnemyState.Dashing)) { 
+                if (enemyStates.Contains(Globals.EnemyState.Slow))
+                {
+                    enemyAgent.speed = speed * Globals.mudSlowSpeed;
+                    enemyStates.Remove(Globals.EnemyState.Slow);
+                }
+                else enemyAgent.speed = speed;
             }
-            else enemyAgent.speed = speed;
         }
         else {
             if (deadTimer <= 0.0f)
@@ -95,7 +97,7 @@ public class EnemyMovement : MonoBehaviour
         switch (type)
         {
             case Globals.EnemyType.Jumper:
-                hp = Globals.jumperDefaultHp + Globals.jumperDefaultHp*(Globals.currentWaveNumber/3);
+                hp = Globals.jumperDefaultHp + Globals.jumperDefaultHp * (Globals.currentWaveNumber/3);
                 speed = Globals.jumperDefaultSpeed;
                 attackDamage = Globals.jumperDefaultDoorDamage;
                 dashSkill = true;
@@ -253,7 +255,7 @@ public class EnemyMovement : MonoBehaviour
     }
     private void Dash() 
     {
-        enemyAgent.speed = 200;
+        enemyAgent.speed = Globals.jumperDashSpeed;
         gameObject.GetComponent<Animator>().SetFloat("Velocity", enemyAgent.speed);
         enemyStates.Add(Globals.EnemyState.Dashing);
         dashTimer = Globals.jumperDefaultDashTime;

@@ -59,6 +59,7 @@ public static class Globals
     public static float jumperDefaultDashSpeed = 125.0f;
     public static float jumperDefaultDashTime = 0.25f;
     public static float jumperDashCooldown = 3.5f;
+    public static float jumperDashSpeed = 200.0f;
     //Enemy standard
     public static float standardDefaultSpeed = 20.0f;
     public static float standardDefaultHp = 30.0f;

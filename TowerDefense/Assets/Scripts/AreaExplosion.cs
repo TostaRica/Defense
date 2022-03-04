@@ -17,7 +17,7 @@ public class AreaExplosion : MonoBehaviour
     void Update()
     {
         Live -= Time.deltaTime;
-        if (Live <= 0) Destroy(this.gameObject);
+        if (Live <= 0) Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,6 +27,7 @@ public class AreaExplosion : MonoBehaviour
             other.gameObject.GetComponent<EnemyMovement>().TakeDamage(Damage);
             if (type == TowerManager.Type.Fire) other.gameObject.GetComponent<EnemyMovement>().AddState(Globals.EnemyState.Burn);
             if (type == TowerManager.Type.Poison) other.gameObject.GetComponent<EnemyMovement>().AddState(Globals.EnemyState.Poison);
+            Destroy(gameObject);
         }
     }
 }
