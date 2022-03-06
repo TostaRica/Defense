@@ -122,8 +122,8 @@ public class TowerManager : MonoBehaviour
                 {
                     activeTower = i;
                     Turret newTurret = Turrets[activeTower].GetComponent<Turret>();
-                    newTurret.Damage = CalculateDamage(newTurret.GetTowerType());
-                    newTurret.SpeedAttack = CalculateSpeed(newTurret.GetTowerType());
+                    newTurret.Damage = CalculateDamage(type);
+                    newTurret.SpeedAttack = CalculateSpeed(type);
                     newTurret.type = activeTurret.type;
                     activeTurret = newTurret;
                     Turrets[i].SetActive(true);

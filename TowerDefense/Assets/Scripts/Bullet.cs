@@ -28,9 +28,9 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, Time.deltaTime * Speed);
-        Live -= Time.deltaTime;
-        if (Live <= 0) Destroy(this.gameObject);
+       Live -= Time.deltaTime;
+       if(Target && Live > 0) transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, Time.deltaTime * Speed);
+       else Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
