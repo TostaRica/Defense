@@ -25,19 +25,19 @@ public static class Globals
     public static float defaultSimpleTowerDamage = 10.0f;
     public static float defaultSimpleTowerAttackSpeed = 1.0f;
     public static float defaultBallistaTowerDamage = 50.0f;
-    public static float defaultBallistaTowerAttackSpeed = 2f;
-    public static float defaultBomberTowerDamage = 12.5f;
-    public static float defaultBomberTowerAttackSpeed = 1.2f;
-    public static float defaultCauldronTowerDamage = 10.0f;
-    public static float defaultCauldronTowerAttackSpeed = 4f;
+    public static float defaultBallistaTowerAttackSpeed = 2.5f;
+    public static float defaultBomberTowerDamage = 9.5f;
+    public static float defaultBomberTowerAttackSpeed = 1.5f;
+    public static float defaultCauldronTowerDamage = 20.0f;
+    public static float defaultCauldronTowerAttackSpeed = 5f;
     public static float damageUpgradeRate = 0.3f;
     public static float speedUpgradeRate = 0.2f;
     public static int numberOfTowers = 0;
     private static float defaultTowerCost = 200;
-    private static float defaultTowerAddCost = 75;
+    private static float defaultTowerAddCost = 100;
     public static float defaultTowerTypeUpgradeCost = 350;
     public static float defaultTowerAttackAndSpeedUpgradeCost = 150;
-    public static float defaultTowerAttackAndSpeedUpgradeCostRatio = 2.0f;
+    public static float defaultTowerAttackAndSpeedUpgradeCostRatio = 2.5f;
     public static float defaultTowerElementUpgradeCost = 500;
 
     public static float towerCost { get { return defaultTowerCost + (numberOfTowers * defaultTowerAddCost); } }
@@ -48,26 +48,29 @@ public static class Globals
     public static float burnDamage = 5.0f;
     public static int burnDotsNumber = 5;
     //Enemy upgrades
-    public static float bombSpeedIncrement = 0.6f;
-    public static float bombDamage = 5.0f;
-    public static float mudArmor = 0.25f; // +%
-    public static float zombieHpFactor = 0.6f; // %
+    public static float bombSpeedIncrement = 0.75f;
+    public static float bombDamage = 8.0f;
+    public static float mudArmor = 0.4f; // +%
+    public static float zombieHpFactor = 0.8f; // %
     //Enemy jumper
     public static float jumperDefaultSpeed = 20.0f;
-    public static float jumperDefaultHp = 15.0f;
+    public static float jumperDefaultHp = 20.0f;
     public static float jumperDefaultDoorDamage = 1.0f;
     public static float jumperDefaultDashSpeed = 125.0f;
     public static float jumperDefaultDashTime = 0.25f;
     public static float jumperDashCooldown = 3.5f;
     public static float jumperDashSpeed = 200.0f;
+    public static float enemyHpDividerJumper = 2.5f;
     //Enemy standard
     public static float standardDefaultSpeed = 20.0f;
-    public static float standardDefaultHp = 30.0f;
+    public static float standardDefaultHp = 25.0f;
     public static float standardDefaultDoorDamage = 1.0f;
+    public static float enemyHpDividerStandard = 2.5f;
     //Enemy heavy
     public static float heavyDefaultSpeed = 15.0f;
-    public static float heavyDefaultHp = 100.0f;
+    public static float heavyDefaultHp = 120.0f;
     public static float heavyDefaultDoorDamage = 1.0f;
+    public static float enemyHpDividerHeavy = 2f;
     //Areas
     public static float mudAndDeadTime = 2.0f;
     public static float mudSlowSpeed = 0.25f;

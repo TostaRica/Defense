@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 577031576687189573}
   m_Layer: 0
   m_Name: AreaExplosion
-  m_TagString: Untagged
+  m_TagString: BombTurretArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4940754690447166871}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -24.437222, y: 3.2009544, z: 36.8034}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4783, y: 1.4783, z: 1.4783}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -60,4 +60,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Live: 10
   Damage: 10
-  type: 0
+  type: 2

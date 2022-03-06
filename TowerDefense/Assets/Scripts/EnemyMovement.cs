@@ -97,18 +97,18 @@ public class EnemyMovement : MonoBehaviour
         switch (type)
         {
             case Globals.EnemyType.Jumper:
-                hp = Globals.jumperDefaultHp + Globals.jumperDefaultHp * (Globals.currentWaveNumber/3);
+                hp = Globals.jumperDefaultHp + Globals.jumperDefaultHp*(Globals.currentWaveNumber/Globals.enemyHpDividerJumper);
                 speed = Globals.jumperDefaultSpeed;
                 attackDamage = Globals.jumperDefaultDoorDamage;
                 dashSkill = true;
                 break;
             case Globals.EnemyType.Standard:
-                hp = Globals.standardDefaultHp  + Globals.standardDefaultHp * (Globals.currentWaveNumber / 3);
+                hp = Globals.standardDefaultHp  + Globals.standardDefaultHp * (Globals.currentWaveNumber / Globals.enemyHpDividerStandard);
                 speed = Globals.standardDefaultSpeed;
                 attackDamage = Globals.standardDefaultDoorDamage;
                 break;
             case Globals.EnemyType.Heavy:
-                hp = Globals.heavyDefaultHp + Globals.heavyDefaultHp * (Globals.currentWaveNumber / 3);
+                hp = Globals.heavyDefaultHp + Globals.heavyDefaultHp * (Globals.currentWaveNumber / Globals.enemyHpDividerHeavy);
                 speed = Globals.heavyDefaultSpeed;
                 attackDamage = Globals.standardDefaultDoorDamage;
                 break;
