@@ -42,11 +42,13 @@ public static class Globals
 
     public static float towerCost { get { return defaultTowerCost + (numberOfTowers * defaultTowerAddCost); } }
     //Dots
-    public static float dotTime = 1.0f; // Seconds
+    public static float dotTimePoison = 1.0f; // Seconds
     public static float poisonDamage = 5.0f;
     public static int poisonDotsNumber = 5;
-    public static float burnDamage = 5.0f;
-    public static int burnDotsNumber = 5;
+    public static float dotTimeFire = 3.0f; // Seconds
+    public static float burnDamage = 10.0f;
+    public static int burnDotsNumber = 3;
+    public static float burnAreaTime = 100.0f;
     //Enemy upgrades
     public static float bombSpeedIncrement = 0.75f;
     public static float bombDamage = 8.0f;

@@ -2696,7 +2696,8 @@ MonoBehaviour:
   enemyModel: {fileID: 4733126337938464446}
   mudArea: {fileID: 476860075}
   poisonArea: {fileID: 1513924755}
-  bombArea: {fileID: 0}
+  fireArea: {fileID: 9101098337666986115, guid: aa8abdebeb436a14c89d773d0466b271, type: 3}
+  bombArea: {fileID: 941661130031997913}
   tombModel: {fileID: 716508448}
   resurrect: {fileID: 7849433994960694792}
   hp: 10
