@@ -28,8 +28,8 @@ public static class Globals
     public static float defaultBallistaTowerAttackSpeed = 2.5f;
     public static float defaultBomberTowerDamage = 9.5f;
     public static float defaultBomberTowerAttackSpeed = 1.5f;
-    public static float defaultCauldronTowerDamage = 20.0f;
-    public static float defaultCauldronTowerAttackSpeed = 5f;
+    public static float defaultCauldronTowerDamage = 22.0f;
+    public static float defaultCauldronTowerAttackSpeed = 4.8f;
     public static float damageUpgradeRate = 0.3f;
     public static float speedUpgradeRate = 0.2f;
     public static int numberOfTowers = 0;
@@ -43,10 +43,10 @@ public static class Globals
     public static float towerCost { get { return defaultTowerCost + (numberOfTowers * defaultTowerAddCost); } }
     //Dots
     public static float dotTimePoison = 1.0f; // Seconds
-    public static float poisonDamage = 5.0f;
-    public static int poisonDotsNumber = 5;
-    public static float dotTimeFire = 3.0f; // Seconds
-    public static float burnDamage = 10.0f;
+    public static float poisonDamage = 1.8f;
+    public static int poisonDotsNumber = 10;
+    public static float dotTimeFire = 2.5f; // Seconds
+    public static float burnDamage = 6.0f;
     public static int burnDotsNumber = 3;
     public static float burnAreaTime = 100.0f;
     //Enemy upgrades
