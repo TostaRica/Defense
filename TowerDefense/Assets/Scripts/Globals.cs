@@ -88,7 +88,7 @@ public static class Globals
     public static float doorCurrentHp = doorDefaultHp;
     public static void UpdateMoney(float amount) {
         money += amount;
-        if(goldLabel) goldLabel.text = money.ToString();
+        if(goldLabel) goldLabel.text = Mathf.RoundToInt(money).ToString();
     }
     public static float GetMoney()
     {

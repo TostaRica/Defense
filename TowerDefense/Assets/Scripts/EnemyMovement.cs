@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 public class EnemyMovement : MonoBehaviour
 {
     public NavMeshAgent enemyAgent;
@@ -12,6 +13,7 @@ public class EnemyMovement : MonoBehaviour
     public GameObject bombArea;
     public GameObject tombModel;
     public GameObject resurrect;
+    public Image healthImage;
     public float castleDistanceRemaining { get { return GetPathRemainingDistance(enemyAgent); } }
     public float doorDamage { get { return attackDamage; } }
     public bool isZombie { get { return enemyStates.Contains(Globals.EnemyState.Zombie); } }
@@ -23,6 +25,7 @@ public class EnemyMovement : MonoBehaviour
     public bool hasBombPower { get { return enemyUpgrades.Contains(Globals.EnemyUpgrade.Bomb); } }
     //stats
     public float hp = 10.0f;
+    private float initalHp = 10.0f;
     private float zombieHp = 10.0f;
     private float speed = 1.0f;
     private float attackDamage = 1.0f;
@@ -56,6 +59,7 @@ public class EnemyMovement : MonoBehaviour
             hp = hp * Globals.zombieHpFactor;
             zombieHp = hp;
         }
+        initalHp = hp;
         enemyAgent.SetDestination(castleDoor.position);
         enemyAgent.acceleration = 9999;
         enemyAgent.angularSpeed = 9999;
@@ -119,7 +123,11 @@ public class EnemyMovement : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
-        if(!enemyStates.Contains(Globals.EnemyState.Dashing)) hp -= damage;
+        if (!enemyStates.Contains(Globals.EnemyState.Dashing)) 
+        {
+            hp -= damage;
+           if(healthImage) healthImage.fillAmount = hp / initalHp;
+        }
         if (hp <= 0.0f) Die();
     }
     public void AddState(Globals.EnemyState state)
@@ -170,6 +178,8 @@ public class EnemyMovement : MonoBehaviour
             enemyStates.Add(Globals.EnemyState.Zombie);
             dead = false;
             hp = zombieHp * Globals.zombieHpFactor;
+            initalHp = hp;
+            if (healthImage) healthImage.fillAmount = hp / initalHp;
             tombModel.SetActive(false);
             mudArea.SetActive(false);
             enemyModel.SetActive(true);
