@@ -45,6 +45,7 @@ public class EnemyMovement : MonoBehaviour
     private float dotTimerFire = 0.0f;
     private float deadTimer = 0.0f;
     private float spawnTime = 0.0f;
+    private bool isBoss = false;
 
     void Start()
     {
@@ -94,12 +95,13 @@ public class EnemyMovement : MonoBehaviour
             }
         }
     }
-    public void Init(Globals.EnemyType type = Globals.EnemyType.Standard, bool bombs = false, bool mudArmor = false, bool zombie = false, Transform doorPosition = null, float waitTime = 0.0f, float _goldReward = 0.0f)
+    public void Init(Globals.EnemyType type = Globals.EnemyType.Standard, bool bombs = false, bool mudArmor = false, bool zombie = false, Transform doorPosition = null, float waitTime = 0.0f, float _goldReward = 0.0f, bool _isBoss = false)
     {
         if (bombs) enemyUpgrades.Add(Globals.EnemyUpgrade.Bomb);
         if (mudArmor) enemyUpgrades.Add(Globals.EnemyUpgrade.MudArmor);
         if (zombie) enemyUpgrades.Add(Globals.EnemyUpgrade.Zombie);
         if (doorPosition) castleDoor = doorPosition;
+        isBoss = _isBoss;
         switch (type)
         {
             case Globals.EnemyType.Jumper:
@@ -107,6 +109,10 @@ public class EnemyMovement : MonoBehaviour
                 speed = Globals.jumperDefaultSpeed;
                 attackDamage = Globals.jumperDefaultDoorDamage;
                 dashSkill = true;
+                if (isBoss) {
+                    transform.localScale = transform.localScale * 4;
+                    hp *= 30;
+                }
                 break;
             case Globals.EnemyType.Standard:
                 hp = Globals.standardDefaultHp  + Globals.standardDefaultHp * (Globals.currentWaveNumber / Globals.enemyHpDividerStandard);
@@ -285,7 +291,7 @@ public class EnemyMovement : MonoBehaviour
         enemyAgent.speed = Globals.jumperDashSpeed;
         gameObject.GetComponent<Animator>().SetFloat("Velocity", enemyAgent.speed);
         enemyStates.Add(Globals.EnemyState.Dashing);
-        dashTimer = Globals.jumperDefaultDashTime;
+        dashTimer = Globals.jumperDefaultDashTime * ((isBoss) ? 0.8f : 1);
     }
     private void StopDash()
     {

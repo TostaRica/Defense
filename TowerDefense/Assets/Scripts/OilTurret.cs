@@ -53,7 +53,15 @@ public class OilTurret : Turret
         foreach (EnemyMovement enemy in EnemiesInside)
         {
             if (enemy == null || enemy.isDead) EnemisToDelete.Add(enemy);
-            enemy.GetComponent<EnemyMovement>().TakeDamage(Damage);
+            
+            enemy.TakeDamage(Damage);
+            if (type == TowerManager.Type.Poison) {
+                enemy.AddState(Globals.EnemyState.Poison);
+            }
+            if (type == TowerManager.Type.Fire)
+            {
+                enemy.AddState(Globals.EnemyState.Burn);
+            }
         }
 
         ParticleSystem.MainModule settings;

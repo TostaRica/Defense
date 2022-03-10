@@ -16,6 +16,7 @@ public class Turret : MonoBehaviour
     protected List<EnemyMovement> EnemisToDelete = new List<EnemyMovement>();
     public GameObject ShootEffect;
     public AudioSource ShootFX;
+    public TowerManager.Type towerElement { get { return type; } }
 
     public BaseTorret RangeZone;
     public GameObject Target;

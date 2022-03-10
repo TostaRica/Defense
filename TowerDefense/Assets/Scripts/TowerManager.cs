@@ -22,6 +22,8 @@ public class TowerManager : MonoBehaviour
     public Turret activeTurret = null;
     public int speedAttackLvl = 0;
     public int damageLvl = 0;
+    public TowerType towerType { get { return (activeTurret) ? activeTurret.GetTowerType() : TowerType.Basic; } }
+    public Type towerElement { get { return (activeTurret) ? activeTurret.towerElement : Type.Neutral;} }
     public Turret turretScript { get { return Turrets[activeTower].GetComponent<Turret>(); } }
     public bool UpgradeTowerDamage()
     {

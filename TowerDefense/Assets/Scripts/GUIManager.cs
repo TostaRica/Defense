@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class GUIManager : MonoBehaviour
 {
+    public const string UPGRADE_MAX_LVL = "MAX";
     public GameObject panel;
     public Camera camera;
     public GameObject newBuildMenuPanel;
@@ -318,12 +319,12 @@ public class GUIManager : MonoBehaviour
     }
     void SetUIPrices() 
     {
-        if (Lbl_AttackCost) Lbl_AttackCost.text = (Globals.defaultTowerAttackAndSpeedUpgradeCost + Globals.defaultTowerAttackAndSpeedUpgradeCost * Globals.defaultTowerAttackAndSpeedUpgradeCostRatio * selectedTower.damageLvl).ToString();
-        if (Lbl_SpeedCost) Lbl_SpeedCost.text = (Globals.defaultTowerAttackAndSpeedUpgradeCost + Globals.defaultTowerAttackAndSpeedUpgradeCost * Globals.defaultTowerAttackAndSpeedUpgradeCostRatio * selectedTower.speedAttackLvl).ToString();
-        if (Lbl_BallistaCost) Lbl_BallistaCost.text = Globals.defaultTowerTypeUpgradeCost.ToString();
-        if (Lbl_CanonCost) Lbl_CanonCost.text = Globals.defaultTowerTypeUpgradeCost.ToString();
-        if (Lbl_CauldronCost) Lbl_CauldronCost.text = Globals.defaultTowerTypeUpgradeCost.ToString();
-        if (Lbl_FireCost) Lbl_FireCost.text = Globals.defaultTowerElementUpgradeCost.ToString();
-        if (Lbl_PoisonCost) Lbl_PoisonCost.text = Globals.defaultTowerElementUpgradeCost.ToString();
+        if (Lbl_AttackCost) Lbl_AttackCost.text = (selectedTower.damageLvl == 3)? UPGRADE_MAX_LVL:(Globals.defaultTowerAttackAndSpeedUpgradeCost + Globals.defaultTowerAttackAndSpeedUpgradeCost * Globals.defaultTowerAttackAndSpeedUpgradeCostRatio * selectedTower.damageLvl).ToString();
+        if (Lbl_SpeedCost) Lbl_SpeedCost.text = (selectedTower.speedAttackLvl == 3) ? UPGRADE_MAX_LVL : (Globals.defaultTowerAttackAndSpeedUpgradeCost + Globals.defaultTowerAttackAndSpeedUpgradeCost * Globals.defaultTowerAttackAndSpeedUpgradeCostRatio * selectedTower.speedAttackLvl).ToString();
+        if (Lbl_BallistaCost) Lbl_BallistaCost.text = (selectedTower.towerType != TowerManager.TowerType.Basic) ? UPGRADE_MAX_LVL : Globals.defaultTowerTypeUpgradeCost.ToString();
+        if (Lbl_CanonCost) Lbl_CanonCost.text = (selectedTower.towerType != TowerManager.TowerType.Basic) ? UPGRADE_MAX_LVL : Globals.defaultTowerTypeUpgradeCost.ToString();
+        if (Lbl_CauldronCost) Lbl_CauldronCost.text = (selectedTower.towerType != TowerManager.TowerType.Basic) ? UPGRADE_MAX_LVL : Globals.defaultTowerTypeUpgradeCost.ToString();
+        if (Lbl_FireCost) Lbl_FireCost.text = (selectedTower.towerElement != TowerManager.Type.Neutral) ? UPGRADE_MAX_LVL : Globals.defaultTowerElementUpgradeCost.ToString();
+        if (Lbl_PoisonCost) Lbl_PoisonCost.text = (selectedTower.towerElement != TowerManager.Type.Neutral) ? UPGRADE_MAX_LVL : Globals.defaultTowerElementUpgradeCost.ToString();
     }
 }

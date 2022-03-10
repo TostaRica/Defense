@@ -15,8 +15,8 @@ public class Wave
         public bool zombieUpgrade;
         public float goldReward;
         public float waitTime;
-
-        public Enemy (Globals.EnemyType _enemyType, bool _bombUpgrade, bool _mudArmorUpgrade, bool _zombieUpgrade , float _waitTime)
+        public bool isBoss;
+        public Enemy (Globals.EnemyType _enemyType, bool _bombUpgrade, bool _mudArmorUpgrade, bool _zombieUpgrade , float _waitTime, bool _isBoss)
         {
             enemyType = _enemyType;
             bombUpgrade = _bombUpgrade;
@@ -24,6 +24,7 @@ public class Wave
             zombieUpgrade = _zombieUpgrade;
             waitTime = _waitTime;
             goldReward = 0.0f;
+            isBoss = _isBoss;
         }
     }
     public int enemiesNumber { get { return enemiesCount; } }
@@ -34,9 +35,9 @@ public class Wave
         moneyReward = money * finalMoneyRewardPercent;
         hordeReward = money * (1 - finalMoneyRewardPercent);
     }
-    public void AddEnemy(Globals.EnemyType _enemyType = Globals.EnemyType.Standard, bool _bombUpgrade = false, bool _mudArmorUpgrade = false, bool _zombieUpgrade = false, float _waitTime = 0.0f) 
+    public void AddEnemy(Globals.EnemyType _enemyType = Globals.EnemyType.Standard, bool _bombUpgrade = false, bool _mudArmorUpgrade = false, bool _zombieUpgrade = false, float _waitTime = 0.0f, bool isBoss = false) 
     {
-        enemies.Enqueue(new Enemy(_enemyType, _bombUpgrade, _mudArmorUpgrade, _zombieUpgrade, _waitTime));
+        enemies.Enqueue(new Enemy(_enemyType, _bombUpgrade, _mudArmorUpgrade, _zombieUpgrade, _waitTime, isBoss));
         ++enemiesCount;
     }
     public Enemy GetNextEnemy()

@@ -467,12 +467,14 @@ public class Spawner : MonoBehaviour
         wave11.AddEnemy(Globals.EnemyType.Heavy, true, true, true, 0.8f);
         wave11.AddEnemy(Globals.EnemyType.Heavy, true, true, true, 0.8f);
 
-
-
-
-
         wave11.UpdateEnemiesGoldReward();
         Globals.waves.Enqueue(wave11);
+
+        Wave wave12 = new Wave(5.0f, 850.0f);
+        wave12.AddEnemy(Globals.EnemyType.Jumper, true, true, true, 0.8f, true);
+        wave12.UpdateEnemiesGoldReward();
+        Globals.waves.Enqueue(wave12);
+
         Globals.totalNumberOfWaves = Globals.waves.Count;
     }
     IEnumerator ActivateEnemies()
@@ -518,8 +520,8 @@ public class Spawner : MonoBehaviour
         enemyInstance.transform.position = transform.position;
         enemyInstance.SetActive(false);
         enemyScript = enemyInstance.GetComponent<EnemyMovement>();
-        enemyScript.Init(enemy.enemyType, enemy.bombUpgrade, enemy.mudArmorUpgrade, enemy.zombieUpgrade, door,enemy.waitTime, enemy.goldReward);
-
+        enemyScript.Init(enemy.enemyType, enemy.bombUpgrade, enemy.mudArmorUpgrade, enemy.zombieUpgrade, door,enemy.waitTime, enemy.goldReward, enemy.isBoss);
+        
         Globals.currentWaveWaitingEnemies.Enqueue(enemyInstance);
     }
 }
