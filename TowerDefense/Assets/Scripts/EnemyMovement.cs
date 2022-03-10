@@ -10,6 +10,7 @@ public class EnemyMovement : MonoBehaviour
     public GameObject enemyModel;
     public GameObject mudArea;
     public GameObject poisonArea;
+    public GameObject fireArea;
     public GameObject bombArea;
     public GameObject tombModel;
     public GameObject resurrect;
@@ -40,7 +41,8 @@ public class EnemyMovement : MonoBehaviour
     //internal
     private int poisonDots = 0;
     private int burnDots = 0;
-    private float dotTimer = 0.0f;
+    private float dotTimerPoison = 0.0f;
+    private float dotTimerFire = 0.0f;
     private float deadTimer = 0.0f;
     private float spawnTime = 0.0f;
 
@@ -153,23 +155,38 @@ public class EnemyMovement : MonoBehaviour
     }
     private void DotDamage()
     {
-        if (enemyStates.Count > 0 && dotTimer <= 0.0f)
+        if (enemyStates.Count > 0 && dotTimerPoison <= 0.0f)
         {
             if (poisonDots > 0 && enemyStates.Contains(Globals.EnemyState.Poison))
             {
                 poisonDots--;
                 TakeDamage(Globals.poisonDamage);
             }
+
+            dotTimerPoison = Globals.dotTimePoison;
+        }
+        else
+        {
+            dotTimerPoison -= Time.deltaTime;
+        }
+        if (enemyStates.Count > 0 && dotTimerFire <= 0.0f)
+        {
             if (burnDots > 0 && enemyStates.Contains(Globals.EnemyState.Burn))
             {
                 burnDots--;
                 TakeDamage(Globals.burnDamage);
+                if (Random.Range(0, 4) > 2)
+                {
+                    Instantiate(fireArea, transform.position, Quaternion.identity);
+                }
+
             }
-            dotTimer = Globals.dotTime;
+            dotTimerFire = Globals.dotTimeFire;
         }
         else
         {
-            dotTimer -= Time.deltaTime;
+            dotTimerPoison -= Time.deltaTime;
+            dotTimerFire -= Time.deltaTime;
         }
     }
     private void Resurrect()

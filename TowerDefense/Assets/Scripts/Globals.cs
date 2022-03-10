@@ -24,12 +24,12 @@ public static class Globals
     //Towers
     public static float defaultSimpleTowerDamage = 10.0f;
     public static float defaultSimpleTowerAttackSpeed = 1.0f;
-    public static float defaultBallistaTowerDamage = 50.0f;
+    public static float defaultBallistaTowerDamage = 40.0f;
     public static float defaultBallistaTowerAttackSpeed = 2.5f;
     public static float defaultBomberTowerDamage = 9.5f;
     public static float defaultBomberTowerAttackSpeed = 1.5f;
-    public static float defaultCauldronTowerDamage = 20.0f;
-    public static float defaultCauldronTowerAttackSpeed = 5f;
+    public static float defaultCauldronTowerDamage = 30.0f;
+    public static float defaultCauldronTowerAttackSpeed = 4.8f;
     public static float damageUpgradeRate = 0.3f;
     public static float speedUpgradeRate = 0.2f;
     public static int numberOfTowers = 0;
@@ -37,16 +37,18 @@ public static class Globals
     private static float defaultTowerAddCost = 100;
     public static float defaultTowerTypeUpgradeCost = 350;
     public static float defaultTowerAttackAndSpeedUpgradeCost = 150;
-    public static float defaultTowerAttackAndSpeedUpgradeCostRatio = 2.5f;
+    public static float defaultTowerAttackAndSpeedUpgradeCostRatio = 1.5f;
     public static float defaultTowerElementUpgradeCost = 500;
 
     public static float towerCost { get { return defaultTowerCost + (numberOfTowers * defaultTowerAddCost); } }
     //Dots
-    public static float dotTime = 1.0f; // Seconds
-    public static float poisonDamage = 5.0f;
-    public static int poisonDotsNumber = 5;
-    public static float burnDamage = 5.0f;
-    public static int burnDotsNumber = 5;
+    public static float dotTimePoison = 1.0f; // Seconds
+    public static float poisonDamage = 1.8f;
+    public static int poisonDotsNumber = 10;
+    public static float dotTimeFire = 2.5f; // Seconds
+    public static float burnDamage = 6.0f;
+    public static int burnDotsNumber = 3;
+    public static float burnAreaTime = 100.0f;
     //Enemy upgrades
     public static float bombSpeedIncrement = 0.75f;
     public static float bombDamage = 8.0f;
@@ -68,7 +70,7 @@ public static class Globals
     public static float enemyHpDividerStandard = 2.5f;
     //Enemy heavy
     public static float heavyDefaultSpeed = 15.0f;
-    public static float heavyDefaultHp = 120.0f;
+    public static float heavyDefaultHp = 110.0f;
     public static float heavyDefaultDoorDamage = 1.0f;
     public static float enemyHpDividerHeavy = 2f;
     //Areas

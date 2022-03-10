@@ -160,7 +160,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 569292557}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2005,7 +2005,8 @@ MonoBehaviour:
   enemyModel: {fileID: 9122308325327206653}
   mudArea: {fileID: 111281559}
   poisonArea: {fileID: 1392459324}
-  bombArea: {fileID: 0}
+  fireArea: {fileID: 9101098337666986115, guid: aa8abdebeb436a14c89d773d0466b271, type: 3}
+  bombArea: {fileID: 1867689325637493117}
   tombModel: {fileID: 569292557}
   resurrect: {fileID: 2332137740869959133}
   healthImage: {fileID: 2473838281002510613}
