@@ -24,7 +24,7 @@ public static class Globals
     //Towers
     public static float defaultSimpleTowerDamage = 10.0f;
     public static float defaultSimpleTowerAttackSpeed = 1.0f;
-    public static float defaultBallistaTowerDamage = 50.0f;
+    public static float defaultBallistaTowerDamage = 40.0f;
     public static float defaultBallistaTowerAttackSpeed = 2.5f;
     public static float defaultBomberTowerDamage = 9.5f;
     public static float defaultBomberTowerAttackSpeed = 1.5f;
@@ -37,7 +37,7 @@ public static class Globals
     private static float defaultTowerAddCost = 100;
     public static float defaultTowerTypeUpgradeCost = 350;
     public static float defaultTowerAttackAndSpeedUpgradeCost = 150;
-    public static float defaultTowerAttackAndSpeedUpgradeCostRatio = 2.5f;
+    public static float defaultTowerAttackAndSpeedUpgradeCostRatio = 1.5f;
     public static float defaultTowerElementUpgradeCost = 500;
 
     public static float towerCost { get { return defaultTowerCost + (numberOfTowers * defaultTowerAddCost); } }

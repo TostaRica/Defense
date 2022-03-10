@@ -80,7 +80,7 @@ public class Spawner : MonoBehaviour
         wave2.UpdateEnemiesGoldReward();
 
         Globals.waves.Enqueue(wave2);
-        Wave wave3 = new Wave(4.0f, 550.0f);
+        Wave wave3 = new Wave(4.0f, 525.0f);
         wave3.AddEnemy(Globals.EnemyType.Standard, true, false, false, 1.0f);
         wave3.AddEnemy(Globals.EnemyType.Standard, false, false, false, 1.0f);
         wave3.AddEnemy(Globals.EnemyType.Jumper, false, false, false, 1.0f);
@@ -182,6 +182,77 @@ public class Spawner : MonoBehaviour
 
         wave7.UpdateEnemiesGoldReward();
         Globals.waves.Enqueue(wave7);
+        Globals.totalNumberOfWaves = Globals.waves.Count;
+
+        Wave wave8 = new Wave(5.0f, 650.0f);
+
+
+        wave8.AddEnemy(Globals.EnemyType.Standard, true, false, true, 0.7f);
+        wave8.AddEnemy(Globals.EnemyType.Standard, true, false, true, 0.01f);
+        wave8.AddEnemy(Globals.EnemyType.Standard, true, false, true, 0.01f);
+        wave8.AddEnemy(Globals.EnemyType.Standard, true, false, true, 0.01f);
+        wave8.AddEnemy(Globals.EnemyType.Standard, true, false, true, 0.01f);
+        wave8.AddEnemy(Globals.EnemyType.Standard, true, false, true, 0.01f);
+        wave8.AddEnemy(Globals.EnemyType.Standard, true, false, true, 0.01f);
+        wave8.AddEnemy(Globals.EnemyType.Heavy, false, true, false, 0.5f);
+        wave8.AddEnemy(Globals.EnemyType.Heavy, true, false, true, 0.5f);
+        wave8.AddEnemy(Globals.EnemyType.Standard, false, false, true, 0.7f);
+        wave8.AddEnemy(Globals.EnemyType.Standard, false, false, true, 0.7f);
+        wave8.AddEnemy(Globals.EnemyType.Standard, false, false, true, 0.7f);
+        wave8.AddEnemy(Globals.EnemyType.Standard, false, false, true, 0.7f);
+        wave8.AddEnemy(Globals.EnemyType.Standard, false, false, true, 0.7f);
+        wave8.AddEnemy(Globals.EnemyType.Standard, false, false, true, 0.7f);
+        wave8.AddEnemy(Globals.EnemyType.Standard, false, false, true, 0.7f);
+        wave8.AddEnemy(Globals.EnemyType.Standard, true, false, true, 0.7f);
+        wave8.AddEnemy(Globals.EnemyType.Standard, true, false, true, 0.7f);
+        wave8.AddEnemy(Globals.EnemyType.Standard, true, false, true, 0.7f);
+        wave8.AddEnemy(Globals.EnemyType.Jumper, true, false, true, 0.5f);
+        wave8.AddEnemy(Globals.EnemyType.Jumper, true, false, true, 0.5f);
+        wave8.AddEnemy(Globals.EnemyType.Jumper, true, false, true, 0.5f);
+        wave8.AddEnemy(Globals.EnemyType.Jumper, true, false, true, 0.5f);
+        wave8.AddEnemy(Globals.EnemyType.Jumper, true, false, true, 0.5f);
+        wave8.AddEnemy(Globals.EnemyType.Jumper, true, false, true, 0.5f);
+        wave8.AddEnemy(Globals.EnemyType.Jumper, true, false, true, 0.5f);
+        wave8.AddEnemy(Globals.EnemyType.Jumper, true, false, true, 0.5f);
+
+        wave8.UpdateEnemiesGoldReward();
+        Globals.waves.Enqueue(wave8);
+
+
+        Wave wave9 = new Wave(5.0f, 650.0f);
+
+
+        wave9.AddEnemy(Globals.EnemyType.Heavy, false, true, true, 0.5f);
+        wave9.AddEnemy(Globals.EnemyType.Heavy, true, false, false, 0.5f);
+        wave9.AddEnemy(Globals.EnemyType.Heavy, true, false, false, 0.5f);
+        wave9.AddEnemy(Globals.EnemyType.Heavy, true, false, false, 0.5f);
+        wave9.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.3f);
+        wave9.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.3f);
+        wave9.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.3f);
+        wave9.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.3f);
+        wave9.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.3f);
+        wave9.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.3f);
+        wave9.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.3f);
+        wave9.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.3f);
+        wave9.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.3f);
+        wave9.AddEnemy(Globals.EnemyType.Standard, false, false, false, 0.3f);
+        wave9.AddEnemy(Globals.EnemyType.Standard, false, false, true, 0.3f);
+        wave9.AddEnemy(Globals.EnemyType.Standard, false, false, true, 0.3f);
+        wave9.AddEnemy(Globals.EnemyType.Standard, false, false, true, 0.3f);
+        wave9.AddEnemy(Globals.EnemyType.Standard, false, false, true, 0.3f);
+        wave9.AddEnemy(Globals.EnemyType.Standard, false, false, true, 0.3f);
+        wave9.AddEnemy(Globals.EnemyType.Standard, false, false, true, 0.3f);
+        wave9.AddEnemy(Globals.EnemyType.Standard, false, false, true, 0.3f);
+        wave9.AddEnemy(Globals.EnemyType.Standard, false, false, true, 0.3f);
+        wave9.AddEnemy(Globals.EnemyType.Standard, false, false, true, 0.3f);
+        wave9.AddEnemy(Globals.EnemyType.Heavy, true, true, true, 1.2f);
+        wave9.AddEnemy(Globals.EnemyType.Heavy, true, true, false, 0.5f);
+        wave9.AddEnemy(Globals.EnemyType.Heavy, true, false, false, 0.5f);
+        wave9.AddEnemy(Globals.EnemyType.Heavy, true, false, true, 0.5f);
+
+
+        wave9.UpdateEnemiesGoldReward();
+        Globals.waves.Enqueue(wave9);
         Globals.totalNumberOfWaves = Globals.waves.Count;
     }
     IEnumerator ActivateEnemies()

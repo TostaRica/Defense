@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FireArea : MonoBehaviour
 {
+    private bool destroyMe;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,9 +15,11 @@ public class FireArea : MonoBehaviour
         yield return new WaitForSeconds(Globals.burnAreaTime*Time.deltaTime);
         Destroy(this.gameObject);
     }
+
     // Update is called once per frame
     void Update()
     {
 
     }
+
 }
