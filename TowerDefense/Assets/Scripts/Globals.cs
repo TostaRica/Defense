@@ -28,7 +28,7 @@ public static class Globals
     public static float defaultBallistaTowerAttackSpeed = 2.5f;
     public static float defaultBomberTowerDamage = 9.5f;
     public static float defaultBomberTowerAttackSpeed = 1.5f;
-    public static float defaultCauldronTowerDamage = 22.0f;
+    public static float defaultCauldronTowerDamage = 30.0f;
     public static float defaultCauldronTowerAttackSpeed = 4.8f;
     public static float damageUpgradeRate = 0.3f;
     public static float speedUpgradeRate = 0.2f;
@@ -70,7 +70,7 @@ public static class Globals
     public static float enemyHpDividerStandard = 2.5f;
     //Enemy heavy
     public static float heavyDefaultSpeed = 15.0f;
-    public static float heavyDefaultHp = 120.0f;
+    public static float heavyDefaultHp = 110.0f;
     public static float heavyDefaultDoorDamage = 1.0f;
     public static float enemyHpDividerHeavy = 2f;
     //Areas
